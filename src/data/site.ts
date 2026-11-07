@@ -32,25 +32,26 @@ export const site = {
   ],
 
   // ── Historique des études ──────────────────────────────────────────────
+  // `photo` = nom du fichier dans src/assets/photos/ (voir le README du dossier).
   // TODO : TOUT CE BLOC EST UN EXEMPLE. À remplacer par les vraies études
   // d’Augustin (client ou secteur si confidentiel, sujet, méthode, livrable).
   studies: [
-    { year: '2025', org: 'Fournisseur d’énergie', theme: 'Ce que les ménages attendent d’une offre « verte »', method: 'Entretiens à domicile · 24', deliverable: 'Personas + recommandations offre', tag: 'énergie' },
-    { year: '2025', org: 'Collectivité territoriale', theme: 'Acceptabilité d’un parc éolien, côté riverains', method: 'Focus groups · 4', deliverable: 'Note de synthèse, CODIR', tag: 'territoire' },
-    { year: '2024', org: 'Distribution alimentaire', theme: 'Le vrac, entre conviction et contrainte', method: 'Ethnographie en magasin', deliverable: 'Parcours client commenté', tag: 'consommation' },
-    { year: '2024', org: 'Mutuelle', theme: 'Les jeunes actifs face à la prévoyance', method: 'Communauté en ligne · 3 sem.', deliverable: 'Topline + rapport', tag: 'assurance' },
-    { year: '2023', org: 'Constructeur automobile', theme: 'Passer à l’électrique : les freins réels', method: 'Entretiens approfondis · 30', deliverable: 'Segmentation qualitative', tag: 'mobilité' },
-    { year: '2023', org: 'Association naturaliste', theme: 'Ce qui fait (vraiment) adhérer', method: 'Entretiens + desk research', deliverable: 'Plateforme de messages', tag: 'biodiversité' },
-    { year: '2022', org: 'Kantar · grand compte FMCG', theme: 'Rituels du petit-déjeuner', method: 'Modération de communauté', deliverable: 'Analyse thématique des verbatim', tag: 'consommation' },
+    { photo: 'etude-energie', year: '2025', org: 'Fournisseur d’énergie', theme: 'Ce que les ménages attendent d’une offre « verte »', method: 'Entretiens à domicile · 24', deliverable: 'Personas + recommandations offre', tag: 'énergie' },
+    { photo: 'etude-territoire', year: '2025', org: 'Collectivité territoriale', theme: 'Acceptabilité d’un parc éolien, côté riverains', method: 'Focus groups · 4', deliverable: 'Note de synthèse, CODIR', tag: 'territoire' },
+    { photo: 'etude-consommation', year: '2024', org: 'Distribution alimentaire', theme: 'Le vrac, entre conviction et contrainte', method: 'Ethnographie en magasin', deliverable: 'Parcours client commenté', tag: 'consommation' },
+    { photo: 'etude-assurance', year: '2024', org: 'Mutuelle', theme: 'Les jeunes actifs face à la prévoyance', method: 'Communauté en ligne · 3 sem.', deliverable: 'Topline + rapport', tag: 'assurance' },
+    { photo: 'etude-mobilite', year: '2023', org: 'Constructeur automobile', theme: 'Passer à l’électrique : les freins réels', method: 'Entretiens approfondis · 30', deliverable: 'Segmentation qualitative', tag: 'mobilité' },
+    { photo: 'etude-biodiversite', year: '2023', org: 'Association naturaliste', theme: 'Ce qui fait (vraiment) adhérer', method: 'Entretiens + desk research', deliverable: 'Plateforme de messages', tag: 'biodiversité' },
+    { photo: 'etude-petit-dejeuner', year: '2022', org: 'Kantar · grand compte FMCG', theme: 'Rituels du petit-déjeuner', method: 'Modération de communauté', deliverable: 'Analyse thématique des verbatim', tag: 'consommation' },
   ],
 
   // ── Parcours ───────────────────────────────────────────────────────────
   path: [
-    { when: '2023 →', where: 'CSA / Havas', what: 'Chargé d’études qualitatives senior', detail: 'Pilotage complet, cibles B2B, B2C et experts, articulation avec les équipes quanti.' },
-    { when: '2022', where: 'Kantar Insights', what: 'Assistant chargé d’études quali', detail: 'Guides d’entretien, animation, modération de communautés en ligne, analyse de verbatim.' },
-    { when: '2018–20', where: 'EHESS, Paris', what: 'Master 2 Sociologie', detail: 'Deux mémoires sur les makerspaces, six mois de terrain.' },
-    { when: '2017–18', where: 'TU Berlin', what: 'Sociologie des techniques et de l’innovation', detail: 'Licence 3, en allemand.' },
-    { when: '2015–17', where: 'Université de Strasbourg', what: 'Sciences sociales, parcours renforcé', detail: 'Socio, éco, droit.' },
+    { photo: 'parcours-csa', when: '2023 →', where: 'CSA / Havas', what: 'Chargé d’études qualitatives senior', detail: 'Pilotage complet, cibles B2B, B2C et experts, articulation avec les équipes quanti.' },
+    { photo: 'parcours-kantar', when: '2022', where: 'Kantar Insights', what: 'Assistant chargé d’études quali', detail: 'Guides d’entretien, animation, modération de communautés en ligne, analyse de verbatim.' },
+    { photo: 'parcours-ehess', when: '2018–20', where: 'EHESS, Paris', what: 'Master 2 Sociologie', detail: 'Deux mémoires sur les makerspaces, six mois de terrain.' },
+    { photo: 'parcours-berlin', when: '2017–18', where: 'TU Berlin', what: 'Sociologie des techniques et de l’innovation', detail: 'Licence 3, en allemand.' },
+    { photo: 'parcours-strasbourg', when: '2015–17', where: 'Université de Strasbourg', what: 'Sciences sociales, parcours renforcé', detail: 'Socio, éco, droit.' },
   ],
 
   // ── Méthode : chaîne façon réseau d’opérateurs TouchDesigner ────────────

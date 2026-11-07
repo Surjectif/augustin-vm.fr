@@ -3,7 +3,7 @@
 Portfolio d'un chargé d'études qualitatives. Astro 7 + Tailwind v4, 100 % statique, hébergé sur **GitHub Pages**.
 
 - Tout le contenu : `src/data/site.ts` (`grep -n TODO src/data/site.ts`).
-- Emplacements photo : `src/components/Shot.astro` (passer `src` quand les images arrivent).
+- Photos : `src/assets/photos/`, chargées par nom de fichier. Mode d'emploi : `src/assets/photos/README.md`.
 - Liens internes : toujours via `withBase()` (`src/lib/url.ts`), pour fonctionner sous `/<nom-du-depot>/`.
 
 ## Déploiement
