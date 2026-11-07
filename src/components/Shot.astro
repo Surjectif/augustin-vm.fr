@@ -1,0 +1,42 @@
+---
+// Emplacement photo. Tant qu'Augustin n'a pas fourni ses images, on
+// affiche un dégradé grainé teinté. Ensuite : passer `src` (import d'image).
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  tone?: 'moss' | 'ember' | 'stone' | 'dusk';
+  label?: string;
+  src?: ImageMetadata;
+  alt?: string;
+  class?: string;
+  [attr: `data-${string}`]: string;
+}
+const { tone = 'stone', label, src, alt = '', class: cls = '', ...rest } = Astro.props;
+---
+
+<div class:list={['shot', `shot--${tone}`, cls]} {...rest}>
+  {src
+    ? <Image src={src} alt={alt} class="absolute inset-0 h-full w-full object-cover" widths={[480, 800, 1200]} sizes="(min-width: 1024px) 50vw, 90vw" />
+    : label && <span class="shot__label">{label}</span>}
+</div>
+
+<style>
+  /* en couche « components » : les utilitaires Tailwind (absolute…) gardent la main */
+  @layer components {
+  .shot { position: relative; overflow: hidden; isolation: isolate; background: var(--color-tile); }
+  .shot::after {
+    content: ""; position: absolute; inset: 0; z-index: -1; opacity: .35; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .shot--moss  { background: radial-gradient(120% 90% at 30% 20%, #6f8f5a 0%, #34452b 45%, #161a12 100%); }
+  .shot--ember { background: radial-gradient(110% 90% at 70% 25%, #f0a06a 0%, #b8532a 40%, #2a1610 100%); }
+  .shot--stone { background: radial-gradient(120% 100% at 40% 15%, #8d877d 0%, #4a4640 45%, #1a1917 100%); }
+  .shot--dusk  { background: linear-gradient(170deg, #e7b98a 0%, #a76d5a 35%, #3b3350 70%, #16151d 100%); }
+  .shot__label {
+    position: absolute; left: 50%; bottom: 9%; transform: translateX(-50%);
+    font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
+    color: rgb(243 240 238 / .55); white-space: nowrap;
+  }
+  }
+</style>

@@ -1,0 +1,16 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import { site } from '@/data/site';
+import { withBase } from '@/lib/url';
+---
+
+<BaseLayout title={`Page introuvable · ${site.person.firstName} ${site.person.lastName}`} description="Cette page n’existe pas." noindex>
+  <Header />
+  <main id="contenu" class="wrap flex min-h-svh flex-col justify-center">
+    <p class="kicker">Erreur 404</p>
+    <h1 class="mt-6 text-[clamp(3rem,8vw,7rem)]">Hors du terrain</h1>
+    <p class="mt-6 text-soft">Cette page n’existe pas, ou plus.</p>
+    <a href={withBase('/')} class="pill-solid mt-10 self-start">Retour à l’accueil <span aria-hidden="true">→</span></a>
+  </main>
+</BaseLayout>

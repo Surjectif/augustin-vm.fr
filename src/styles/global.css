@@ -1,0 +1,75 @@
+@import "tailwindcss";
+@import "@fontsource-variable/outfit/index.css";
+
+/* ══════════════════════════════════════════════════════════════════════════
+   PALETTE — version sombre : fond quasi noir chaud, texte crème, orange
+   brûlé pour les orbites et les pastilles, vert mousse en second accent.
+   ══════════════════════════════════════════════════════════════════════════ */
+@theme {
+  --color-night:  #141413;
+  --color-coal:   #1c1b19;
+  --color-tile:   #262522;
+  --color-line:   #36342f;
+  --color-mute:   #9b968d;
+  --color-soft:   #cfcac2;
+  --color-cream:  #f3f0ee;
+  --color-ember:  #ee7a45;
+  --color-moss:   #8fae73;
+
+  --font-sans: "Outfit Variable", "Outfit", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    color-scheme: dark;
+    background: var(--color-night);
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    color: var(--color-soft);
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+  h1, h2, h3 {
+    font-weight: 500;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--color-cream);
+  }
+  ::selection { background: var(--color-ember); color: var(--color-night); }
+  :focus-visible { outline: 2px solid var(--color-ember); outline-offset: 3px; border-radius: 999px; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-[90rem] px-4 sm:px-10 lg:px-[6.5rem]; }
+}
+
+/* Sur-titre : pastille + capitales grasses */
+@utility kicker {
+  @apply inline-flex items-center gap-3 text-[0.82rem] font-semibold uppercase tracking-[0.04em] text-cream;
+  &::before { content: ""; @apply size-2.5 shrink-0 rounded-full bg-ember; }
+}
+
+/* Boutons pilule et ronds */
+@utility pill {
+  @apply inline-flex items-center gap-3 rounded-full px-7 py-3.5 text-[0.98rem] font-medium transition-colors duration-200;
+}
+@utility pill-solid { @apply pill bg-cream text-night hover:bg-ember; }
+@utility pill-line  { @apply pill border border-cream/70 text-cream hover:bg-cream hover:text-night; }
+@utility round {
+  @apply inline-grid size-11 place-items-center rounded-full border border-cream/80 text-cream transition-colors duration-200 hover:bg-cream hover:text-night;
+}
+
+/* Orbite : cercle fin orange */
+@utility orbit { @apply pointer-events-none absolute rounded-full border border-ember/80; }
+
+/* Apparition au scroll */
+.js-reveal [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform 1s cubic-bezier(.2,.7,.2,1); }
+.js-reveal [data-reveal].is-in { opacity: 1; transform: none; }
+
+[data-speed] { will-change: transform; }

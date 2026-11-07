@@ -1,0 +1,9 @@
+---
+import { site } from '@/data/site';
+const p = site.person;
+---
+
+<footer class="wrap flex flex-col gap-3 py-10 text-[0.95rem] text-mute sm:flex-row sm:items-center sm:justify-between">
+  <p>© {new Date().getFullYear()} {p.firstName} {p.lastName}</p>
+  <p>{p.role} · {p.city}</p>
+</footer>

@@ -1,0 +1,26 @@
+{
+  "name": "augustin-vinot-marull-site",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "build:fast": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource-variable/outfit": "^5.2.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.2.4",
+    "sharp": "^0.34.0",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.9.2"
+  }
+}
