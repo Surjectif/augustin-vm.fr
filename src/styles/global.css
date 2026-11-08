@@ -73,3 +73,8 @@
 .js-reveal [data-reveal].is-in { opacity: 1; transform: none; }
 
 [data-speed] { will-change: transform; }
+
+
+/* Surfaces légèrement translucides : le pointeur reste perceptible derrière les cartes. */
+.bg-coal { background-color: rgb(28 27 25 / 94%); }
+.bg-tile { background-color: rgb(38 37 34 / 94%); }
