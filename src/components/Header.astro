@@ -16,9 +16,9 @@ const nav = [
       <span class="hidden text-[1.05rem] font-medium text-cream xl:inline">Augustin Vinot-Marull</span>
     </a>
     <nav aria-label="Navigation principale" class="hidden md:block">
-      <ul class="flex gap-2 text-[1.02rem] text-cream lg:gap-6">
+      <ul class="flex gap-2 text-[2.04rem] text-cream lg:gap-6">
         {nav.map(([label, href]) => (
-          <li><a href={withBase(href)} class="rounded-full px-4 py-2 transition-colors hover:bg-cream/10">{label}</a></li>
+          <li><a href={withBase(href)} class="whitespace-nowrap rounded-full px-3 py-2 transition-colors hover:bg-cream/10">{label}</a></li>
         ))}
       </ul>
     </nav>
