@@ -92,8 +92,8 @@ const person = {
         if (ctx) {
           let width = 0, height = 0, raf = 0;
           const dpr = Math.min(devicePixelRatio || 1, 1.5);
-          type Speck = { x: number; y: number; size: number; hue: number; life: number; rotation: number; sides: number; vx: number; vy: number };
-          const specks: Speck[] = [];
+          type Dot = { x: number; y: number; rx: number; ry: number; hue: number; life: number; alpha: number; angle: number; drift: number };
+          const dots: Dot[] = [];
           const resize = () => {
             width = innerWidth; height = innerHeight;
             canvas.width = Math.round(width * dpr);
@@ -102,51 +102,47 @@ const person = {
             canvas.style.height = height + 'px';
             ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
           };
-          const colors = [148, 174, 48, 194, 22, 278];
+          const palette = [14, 28, 42, 164, 178, 190, 202, 278, 320];
           const draw = () => {
             ctx.clearRect(0, 0, width, height);
-            for (let i = specks.length - 1; i >= 0; i--) {
-              const p = specks[i];
-              p.life -= 0.018;
-              p.x += p.vx; p.y += p.vy;
-              p.rotation += 0.012;
-              if (p.life <= 0) { specks.splice(i, 1); continue; }
+            for (let i = dots.length - 1; i >= 0; i--) {
+              const d = dots[i];
+              d.life -= 0.012;
+              d.x += Math.cos(d.angle) * d.drift;
+              d.y += Math.sin(d.angle) * d.drift;
+              if (d.life <= 0) { dots.splice(i, 1); continue; }
               ctx.save();
-              ctx.translate(p.x, p.y);
-              ctx.rotate(p.rotation);
+              ctx.translate(d.x, d.y);
+              ctx.rotate(d.angle);
+              ctx.globalAlpha = d.alpha * Math.min(1, d.life * 1.8);
+              ctx.fillStyle = `hsl(${d.hue}, 82%, 62%)`;
               ctx.beginPath();
-              for (let j = 0; j < p.sides; j++) {
-                const angle = (j / p.sides) * Math.PI * 2;
-                const wobble = j % 2 ? 0.72 : 1.08;
-                const radius = p.size * wobble * (0.88 + Math.sin(j * 2.3 + p.rotation) * 0.1);
-                const x = Math.cos(angle) * radius;
-                const y = Math.sin(angle) * radius * (0.65 + (j % 3) * 0.12);
-                if (j === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
-              }
-              ctx.closePath();
-              ctx.fillStyle = `hsla(${p.hue}, 88%, 67%, ${0.78 * p.life})`;
+              ctx.ellipse(0, 0, d.rx, d.ry, 0, 0, Math.PI * 2);
               ctx.fill();
               ctx.restore();
             }
-            if (specks.length) raf = requestAnimationFrame(draw);
+            if (dots.length) raf = requestAnimationFrame(draw);
             else raf = 0;
           };
           addEventListener('pointermove', (event) => {
-            // Plusieurs grains par mouvement : une traînée pointilliste, irrégulière et colorée.
-            for (let i = 0; i < 5; i++) {
-              specks.push({
-                x: event.clientX + (Math.random() - 0.5) * 34,
-                y: event.clientY + (Math.random() - 0.5) * 34,
-                size: 2.2 + Math.random() * 5.8,
-                hue: colors[Math.floor(Math.random() * colors.length)],
-                life: 0.72 + Math.random() * 0.28,
-                rotation: Math.random() * Math.PI,
-                sides: 4 + Math.floor(Math.random() * 4),
-                vx: (Math.random() - 0.5) * 0.45,
-                vy: (Math.random() - 0.5) * 0.45,
+            // Nuage de petits coups de pinceau / points, irrégulier et organique.
+            const speed = Math.min(1.8, Math.hypot(event.movementX, event.movementY) * 0.08);
+            for (let i = 0; i < 22; i++) {
+              const angle = Math.random() * Math.PI * 2;
+              const distance = Math.pow(Math.random(), 0.72) * (12 + speed * 20);
+              const hue = palette[Math.floor(Math.random() * palette.length)] + (Math.random() - 0.5) * 10;
+              const long = 1.2 + Math.random() * 3.2;
+              dots.push({
+                x: event.clientX + Math.cos(angle) * distance,
+                y: event.clientY + Math.sin(angle) * distance * 0.78,
+                rx: long, ry: 0.7 + Math.random() * 1.5,
+                hue, life: 0.9 + Math.random() * 0.5,
+                alpha: 0.55 + Math.random() * 0.38,
+                angle: angle + (Math.random() - 0.5) * 1.1,
+                drift: Math.random() * 0.22,
               });
             }
-            if (specks.length > 900) specks.splice(0, specks.length - 900);
+            if (dots.length > 1800) dots.splice(0, dots.length - 1800);
             if (!raf) raf = requestAnimationFrame(draw);
           }, { passive: true });
           addEventListener('resize', resize, { passive: true });
