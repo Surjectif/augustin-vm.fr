@@ -9,7 +9,7 @@ export const site = {
   person: {
     firstName: 'Augustin',
     lastName: 'Vinot--Marull',
-    role: 'Chargé d’études qualitatives',
+    role: 'Chargé d’études qualitatives senior',
     city: 'Paris',
     email: 'augustin.vinotmarull@gmail.com',
     // TODO : on affiche le téléphone ? Par défaut non (spam).
