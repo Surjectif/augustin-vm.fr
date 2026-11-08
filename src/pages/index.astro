@@ -168,6 +168,20 @@ const boxes = [
       </ul>
     </section>
 
+    <!-- ═══ OUTILS & LANGUES : pilules ═══════════════════════════════════ -->
+    <section class="wrap pb-28 sm:pb-36">
+      <div class="grid gap-4 lg:grid-cols-2">
+        {boxes.map((b) => (
+          <div class="rounded-[2.5rem] bg-coal p-9" data-reveal>
+            <p class="kicker">{b.title}</p>
+            <ul class="mt-7 flex flex-wrap gap-2">
+              {b.items.map((t) => <li class="rounded-full border border-cream/20 px-4 py-2 text-[0.98rem] text-cream">{t}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+
     <!-- ═══ PARCOURS : tuiles arrondies ══════════════════════════════════ -->
     <section id="parcours" class="wrap scroll-mt-32 pb-28 sm:pb-36">
       <p class="kicker" data-reveal>Parcours</p>
@@ -198,20 +212,6 @@ const boxes = [
         <p class="kicker" data-reveal>Ce qui m’anime</p>
         <h2 class="mt-6 max-w-[13ch] text-[clamp(3rem,7.6vw,7.4rem)] leading-[0.98]" data-reveal>Relier les pratiques aux transformations en cours</h2>
         <p class="mt-10 max-w-[34rem] text-[1.2rem]" data-reveal>Mon travail consiste à comprendre comment les personnes arbitrent, adoptent ou contournent les offres et les dispositifs qui leur sont proposés. Leurs usages, leurs contraintes et leurs représentations permettent de concevoir des réponses plus pertinentes, notamment dans les secteurs engagés dans la transition écologique.</p>
-      </div>
-    </section>
-
-    <!-- ═══ OUTILS & LANGUES : pilules ═══════════════════════════════════ -->
-    <section class="wrap pb-28 sm:pb-36">
-      <div class="grid gap-4 lg:grid-cols-2">
-        {boxes.map((b) => (
-          <div class="rounded-[2.5rem] bg-coal p-9" data-reveal>
-            <p class="kicker">{b.title}</p>
-            <ul class="mt-7 flex flex-wrap gap-2">
-              {b.items.map((t) => <li class="rounded-full border border-cream/20 px-4 py-2 text-[0.98rem] text-cream">{t}</li>)}
-            </ul>
-          </div>
-        ))}
       </div>
     </section>
 
