@@ -78,6 +78,58 @@ const person = {
         targets.forEach((t) => io.observe(t));
       }
 
+      // Traînées pastel au déplacement du pointeur (désactivées sur tactile et si motion réduite).
+      if (!reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const canvas = document.createElement('canvas');
+        canvas.className = 'pointer-trail';
+        canvas.setAttribute('aria-hidden', 'true');
+        document.body.append(canvas);
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          let width = 0, height = 0, raf = 0;
+          const dpr = Math.min(devicePixelRatio || 1, 1.5);
+          const blobs: { x: number; y: number; radius: number; hue: number; life: number }[] = [];
+          const resize = () => {
+            width = innerWidth; height = innerHeight;
+            canvas.width = Math.round(width * dpr);
+            canvas.height = Math.round(height * dpr);
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          };
+          const colors = [145, 175, 52, 195, 28, 265];
+          const draw = () => {
+            ctx.clearRect(0, 0, width, height);
+            for (let i = blobs.length - 1; i >= 0; i--) {
+              const b = blobs[i];
+              b.life -= 0.018;
+              if (b.life <= 0) { blobs.splice(i, 1); continue; }
+              const gradient = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.radius);
+              gradient.addColorStop(0, `hsla(${b.hue}, 72%, 78%, ${0.20 * b.life})`);
+              gradient.addColorStop(1, `hsla(${b.hue}, 72%, 78%, 0)`);
+              ctx.fillStyle = gradient;
+              ctx.beginPath();
+              ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+              ctx.fill();
+            }
+            if (blobs.length) raf = requestAnimationFrame(draw);
+            else raf = 0;
+          };
+          addEventListener('pointermove', (event) => {
+            blobs.push({
+              x: event.clientX, y: event.clientY,
+              radius: 34 + Math.random() * 42,
+              hue: colors[Math.floor(Math.random() * colors.length)],
+              life: 1,
+            });
+            if (blobs.length > 24) blobs.shift();
+            if (!raf) raf = requestAnimationFrame(draw);
+          }, { passive: true });
+          addEventListener('resize', resize, { passive: true });
+          resize();
+        }
+      }
+
       // Parallaxe : chaque [data-speed] se décale selon sa distance au centre
       // de l'écran. speed > 0 = plus rapide que la page (premier plan),
       // speed < 0 = plus lent (arrière-plan).
