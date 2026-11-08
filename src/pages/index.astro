@@ -139,18 +139,23 @@ const boxes = [
       </div>
     </section>
 
-    <!-- ═══ CONVICTION : grand titre + objets flottants ══════════════════ -->
-    <section class="relative overflow-hidden py-32 sm:py-44">
-      <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-        <Shot name="deco-sous-bois" tone="moss" class="absolute right-[6vw] top-[6%] aspect-square w-[min(30vw,24rem)] rounded-full" data-speed="0.35" />
-        <div class="orbit right-[2vw] top-[22%] aspect-square w-[min(36vw,30rem)]" data-speed="0.15"></div>
-        <Shot name="deco-coucher" tone="ember" class="absolute bottom-[4%] right-[30vw] hidden aspect-square w-[min(12vw,9rem)] rounded-full sm:block" data-speed="0.7" />
-      </div>
-      <div class="wrap relative">
-        <p class="kicker" data-reveal>Ce qui m’anime</p>
-        <h2 class="mt-6 max-w-[13ch] text-[clamp(3rem,7.6vw,7.4rem)] leading-[0.98]" data-reveal>La transition se joue dans les usages</h2>
-        <p class="mt-10 max-w-[34rem] text-[1.2rem]" data-reveal>Énergies renouvelables, biodiversité, sobriété : les solutions existent, reste à comprendre comment les gens se les approprient. C’est exactement ce que le qualitatif sait faire parler.</p>
-      </div>
+    <!-- ═══ MÉTHODE : cercles reliés ═════════════════════════════════════ -->
+    <section id="methode" class="wrap scroll-mt-32 pb-28 sm:pb-36">
+      <p class="kicker" data-reveal>Méthode</p>
+      <h2 class="mt-6 max-w-[18ch] text-[clamp(2.4rem,4.6vw,4.4rem)]" data-reveal>Du cahier des charges au comité de direction</h2>
+
+      <ol class="relative mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
+        <span aria-hidden="true" class="absolute left-[10%] right-[10%] top-[5.5rem] hidden h-px bg-ember/70 lg:block"></span>
+        {site.method.map((m, i) => (
+          <li class="group relative" data-reveal>
+            <div class="relative mx-auto grid aspect-square w-44 place-items-center rounded-full border border-cream/25 bg-night transition-colors duration-300 group-hover:border-ember group-hover:bg-ember">
+              <span class="text-[3.2rem] font-medium tracking-[-0.04em] text-cream transition-colors group-hover:text-night">0{i + 1}</span>
+            </div>
+            <h3 class="mt-8 text-center text-[1.6rem]">{m.label}</h3>
+            <p class="mx-auto mt-3 max-w-[16rem] text-center text-[1.02rem] text-soft">{m.text}</p>
+          </li>
+        ))}
+      </ol>
     </section>
 
     <!-- ═══ PARCOURS : tuiles arrondies ══════════════════════════════════ -->
@@ -172,23 +177,18 @@ const boxes = [
       </ol>
     </section>
 
-    <!-- ═══ MÉTHODE : cercles reliés ═════════════════════════════════════ -->
-    <section id="methode" class="wrap scroll-mt-32 pb-28 sm:pb-36">
-      <p class="kicker" data-reveal>Méthode</p>
-      <h2 class="mt-6 max-w-[18ch] text-[clamp(2.4rem,4.6vw,4.4rem)]" data-reveal>Du cahier des charges au comité de direction</h2>
-
-      <ol class="relative mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
-        <span aria-hidden="true" class="absolute left-[10%] right-[10%] top-[5.5rem] hidden h-px bg-ember/70 lg:block"></span>
-        {site.method.map((m, i) => (
-          <li class="group relative" data-reveal>
-            <div class="relative mx-auto grid aspect-square w-44 place-items-center rounded-full border border-cream/25 bg-night transition-colors duration-300 group-hover:border-ember group-hover:bg-ember">
-              <span class="text-[3.2rem] font-medium tracking-[-0.04em] text-cream transition-colors group-hover:text-night">0{i + 1}</span>
-            </div>
-            <h3 class="mt-8 text-center text-[1.6rem]">{m.label}</h3>
-            <p class="mx-auto mt-3 max-w-[16rem] text-center text-[1.02rem] text-soft">{m.text}</p>
-          </li>
-        ))}
-      </ol>
+    <!-- ═══ CONVICTION : grand titre + objets flottants ══════════════════ -->
+    <section class="relative overflow-hidden py-32 sm:py-44">
+      <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+        <Shot name="deco-sous-bois" tone="moss" class="absolute right-[6vw] top-[6%] aspect-square w-[min(30vw,24rem)] rounded-full" data-speed="0.35" />
+        <div class="orbit right-[2vw] top-[22%] aspect-square w-[min(36vw,30rem)]" data-speed="0.15"></div>
+        <Shot name="deco-coucher" tone="ember" class="absolute bottom-[4%] right-[30vw] hidden aspect-square w-[min(12vw,9rem)] rounded-full sm:block" data-speed="0.7" />
+      </div>
+      <div class="wrap relative">
+        <p class="kicker" data-reveal>Ce qui m’anime</p>
+        <h2 class="mt-6 max-w-[13ch] text-[clamp(3rem,7.6vw,7.4rem)] leading-[0.98]" data-reveal>Relier les pratiques aux transformations en cours</h2>
+        <p class="mt-10 max-w-[34rem] text-[1.2rem]" data-reveal>Mon travail consiste à comprendre comment les personnes arbitrent, adoptent ou contournent les offres et les dispositifs qui leur sont proposés. Leurs usages, leurs contraintes et leurs représentations permettent de concevoir des réponses plus pertinentes, notamment dans les secteurs engagés dans la transition écologique.</p>
+      </div>
     </section>
 
     <!-- ═══ OUTILS & LANGUES : pilules ═══════════════════════════════════ -->
