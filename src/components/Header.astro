@@ -3,7 +3,7 @@ import { withBase } from '@/lib/url';
 
 const isEnglish = Astro.url.pathname.startsWith('/en');
 const nav = isEnglish ? [
-  ['Profile', '/en/#profil'], ['Studies', '/en/#etudes'], ['Method', '/en/#methode'], ['Experience', '/en/#parcours'],
+  ['Profile', '/en.html#profil'], ['Studies', '/en.html#etudes'], ['Method', '/en.html#methode'], ['Experience', '/en.html#parcours'],
 ] : [
   ['Profil', '/#profil'],
   ['Études', '/#etudes'],
@@ -25,6 +25,10 @@ const nav = isEnglish ? [
         ))}
       </ul>
     </nav>
-    <div class="flex items-center gap-2"><a href={withBase(isEnglish ? '/' : '/en/')} class="pill-line !px-4 !py-2.5 !text-sm" aria-label={isEnglish ? "Switch to French" : "Switch to English"}>{isEnglish ? "FR" : "EN"}</a><a href={withBase(isEnglish ? '/en/#contact' : '/#contact')} class="pill-line !px-5 !py-2.5 !text-[1.35rem]">{isEnglish ? "Contact" : "Contact"} <span aria-hidden="true">→</span></a></div>
+    <div class="flex items-center gap-2"><a href={withBase(isEnglish ? '/' : '/en.html')} class="pill-line !px-4 !py-2.5 !text-sm" aria-label={isEnglish ? "Switch to French" : "Switch to English"}>{isEnglish ? "FR" : "EN"}</a><a href={withBase(isEnglish ? '/en.html#contact' : '/#contact')} class="pill-line !px-5 !py-2.5 !text-[1.35rem]">{isEnglish ? "Contact" : "Contact"} <span aria-hidden="true">→</span></a></div>
   </div>
 </header>
+
+<style>
+  nav li + li { border-left: 1px solid rgb(255 255 255 / 0.38); padding-left: 0.5rem; }
+</style>
