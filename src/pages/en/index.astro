@@ -17,7 +17,6 @@ const studies = site.studies.map((s) => ({ ...s, tone: toneOf[s.tag] ?? 'stone' 
 const pathTones: Tone[] = ['ember', 'stone', 'dusk', 'moss', 'stone'];
 const portrait = photo('portrait');
 const boxes = [
-  { title: 'Expertise', items: [...site.skills] as string[] },
   { title: 'Tools', items: [...site.tools] as string[] },
   { title: 'Languages', items: site.languages.map((l) => `${l.name} · ${l.level}`) },
 ];
@@ -158,6 +157,17 @@ const boxes = [
       </ol>
     </section>
 
+    <!-- SAVOIR-FAIRE -->
+    <section class="wrap pb-20 sm:pb-28">
+      <p class="kicker" data-reveal>Expertise</p>
+      <ul class="mt-7 flex flex-wrap gap-3">
+        {site.skills.map((skill, i) => {
+          const icons = ['⌕', '◉', '⌂', '▤', '◎', '⇄', '↗'];
+          return <li class="inline-flex items-center gap-3 rounded-full border border-cream/20 bg-coal px-5 py-3 text-cream"><span class="grid size-7 place-items-center rounded-full bg-ember/15 text-ember" aria-hidden="true">{icons[i % icons.length]}</span>{skill}</li>;
+        })}
+      </ul>
+    </section>
+
     <!-- ═══ PARCOURS : tuiles arrondies ══════════════════════════════════ -->
     <section id="parcours" class="wrap scroll-mt-32 pb-28 sm:pb-36">
       <p class="kicker" data-reveal>Experience</p>
@@ -189,17 +199,6 @@ const boxes = [
         <h2 class="mt-6 max-w-[13ch] text-[clamp(3rem,7.6vw,7.4rem)] leading-[0.98]" data-reveal>Connecting everyday practices with broader transformations</h2>
         <p class="mt-10 max-w-[34rem] text-[1.2rem]" data-reveal>I seek to understand how people make choices, adopt or work around the products and systems designed for them. Their practices, constraints and perspectives help shape more relevant responses, particularly in sectors undergoing the ecological transition.</p>
       </div>
-    </section>
-
-    <!-- SAVOIR-FAIRE -->
-    <section class="wrap pb-20 sm:pb-28">
-      <p class="kicker" data-reveal>Expertise</p>
-      <ul class="mt-7 flex flex-wrap gap-3">
-        {site.skills.map((skill, i) => {
-          const icons = ['⌕', '◉', '⌂', '▤', '◎', '⇄', '↗'];
-          return <li class="inline-flex items-center gap-3 rounded-full border border-cream/20 bg-coal px-5 py-3 text-cream"><span class="grid size-7 place-items-center rounded-full bg-ember/15 text-ember" aria-hidden="true">{icons[i % icons.length]}</span>{skill}</li>;
-        })}
-      </ul>
     </section>
 
     <!-- ═══ OUTILS & LANGUES : pilules ═══════════════════════════════════ -->
