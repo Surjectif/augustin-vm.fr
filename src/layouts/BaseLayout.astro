@@ -83,6 +83,10 @@ const person = {
         const canvas = document.createElement('canvas');
         canvas.className = 'pointer-trail';
         canvas.setAttribute('aria-hidden', 'true');
+        Object.assign(canvas.style, {
+          position: 'fixed', inset: '0', zIndex: '40',
+          pointerEvents: 'none', mixBlendMode: 'screen',
+        });
         document.body.append(canvas);
         const ctx = canvas.getContext('2d');
         if (ctx) {
