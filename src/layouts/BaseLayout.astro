@@ -63,7 +63,7 @@ const person = {
     <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-cream focus:px-4 focus:py-2 focus:text-night">
       Aller au contenu
     </a>
-    <slot />
+    <div class="relative z-[2]"><slot /></div>
 
     <script>
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -84,7 +84,7 @@ const person = {
         canvas.className = 'pointer-trail';
         canvas.setAttribute('aria-hidden', 'true');
         Object.assign(canvas.style, {
-          position: 'fixed', inset: '0', zIndex: '40',
+          position: 'fixed', inset: '0', zIndex: '1',
           pointerEvents: 'none', mixBlendMode: 'screen',
         });
         document.body.append(canvas);
@@ -106,10 +106,10 @@ const person = {
             ctx.clearRect(0, 0, width, height);
             for (let i = blobs.length - 1; i >= 0; i--) {
               const b = blobs[i];
-              b.life -= 0.018;
+              b.life -= 0.012;
               if (b.life <= 0) { blobs.splice(i, 1); continue; }
               const gradient = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.radius);
-              gradient.addColorStop(0, `hsla(${b.hue}, 72%, 78%, ${0.20 * b.life})`);
+              gradient.addColorStop(0, `hsla(${b.hue}, 72%, 78%, ${0.38 * b.life})`);
               gradient.addColorStop(1, `hsla(${b.hue}, 72%, 78%, 0)`);
               ctx.fillStyle = gradient;
               ctx.beginPath();
@@ -122,7 +122,7 @@ const person = {
           addEventListener('pointermove', (event) => {
             blobs.push({
               x: event.clientX, y: event.clientY,
-              radius: 34 + Math.random() * 42,
+              radius: 105 + Math.random() * 75,
               hue: colors[Math.floor(Math.random() * colors.length)],
               life: 1,
             });
