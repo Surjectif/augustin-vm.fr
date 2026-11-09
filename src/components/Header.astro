@@ -12,7 +12,7 @@ const nav = isEnglish ? [
 ];
 ---
 
-<header class="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-10 sm:pt-6 lg:px-[4.75rem]">
+<header data-site-header class="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-10 sm:pt-6 lg:px-[4.75rem]">
   <div class="mx-auto flex h-[4.25rem] max-w-[86rem] items-center justify-between rounded-full border border-cream/10 bg-coal/75 pl-3 pr-3 backdrop-blur-xl sm:h-[5.5rem] sm:pl-6 sm:pr-6">
     <a href={withBase('/')} class="flex items-center gap-3" aria-label="Accueil">
       <span class="grid size-11 place-items-center rounded-full bg-ember text-[0.95rem] font-semibold text-night">AV</span>
@@ -47,3 +47,29 @@ const nav = isEnglish ? [
     nav li + li { margin-left: 0.55rem; padding-left: 0.55rem; }
   }
 </style>
+
+<script>
+  // Fade the header only after the first (hero) block has left the viewport.
+  const siteHeader = document.querySelector<HTMLElement>('[data-site-header]');
+  const heroBlock = document.querySelector<HTMLElement>('main > section:first-child');
+  if (siteHeader && heroBlock) {
+    let ticking = false;
+    const updateHeaderVisibility = () => {
+      const heroBottom = heroBlock.getBoundingClientRect().bottom;
+      const fadeDistance = 180;
+      const progress = Math.min(1, Math.max(0, -heroBottom / fadeDistance));
+      siteHeader.style.opacity = String(1 - progress);
+      siteHeader.style.pointerEvents = progress >= 1 ? 'none' : 'auto';
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(updateHeaderVisibility);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    updateHeaderVisibility();
+  }
+</script>
