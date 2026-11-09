@@ -18,7 +18,7 @@ export const site = {
 
   // Accroche : la thèse du site, en une phrase.
   pitch:
-    'Je cherche à comprendre ce dont les gens ont besoin — et ce qui se joue derrière ce qu’ils expriment.',
+    'J’explore les usages, les perceptions et les arbitrages pour faire émerger des enseignements utiles à la décision.',
 
   intro: [
     'Formé à l’EHESS, passé par Kantar puis CSA / Havas, je pilote des études qualitatives de bout en bout : cahier des charges, design méthodologique, terrain, analyse, restitution en comité de direction.',
