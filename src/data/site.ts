@@ -9,7 +9,7 @@ export const site = {
   person: {
     firstName: 'Augustin',
     lastName: 'Vinot--Marull',
-    role: 'Chargé d’études qualitatives senior',
+    role: 'Chargé d’études qualitatives senior · UX Researcher',
     city: 'Paris',
     email: 'augustin.vinotmarull@gmail.com',
     // TODO : on affiche le téléphone ? Par défaut non (spam).
@@ -27,7 +27,7 @@ export const site = {
   ],
 
   figures: [
-    { value: 15, suffix: '+', label: 'études qualitatives pilotées' },
+    { value: 4, suffix: ' ans', label: 'd’expérience' },
     { value: 200, suffix: '+', label: 'entretiens menés' },
     { value: 20, suffix: '+', label: 'focus groups animés' },
   ],
@@ -67,6 +67,7 @@ export const site = {
   skills: [
     'Focus groups', 'Entretiens approfondis', 'Ethnographie', 'Desk research',
     'Communautés en ligne', 'Articulation quali / quanti', 'Recommandations stratégiques',
+    'Recherche utilisateur (UX Research)', 'Analyse des usages et parcours', 'Analyse de données',
   ],
   analysisTools: ['Modalisa', 'Python', 'R', 'Pack Office'],
   creativeTools: ['Photoshop', 'Illustrator', 'TouchDesigner'],
