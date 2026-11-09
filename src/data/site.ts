@@ -18,11 +18,12 @@ export const site = {
 
   // Accroche : la thèse du site, en une phrase.
   pitch:
-    'Sociologue de terrain. J’écoute longtemps les gens, puis je traduis ce qu’ils disent en décisions.',
+    'Je cherche à comprendre ce dont les gens ont besoin — et ce qui se joue derrière ce qu’ils expriment.',
 
   intro: [
     'Formé à l’EHESS, passé par Kantar puis CSA / Havas, je pilote des études qualitatives de bout en bout : cahier des charges, design méthodologique, terrain, analyse, restitution en comité de direction.',
-    'J’aime les sujets où les usages bougent plus vite que les discours, la transition énergétique et le vivant en tête. Et le soir, je bricole des visuels génératifs dans TouchDesigner.',
+    'Ce qui m’intéresse, c’est de comprendre ce dont les personnes ont réellement besoin — y compris ce qu’elles n’expriment pas directement. Je cherche à dépasser les déclarations pour regarder les pratiques, les contraintes et les arbitrages qui orientent leurs choix.',
+    'Pour y parvenir, je fais dialoguer les observations de terrain, les données et les apports de la recherche. J’aime remonter des faits aux mécanismes qui les expliquent, confronter les interprétations et construire une lecture solide d’un phénomène.',
   ],
 
   figures: [
@@ -67,7 +68,8 @@ export const site = {
     'Focus groups', 'Entretiens approfondis', 'Ethnographie', 'Desk research',
     'Communautés en ligne', 'Articulation quali / quanti', 'Recommandations stratégiques',
   ],
-  tools: ['Modalisa', 'Python', 'R', 'Pack Office', 'Photoshop', 'Illustrator', 'TouchDesigner'],
+  analysisTools: ['Modalisa', 'Python', 'R', 'Pack Office'],
+  creativeTools: ['Photoshop', 'Illustrator', 'TouchDesigner'],
   languages: [
     { name: 'Allemand', level: 'C1/C2' },
     { name: 'Anglais', level: 'C1' },
