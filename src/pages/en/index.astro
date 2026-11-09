@@ -32,8 +32,8 @@ const boxes = [
 
   <main id="contenu">
     <!-- ═══ HERO : grand bloc arrondi, en retrait des bords ══════════════ -->
-    <section class="px-3 pt-8 pb-5 sm:px-6 sm:pt-10 sm:pb-8">
-      <div class="relative isolate h-[calc(100svh-3.25rem)] min-h-[36rem] overflow-hidden rounded-[2.5rem] sm:h-[calc(100svh-4.5rem)] sm:rounded-[5rem]">
+    <section class="px-3 pt-[7.5rem] pb-5 sm:px-6 sm:pt-[10rem] sm:pb-8">
+      <div class="relative isolate h-[calc(100svh-8.75rem)] min-h-[36rem] overflow-hidden rounded-[2.5rem] sm:h-[calc(100svh-12rem)] sm:rounded-[5rem]">
         <Shot name="hero-fond" tone="dusk" class="absolute inset-0 -z-10" />
         <div class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(20_20_19/.82)_0%,rgb(20_20_19/.35)_55%,transparent_100%)]"></div>
         <div class="orbit -right-[18vw] -top-[30vh] aspect-square w-[70vw] opacity-60" data-speed="-0.15" aria-hidden="true"></div>
@@ -209,10 +209,11 @@ const boxes = [
         <div class="pointer-events-none absolute bottom-[-30%] right-[12vw] -z-10 aspect-square w-[24vw] rounded-full bg-night/10" data-speed="0.45" aria-hidden="true"></div>
         <p class="inline-flex items-center gap-3 text-[0.82rem] font-semibold uppercase tracking-[0.04em]"><span class="size-2.5 rounded-full bg-night"></span>Contact</p>
         <h2 class="mt-6 max-w-[14ch] text-[clamp(2.8rem,6.4vw,6.2rem)] !text-night">Let’s discuss your next research project</h2>
-        <p class="mt-6 max-w-lg text-lg text-night/80">Have a question to explore, user needs to understand or a phenomenon to investigate? Based in Paris. Research in French or English.</p>
-        <a href={`mailto:${p.email}`} class="pill mt-10 bg-night text-cream hover:bg-coal">
-          <span class="break-all">{p.email}</span> <span aria-hidden="true">→</span>
-        </a>
+        <p class="mt-6 max-w-lg text-lg text-night/80">Have a question to explore, user needs to understand or a phenomenon to investigate? Research in French or English. Based in Paris.</p>
+        <button type="button" data-copy-email class="pill mt-10 bg-night text-cream hover:bg-coal" aria-label="Copy email address">
+          <span class="break-all">{p.email}</span> <span aria-hidden="true">⧉</span>
+        </button>
+        <p class="mt-3 text-sm text-night/75" data-copy-feedback aria-live="polite"></p>
       </div>
     </section>
   </main>
@@ -265,6 +266,20 @@ const boxes = [
     dots.forEach((d) => d.addEventListener('click', () => { go(Number(d.dataset.dot)); arm(); }));
     play.addEventListener('click', () => setPlay(!playing));
     setPlay(playing);
+  }
+
+  // ── Copy email address ─────────────────────────────────────────────
+  const copyEmailButton = document.querySelector<HTMLButtonElement>('[data-copy-email]');
+  const copyFeedback = document.querySelector<HTMLElement>('[data-copy-feedback]');
+  if (copyEmailButton && copyFeedback) {
+    copyEmailButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText("augustin.vinotmarull@gmail.com");
+        copyFeedback.textContent = 'Email address copied.';
+      } catch {
+        copyFeedback.textContent = 'Automatic copy failed. Please select the address to copy it.';
+      }
+    });
   }
 
   // ── Compteurs ───────────────────────────────────────────────────────
