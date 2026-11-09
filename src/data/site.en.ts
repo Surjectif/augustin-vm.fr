@@ -18,11 +18,12 @@ export const site = {
 
   // Accroche : la thèse du site, en une phrase.
   pitch:
-    'Field sociologist. I listen closely, then turn what people say into clear decisions.',
+    'I seek to understand what people need — including what lies behind what they say.',
 
   intro: [
     'Educated at EHESS, with experience at Kantar and CSA / Havas, I lead qualitative research projects end to end: from research design and fieldwork to analysis and executive presentations.',
-    'I am particularly interested in topics where behaviours evolve faster than narratives, especially the energy transition and biodiversity. In my spare time, I experiment with generative visuals in TouchDesigner.',
+    'I want to understand what people genuinely need — including what they may not express directly. I look beyond stated opinions to examine the practices, constraints and trade-offs that shape their choices.',
+    'To do so, I bring field observations, data and research literature into conversation. I work from evidence towards the mechanisms that explain it, testing interpretations and building a well-supported understanding of a phenomenon.',
   ],
 
   figures: [
@@ -67,7 +68,8 @@ export const site = {
     'Focus groups', 'In-depth interviews', 'Ethnography', 'Desk research',
     'Online communities', 'Qualitative / quantitative integration', 'Strategic recommendations',
   ],
-  tools: ['Modalisa', 'Python', 'R', 'Pack Office', 'Photoshop', 'Illustrator', 'TouchDesigner'],
+  analysisTools: ['Modalisa', 'Python', 'R', 'Office suite'],
+  creativeTools: ['Photoshop', 'Illustrator', 'TouchDesigner'],
   languages: [
     { name: 'German', level: 'C1/C2' },
     { name: 'English', level: 'C1' },
