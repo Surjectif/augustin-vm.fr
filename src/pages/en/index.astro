@@ -32,8 +32,8 @@ const boxes = [
 
   <main id="contenu">
     <!-- ═══ HERO : grand bloc arrondi, en retrait des bords ══════════════ -->
-    <section class="px-3 pt-3 sm:px-6 sm:pt-6">
-      <div class="relative isolate h-[calc(100svh-1.5rem)] min-h-[36rem] overflow-hidden rounded-[2.5rem] sm:h-[calc(100svh-3rem)] sm:rounded-[5rem]">
+    <section class="px-3 pt-8 pb-5 sm:px-6 sm:pt-10 sm:pb-8">
+      <div class="relative isolate h-[calc(100svh-3.25rem)] min-h-[36rem] overflow-hidden rounded-[2.5rem] sm:h-[calc(100svh-4.5rem)] sm:rounded-[5rem]">
         <Shot name="hero-fond" tone="dusk" class="absolute inset-0 -z-10" />
         <div class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(20_20_19/.82)_0%,rgb(20_20_19/.35)_55%,transparent_100%)]"></div>
         <div class="orbit -right-[18vw] -top-[30vh] aspect-square w-[70vw] opacity-60" data-speed="-0.15" aria-hidden="true"></div>
@@ -220,8 +220,8 @@ const boxes = [
         <div class="pointer-events-none absolute -right-[10vw] -top-[20%] -z-10 aspect-square w-[50vw] rounded-full border border-night/30" data-speed="0.2" aria-hidden="true"></div>
         <div class="pointer-events-none absolute bottom-[-30%] right-[12vw] -z-10 aspect-square w-[24vw] rounded-full bg-night/10" data-speed="0.45" aria-hidden="true"></div>
         <p class="inline-flex items-center gap-3 text-[0.82rem] font-semibold uppercase tracking-[0.04em]"><span class="size-2.5 rounded-full bg-night"></span>Contact</p>
-        <h2 class="mt-6 max-w-[20ch] text-[clamp(2.5rem,5.8vw,5.4rem)] !text-night">Do you have a user need to explore, an experience to understand or a phenomenon to investigate?</h2>
-        <p class="mt-6 max-w-lg text-lg text-night/80">Let’s discuss your next research project. Research in French or English. Based in Paris.</p>
+        <h2 class="mt-6 max-w-[14ch] text-[clamp(2.8rem,6.4vw,6.2rem)] !text-night">Let’s discuss your next research project</h2>
+        <p class="mt-6 max-w-lg text-lg text-night/80">Have a question to explore, user needs to understand or a phenomenon to investigate? Based in Paris. Research in French or English.</p>
         <a href={`mailto:${p.email}`} class="pill mt-10 bg-night text-cream hover:bg-coal">
           <span class="break-all">{p.email}</span> <span aria-hidden="true">→</span>
         </a>
@@ -281,22 +281,36 @@ const boxes = [
 
   // ── Compteurs ───────────────────────────────────────────────────────
   const counters = document.querySelectorAll<HTMLElement>('[data-count]');
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) {
-        if (!e.isIntersecting) continue;
-        const el = e.target as HTMLElement;
-        const end = Number(el.dataset.count);
-        const t0 = performance.now();
-        const step = (now: number) => {
-          const k = Math.min(1, (now - t0) / 1400);
-          el.textContent = String(Math.round(end * (1 - Math.pow(1 - k, 3))));
-          if (k < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
-        io.unobserve(el);
-      }
-    }, { threshold: 0.6 });
-    counters.forEach((c) => io.observe(c));
+  const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    const animateCounter = (el: HTMLElement) => {
+      if (el.dataset.animated === 'true') return;
+      el.dataset.animated = 'true';
+      const end = Number(el.dataset.count);
+      const duration = 1600;
+      const start = performance.now();
+      el.textContent = '0';
+      const step = (now: number) => {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = String(Math.round(end * eased));
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = String(end);
+      };
+      requestAnimationFrame(step);
+    };
+    if ('IntersectionObserver' in window) {
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounter(entry.target as HTMLElement);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25, rootMargin: '0px 0px -5% 0px' });
+      counters.forEach((counter) => counterObserver.observe(counter));
+    } else {
+      counters.forEach(animateCounter);
+    }
   }
 </script>
