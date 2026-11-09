@@ -19,9 +19,9 @@ const nav = isEnglish ? [
       <span class="hidden text-[1.05rem] font-medium text-cream xl:inline">Augustin Vinot-Marull</span>
     </a>
     <nav aria-label="Navigation principale" class="hidden md:block">
-      <ul class="flex gap-2 text-[1.35rem] text-cream lg:gap-6">
+      <ul class="flex items-center justify-between gap-0 text-[1.35rem] text-cream">
         {nav.map(([label, href]) => (
-          <li><a href={withBase(href)} class="whitespace-nowrap rounded-full px-3 py-2 transition-colors hover:bg-cream/10">{label}</a></li>
+          <li><a href={withBase(href)} class="nav-link whitespace-nowrap px-3 py-2 transition-colors">{label}</a></li>
         ))}
       </ul>
     </nav>
@@ -30,5 +30,5 @@ const nav = isEnglish ? [
 </header>
 
 <style>
-  nav li + li { border-left: 1px solid rgb(255 255 255 / 0.38); padding-left: 0.5rem; }
+  nav ul { min-width: min(42vw, 36rem); }\n  nav li { display: flex; align-items: center; }\n  nav li + li { border-left: 1px solid rgb(255 255 255 / 0.38); padding-left: clamp(0.65rem, 1.35vw, 1.35rem); margin-left: clamp(0.65rem, 1.35vw, 1.35rem); }\n  .nav-link { text-decoration-line: underline; text-decoration-color: transparent; text-decoration-thickness: 2px; text-underline-offset: 0.28em; transition: text-decoration-color 180ms ease, color 180ms ease; }\n  .nav-link:hover, .nav-link:focus-visible { color: var(--color-cream); text-decoration-color: var(--color-ember); }\n  @media (max-width: 900px) { nav ul { min-width: auto; } nav li + li { padding-left: 0.6rem; margin-left: 0.6rem; } }
 </style>
