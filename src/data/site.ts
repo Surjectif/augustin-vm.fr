@@ -13,7 +13,7 @@ export const site = {
     city: 'Paris',
     email: 'augustin.vinotmarull@gmail.com',
     // TODO : on affiche le téléphone ? Par défaut non (spam).
-    linkedin: '', // TODO : URL LinkedIn
+    linkedin: 'https://www.linkedin.com/in/augustin-vinotmarull/',
   },
 
   // Accroche : la thèse du site, en une phrase.
@@ -32,19 +32,7 @@ export const site = {
     { value: 20, suffix: '+', label: 'focus groups animés' },
   ],
 
-  // ── Historique des études ──────────────────────────────────────────────
-  // `photo` = nom du fichier dans src/assets/photos/ (voir le README du dossier).
-  // TODO : TOUT CE BLOC EST UN EXEMPLE. À remplacer par les vraies études
-  // d’Augustin (client ou secteur si confidentiel, sujet, méthode, livrable).
-  studies: [
-    { photo: 'etude-energie', year: '2025', org: 'Fournisseur d’énergie', theme: 'Ce que les ménages attendent d’une offre « verte »', method: 'Entretiens à domicile · 24', deliverable: 'Personas + recommandations offre', tag: 'énergie' },
-    { photo: 'etude-territoire', year: '2025', org: 'Collectivité territoriale', theme: 'Acceptabilité d’un parc éolien, côté riverains', method: 'Focus groups · 4', deliverable: 'Note de synthèse, CODIR', tag: 'territoire' },
-    { photo: 'etude-consommation', year: '2024', org: 'Distribution alimentaire', theme: 'Le vrac, entre conviction et contrainte', method: 'Ethnographie en magasin', deliverable: 'Parcours client commenté', tag: 'consommation' },
-    { photo: 'etude-assurance', year: '2024', org: 'Mutuelle', theme: 'Les jeunes actifs face à la prévoyance', method: 'Communauté en ligne · 3 sem.', deliverable: 'Topline + rapport', tag: 'assurance' },
-    { photo: 'etude-mobilite', year: '2023', org: 'Constructeur automobile', theme: 'Passer à l’électrique : les freins réels', method: 'Entretiens approfondis · 30', deliverable: 'Segmentation qualitative', tag: 'mobilité' },
-    { photo: 'etude-biodiversite', year: '2023', org: 'Association naturaliste', theme: 'Ce qui fait (vraiment) adhérer', method: 'Entretiens + desk research', deliverable: 'Plateforme de messages', tag: 'biodiversité' },
-    { photo: 'etude-petit-dejeuner', year: '2022', org: 'Kantar · grand compte FMCG', theme: 'Rituels du petit-déjeuner', method: 'Modération de communauté', deliverable: 'Analyse thématique des verbatim', tag: 'consommation' },
-  ],
+  // Les exemples de projets fictifs ont été retirés : ne publier que des cas réels autorisés.
 
   // ── Parcours ───────────────────────────────────────────────────────────
   path: [
