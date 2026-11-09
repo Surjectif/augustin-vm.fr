@@ -18,7 +18,7 @@ export const site = {
 
   // Accroche : la thèse du site, en une phrase.
   pitch:
-    'I seek to understand what people need — including what lies behind what they say.',
+    'I explore behaviours, perceptions and trade-offs to generate insights that inform decision-making.',
 
   intro: [
     'Educated at EHESS, with experience at Kantar and CSA / Havas, I lead qualitative research projects end to end: from research design and fieldwork to analysis and executive presentations.',
