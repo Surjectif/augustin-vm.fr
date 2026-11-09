@@ -9,7 +9,7 @@ export const site = {
   person: {
     firstName: 'Augustin',
     lastName: 'Vinot--Marull',
-    role: 'Senior Qualitative Research Consultant',
+    role: 'Senior Qualitative Research Consultant · UX Researcher',
     city: 'Paris',
     email: 'augustin.vinotmarull@gmail.com',
     // TODO : on affiche le téléphone ? Par défaut non (spam).
@@ -27,7 +27,7 @@ export const site = {
   ],
 
   figures: [
-    { value: 15, suffix: '+', label: 'qualitative studies led' },
+    { value: 4, suffix: ' years', label: 'of experience' },
     { value: 200, suffix: '+', label: 'interviews conducted' },
     { value: 20, suffix: '+', label: 'focus groups moderated' },
   ],
@@ -67,6 +67,7 @@ export const site = {
   skills: [
     'Focus groups', 'In-depth interviews', 'Ethnography', 'Desk research',
     'Online communities', 'Qualitative / quantitative integration', 'Strategic recommendations',
+    'User research (UX Research)', 'User journey & usage analysis', 'Data analysis',
   ],
   analysisTools: ['Modalisa', 'Python', 'R', 'Office suite'],
   creativeTools: ['Photoshop', 'Illustrator', 'TouchDesigner'],
