@@ -30,5 +30,20 @@ const nav = isEnglish ? [
 </header>
 
 <style>
-  nav ul { min-width: min(42vw, 36rem); }\n  nav li { display: flex; align-items: center; }\n  nav li + li { border-left: 1px solid rgb(255 255 255 / 0.38); padding-left: clamp(0.65rem, 1.35vw, 1.35rem); margin-left: clamp(0.65rem, 1.35vw, 1.35rem); }\n  .nav-link { text-decoration-line: underline; text-decoration-color: transparent; text-decoration-thickness: 2px; text-underline-offset: 0.28em; transition: text-decoration-color 180ms ease, color 180ms ease; }\n  .nav-link:hover, .nav-link:focus-visible { color: var(--color-cream); text-decoration-color: var(--color-ember); }\n  @media (max-width: 900px) { nav ul { min-width: auto; } nav li + li { padding-left: 0.6rem; margin-left: 0.6rem; } }
+  nav ul { min-width: min(42vw, 36rem); }
+  nav li { display: flex; align-items: center; }
+  nav li + li { border-left: 1px solid rgb(255 255 255 / 0.38); margin-left: clamp(0.7rem, 1.4vw, 1.4rem); padding-left: clamp(0.7rem, 1.4vw, 1.4rem); }
+  .nav-link {
+    display: inline-block;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.3em;
+    transition: text-decoration-color 180ms ease;
+  }
+  .nav-link:hover, .nav-link:focus-visible { text-decoration-color: var(--color-ember); }
+  @media (max-width: 900px) {
+    nav ul { min-width: auto; }
+    nav li + li { margin-left: 0.55rem; padding-left: 0.55rem; }
+  }
 </style>
