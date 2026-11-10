@@ -13,7 +13,7 @@ const logos = {
   csa: photo('nl1297-logo-csa_data_0'),
   havas: photo('Havas'),
   kantar: photo('Logo_Kantar_noir'),
-  ehess: photo('EHESS logo blanc_0'),
+  ehess: photo('EHESS logo blanc_0.png'),
   berlin: photo('Logo_der_Technischen_Universität_Berlin.svg'),
   strasbourg: photo('Université_de_Strasbourg'),
 };
@@ -225,7 +225,7 @@ const boxes = [
                   </div>
                 ) : (
                   <div class="mb-5 flex h-12 items-center gap-5 px-4" aria-label="Kantar">
-                    {logos.kantar && <Image src={logos.kantar} alt="Kantar" class="h-9 w-auto max-w-[10rem] object-contain" />}
+                    {logos.kantar && <Image src={logos.kantar} alt="Kantar" class="h-9 w-auto max-w-[10rem] object-contain brightness-0 invert" />}
                   </div>
                 )}
                 <p class="kicker">{s.when} · {s.where}</p>
