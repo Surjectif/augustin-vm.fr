@@ -9,6 +9,15 @@ import { photo } from '@/lib/photos';
 
 const p = site.person;
 const portrait = photo('portrait-transparent-2');
+const logos = {
+  csa: photo('nl1297-logo-csa_data_0'),
+  havas: photo('Havas'),
+  kantar: photo('Logo_Kantar_noir'),
+  ehess: photo('EHESS logo blanc_0'),
+  berlin: photo('Logo_der_Technischen_Universität_Berlin.svg'),
+  strasbourg: photo('Université_de_Strasbourg'),
+};
+
 const boxes = [
   { title: 'Outils d’analyse', items: [...site.analysisTools] as string[] },
   { title: 'Pratique créative complémentaire', items: [...site.creativeTools] as string[] },
@@ -209,15 +218,16 @@ const boxes = [
           {site.experience.map((s, i) => (
             <li class={`flex flex-col rounded-[2.5rem] bg-coal p-4 pb-8 transition-colors hover:bg-tile ${i === 0 ? 'lg:col-span-2' : ''}`} data-reveal>
               <div class="flex flex-1 flex-col px-4 pt-7">
-                {i === 0 ? (<div class="mb-5 flex h-12 items-center gap-5 px-4" aria-label="CSA et Havas">
-                  <img src="https://s3.eu-west-3.amazonaws.com/pub.be/2016/02/csa-log-4x4.png" alt="CSA" class="h-10 w-10 object-contain" data-logo-image loading="lazy" />
-                  <span class="logo-fallback text-cream/90 font-bold tracking-[0.08em]" aria-hidden="true">CSA</span>
-                  <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Havas_Logo_2023.svg" alt="Havas" class="h-8 w-auto max-w-[8rem] object-contain" data-logo-image loading="lazy" />
-                  <span class="logo-fallback text-cream/90 " aria-hidden="true">HAVAS</span>
-                </div>) : (<div class="mb-5 flex h-12 items-center gap-5 px-4" aria-label="Kantar">
-                  <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Kantar_Group_logo.svg" alt="Kantar" class="h-9 w-auto max-w-[10rem] object-contain" data-logo-image loading="lazy" />
-                  <span class="logo-fallback text-cream/90 " aria-hidden="true">Kantar</span>
-                </div>)}
+                {i === 0 ? (
+                  <div class="mb-5 flex h-12 items-center gap-5 px-4" aria-label="CSA et Havas">
+                    {logos.csa && <Image src={logos.csa} alt="CSA" class="h-10 w-10 object-contain" />}
+                    {logos.havas && <Image src={logos.havas} alt="Havas" class="h-8 w-auto max-w-[8rem] object-contain" />}
+                  </div>
+                ) : (
+                  <div class="mb-5 flex h-12 items-center gap-5 px-4" aria-label="Kantar">
+                    {logos.kantar && <Image src={logos.kantar} alt="Kantar" class="h-9 w-auto max-w-[10rem] object-contain" />}
+                  </div>
+                )}
                 <p class="kicker">{s.when} · {s.where}</p>
                 <h4 class="mt-4 text-[1.75rem]">{s.what}</h4>
                 <p class="mt-3 text-soft">{s.detail}</p>
@@ -232,10 +242,11 @@ const boxes = [
           {site.education.map((s, i) => (
             <li class="flex flex-col rounded-[2.5rem] bg-coal p-4 pb-8 transition-colors hover:bg-tile" data-reveal>
               <div class="flex flex-1 flex-col px-4 pt-7">
-                {i === 0 ? (<div class="mb-5 flex h-12 items-center px-4"><img src="https://edch.eu/sites/default/files/2025-02/Logo_EHESS_2021_RVB.png" alt="EHESS" class="h-11 w-auto max-w-[11rem] object-contain object-left" data-logo-image loading="lazy" />
-                  <span class="logo-fallback text-cream/90 font-bold tracking-[0.08em]" aria-hidden="true">EHESS</span></div>) : i === 1 ? (<div class="mb-5 flex h-12 items-center px-4"><img src="https://minio.enhance.pw.edu.pl/enhance-public/9c6e7609-4edc-4c62-ada6-fccef8fbd5fc.png" alt="Technische Universität Berlin" class="h-11 w-auto max-w-[11rem] object-contain object-left" data-logo-image loading="lazy" />
-                  <span class="logo-fallback text-cream/90 " aria-hidden="true">TU BERLIN</span></div>) : (<div class="mb-5 flex h-12 items-center px-4"><img src="https://igg.unistra.fr/people/lum_vis/img/logo/logo-Unistra.jpg" alt="Université de Strasbourg" class="h-11 w-auto max-w-[11rem] object-contain object-left" data-logo-image loading="lazy" />
-                  <span class="logo-fallback text-cream/90 " aria-hidden="true">UNIVERSITÉ DE STRASBOURG</span></div>)}
+                <div class="mb-5 flex h-12 items-center px-4">
+                  {i === 0 && logos.ehess && <Image src={logos.ehess} alt="EHESS" class="h-11 w-auto max-w-[11rem] object-contain object-left" />}
+                  {i === 1 && logos.berlin && <Image src={logos.berlin} alt="Technische Universität Berlin" class="h-11 w-auto max-w-[11rem] object-contain object-left" />}
+                  {i === 2 && logos.strasbourg && <Image src={logos.strasbourg} alt="Université de Strasbourg" class="h-11 w-auto max-w-[11rem] object-contain object-left" />}
+                </div>
                 <p class="kicker">{s.when} · {s.where}</p>
                 <h4 class="mt-4 text-[1.75rem]">{s.what}</h4>
                 <p class="mt-3 text-soft">{s.detail}</p>
@@ -246,15 +257,7 @@ const boxes = [
       </div>
     </section>
 
-    <script>
-      document.querySelectorAll<HTMLImageElement>('[data-logo-image]').forEach((img) => {
-        const markLoaded = () => {
-          if (img.naturalWidth > 0) img.classList.add('logo-image-loaded');
-        };
-        if (img.complete) markLoaded();
-        else img.addEventListener('load', markLoaded, { once: true });
-      });
-    </script>
+
 
     <!-- ═══ CONTACT : bloc orange ════════════════════════════════════════ -->
     <section id="contact" class="px-3 pb-3 sm:px-6 sm:pb-6">
