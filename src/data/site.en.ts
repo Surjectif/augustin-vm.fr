@@ -23,7 +23,7 @@ export const site = {
   intro: [
     "Having studied at EHESS and worked at Kantar and CSA / Havas, I lead qualitative research projects end to end: from framing the brief and designing the methodology to conducting fieldwork, analysing findings and presenting insights to executive teams.",
     "What interests me is understanding what people genuinely need, including what they do not express directly. I pay attention not only to what people say, but also to their practices, the constraints they face and the criteria shaping their choices.",
-    "My work is to put these elements into perspective: to understand what shapes behaviour, distinguish observations from interpretations, and develop robust insights that can inform decisions.",
+    "My work is to put these elements into perspective to understand what shapes behaviour and distinguish observations from interpretations. The aim is then to develop robust insights that inform decisions and formulate recommendations that teams can take ownership of and put into practice.",
   ],
 
   figures: [
@@ -33,6 +33,14 @@ export const site = {
   ],
 
   // Les exemples de projets fictifs ont été retirés : ne publier que des cas réels autorisés.
+
+  // Research areas shown as areas of exploration, not as client case studies.
+  studyCarousel: [
+    { photo: 'deco-foret', tone: 'moss', category: 'Explore', topic: 'Understand users and their needs', method: 'In-depth interviews · observation · desk research', focus: 'Surface expectations, constraints and usage patterns.' },
+    { photo: 'deco-champ', tone: 'stone', category: 'Evaluate', topic: 'Test concepts and offers', method: 'Interviews · focus groups', focus: 'Identify perceptions, barriers and conditions for adoption.' },
+    { photo: 'deco-coucher', tone: 'dusk', category: 'Journeys', topic: 'Understand the customer experience', method: 'Interviews · journey analysis · observation', focus: 'Identify friction points and decisive moments.' },
+    { photo: 'deco-sous-bois', tone: 'moss', category: 'Perceptions', topic: 'Explore brand image and communication', method: 'Interviews · focus groups · online communities', focus: 'Understand perceptions and how messages are received.' },
+  ],
 
   // ── Parcours ───────────────────────────────────────────────────────────
   path: [

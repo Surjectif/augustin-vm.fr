@@ -78,3 +78,49 @@
 /* Surfaces légèrement translucides : le pointeur reste perceptible derrière les cartes. */
 .bg-coal { background-color: rgb(28 27 25 / 94%); }
 .bg-tile { background-color: rgb(38 37 34 / 94%); }
+
+/* Carrousel d'études : fondu entre l'image et le texte actifs. */
+@layer components {
+  .slide-img {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(.97);
+    transition: opacity .7s ease, transform .9s cubic-bezier(.2,.7,.2,1), visibility .7s;
+  }
+  .slide-img.is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+  .slide-txt {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(14px);
+    pointer-events: none;
+    transition: opacity .45s ease, transform .55s ease, visibility .45s;
+  }
+  .slide-txt.is-active {
+    position: relative;
+    inset: auto;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+  }
+  .dot {
+    width: .6rem;
+    height: .6rem;
+    border-radius: 999px;
+    background: rgb(243 240 238 / 35%);
+    transition: width .25s ease, background-color .25s ease;
+  }
+  .dot.is-active {
+    width: 2rem;
+    background: var(--color-ember);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide-img, .slide-txt, .dot { transition: none !important; }
+}

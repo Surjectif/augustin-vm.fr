@@ -23,7 +23,7 @@ export const site = {
   intro: [
     "Formé à l’EHESS, passé par Kantar puis CSA / Havas, je pilote des études qualitatives de bout en bout : du cadrage de la demande à la conception méthodologique, la conduite du terrain, l’analyse et la présentation des enseignements en comité de direction.",
     "Ce qui m’intéresse, c’est de comprendre ce dont les personnes ont réellement besoin, y compris ce qu’elles n’expriment pas directement. Je m’intéresse autant à leurs discours qu’à leurs pratiques, aux contraintes qu’elles rencontrent et aux critères qui orientent leurs choix.",
-    "Mon travail consiste à mettre ces éléments en perspective pour comprendre ce qui structure les comportements, distinguer les constats des interprétations et faire émerger des enseignements solides, utiles à la décision.",
+    "Mon travail consiste à mettre ces éléments en perspective pour comprendre ce qui structure les comportements et distinguer les constats des interprétations. Il s’agit ensuite de faire émerger des enseignements solides, utiles à la décision, et de formuler des recommandations que les équipes peuvent s’approprier et mettre en œuvre.",
   ],
 
   figures: [
@@ -33,6 +33,14 @@ export const site = {
   ],
 
   // Les exemples de projets fictifs ont été retirés : ne publier que des cas réels autorisés.
+
+  // Axes de recherche présentés comme champs d’exploration, pas comme études de cas clients.
+  studyCarousel: [
+    { photo: 'deco-foret', tone: 'moss', category: 'Explorer', topic: 'Comprendre les usages et les besoins', method: 'Entretiens approfondis · observation · desk research', focus: 'Faire émerger les attentes, les contraintes et les logiques d’usage.' },
+    { photo: 'deco-champ', tone: 'stone', category: 'Évaluer', topic: 'Tester des concepts et des offres', method: 'Entretiens · focus groups', focus: 'Identifier les perceptions, les freins et les conditions d’adhésion.' },
+    { photo: 'deco-coucher', tone: 'dusk', category: 'Parcours', topic: 'Comprendre l’expérience client', method: 'Entretiens · analyse des parcours · observation', focus: 'Repérer les points de friction et les moments décisifs.' },
+    { photo: 'deco-sous-bois', tone: 'moss', category: 'Perceptions', topic: 'Analyser l’image et la communication', method: 'Entretiens · focus groups · communautés en ligne', focus: 'Comprendre les représentations et la réception des messages.' },
+  ],
 
   // ── Parcours ───────────────────────────────────────────────────────────
   path: [

@@ -81,20 +81,54 @@ const boxes = [
     </section>
 
     <!-- Portfolio d’études : aucun cas fictif publié -->
-    <section id="etudes" class="wrap scroll-mt-28 pb-28 sm:pb-36">
-      <div class="grid gap-10 lg:grid-cols-12">
+    <!-- ═══ ÉTUDES : carrousel en orbite ═════════════════════════════════ -->
+    <section id="etudes" class="scroll-mt-28 pb-40 sm:pb-48">
+      <div class="wrap grid gap-10 lg:grid-cols-12">
         <div class="lg:col-span-7">
           <p class="kicker" data-reveal>Études</p>
           <h2 class="mt-6 text-[clamp(2.4rem,4.6vw,4.4rem)]" data-reveal>Comprendre les besoins au-delà des déclarations</h2>
         </div>
-        <div class="space-y-5 text-[1.2rem] text-soft lg:col-span-5 lg:pt-3" data-reveal>
-          <p>Les missions que je mène s’inscrivent dans des dispositifs clients soumis à des engagements de confidentialité.</p>
-          <p>Lorsque le cadre le permet, je peux présenter des exemples anonymisés précisant la question de départ, la démarche, le terrain, l’analyse et les recommandations.</p>
-        </div>
+        <p class="text-[1.2rem] text-soft lg:col-span-4 lg:col-start-9 lg:self-end" data-reveal>Des questions de recherche variées, abordées avec un dispositif adapté aux publics, aux contextes et aux décisions à éclairer.</p>
       </div>
-      <div class="mt-12 rounded-[2.5rem] border border-cream/15 bg-coal p-8 sm:p-12" data-reveal>
-        <p class="kicker">Des faits aux mécanismes</p>
-        <p class="mt-5 max-w-3xl text-[clamp(1.5rem,2.6vw,2.2rem)] leading-snug text-cream">Dépasser les opinions déclarées pour comprendre les pratiques, les contraintes et les arbitrages qui orientent les décisions.</p>
+
+      <div class="relative mt-16 h-[min(150vw,46rem)] sm:h-[min(56vw,46rem)]" data-carousel>
+        <Shot name="deco-foret" tone="moss" class="absolute -left-[12vw] top-[4%] hidden aspect-square w-[22vw] rounded-full sm:block" data-speed="0.12" />
+        <Shot name="deco-champ" tone="stone" class="absolute -right-[10vw] top-[38%] hidden aspect-square w-[18vw] rounded-full sm:block" data-speed="0.25" />
+
+        <div class="wrap relative h-full">
+          <div class="absolute right-4 top-0 z-20 flex gap-3 sm:right-10 lg:right-[6.5rem]">
+            <button type="button" class="round" data-prev aria-label="Étude précédente">←</button>
+            <button type="button" class="round" data-next aria-label="Étude suivante">→</button>
+          </div>
+
+          <div class="orbit left-[30%] top-[6%] aspect-square w-[min(66vw,40rem)] sm:left-[38%] sm:top-0 sm:w-[min(46vw,40rem)]" aria-hidden="true"></div>
+
+          <div class="absolute left-4 top-[6%] aspect-square w-[min(74vw,38rem)] sm:left-[6%] sm:top-0 sm:w-[min(44vw,38rem)]">
+            {site.studyCarousel.map((s, i) => (
+              <Shot name={s.photo} tone={s.tone} alt={s.topic} class={`slide-img absolute inset-0 rounded-full ${i === 0 ? 'is-active' : ''}`} />
+            ))}
+          </div>
+
+          <div class="absolute bottom-0 left-4 right-4 sm:bottom-auto sm:left-[56%] sm:right-10 sm:top-[24%] lg:right-[6.5rem]">
+            {site.studyCarousel.map((s, i) => (
+              <article class={`slide-txt ${i === 0 ? 'is-active' : ''}`} aria-hidden={i === 0 ? 'false' : 'true'}>
+                <p class="kicker">{s.category}</p>
+                <h3 class="mt-5 text-[clamp(1.8rem,2.8vw,2.7rem)]">{s.topic}</h3>
+                <p class="mt-5 text-soft">{s.method}</p>
+                <p class="mt-1 text-mute">→ {s.focus}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div class="absolute inset-x-0 -bottom-20 flex items-center justify-center gap-8">
+          <div class="flex items-center gap-2.5">
+            {site.studyCarousel.map((_, i) => (
+              <button type="button" data-dot={i} aria-label={`Afficher le champ d’étude ${i + 1}`} class={`dot ${i === 0 ? 'is-active' : ''}`}></button>
+            ))}
+          </div>
+          <button type="button" class="round !size-10 text-xs" data-play aria-label="Mettre en pause">❚❚</button>
+        </div>
       </div>
     </section>
 
@@ -204,6 +238,56 @@ const boxes = [
 </BaseLayout>
 
 <script>
+  // ── Carrousel des études ────────────────────────────────────────────
+  const carousel = document.querySelector<HTMLElement>('[data-carousel]');
+  if (carousel) {
+    const images = carousel.querySelectorAll<HTMLElement>('.slide-img');
+    const texts = carousel.querySelectorAll<HTMLElement>('.slide-txt');
+    const dots = carousel.querySelectorAll<HTMLButtonElement>('[data-dot]');
+    const play = carousel.querySelector<HTMLButtonElement>('[data-play]');
+    const previous = carousel.querySelector<HTMLButtonElement>('[data-prev]');
+    const next = carousel.querySelector<HTMLButtonElement>('[data-next]');
+    const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let active = 0;
+    let timer = 0;
+    let playing = !reduceMotion;
+
+    const show = (index: number) => {
+      active = (index + images.length) % images.length;
+      images.forEach((element, i) => element.classList.toggle('is-active', i === active));
+      texts.forEach((element, i) => {
+        element.classList.toggle('is-active', i === active);
+        element.setAttribute('aria-hidden', String(i !== active));
+      });
+      dots.forEach((element, i) => {
+        element.classList.toggle('is-active', i === active);
+        element.setAttribute('aria-current', i === active ? 'true' : 'false');
+      });
+    };
+    const armTimer = () => {
+      window.clearInterval(timer);
+      if (playing && images.length > 1) timer = window.setInterval(() => show(active + 1), 6000);
+    };
+    const setPlaying = (value: boolean) => {
+      playing = value;
+      if (play) {
+        play.textContent = value ? '❚❚' : '▶';
+        play.setAttribute('aria-label', value ? 'Mettre en pause' : 'Reprendre le défilement');
+      }
+      armTimer();
+    };
+
+    previous?.addEventListener('click', () => { show(active - 1); armTimer(); });
+    next?.addEventListener('click', () => { show(active + 1); armTimer(); });
+    dots.forEach((dot) => dot.addEventListener('click', () => { show(Number(dot.dataset.dot)); armTimer(); }));
+    play?.addEventListener('click', () => setPlaying(!playing));
+    carousel.addEventListener('mouseenter', () => window.clearInterval(timer));
+    carousel.addEventListener('mouseleave', armTimer);
+    carousel.addEventListener('focusin', () => window.clearInterval(timer));
+    carousel.addEventListener('focusout', armTimer);
+    setPlaying(playing);
+  }
+
   // ── Copier l'adresse e-mail ─────────────────────────────────────────
   const copyEmailButton = document.querySelector<HTMLButtonElement>('[data-copy-email]');
   const copyFeedback = document.querySelector<HTMLElement>('[data-copy-feedback]');
