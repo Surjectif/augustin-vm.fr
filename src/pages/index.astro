@@ -29,11 +29,9 @@ const boxes = [
       <div class="relative isolate h-[calc(100svh-8.75rem)] min-h-[36rem] overflow-hidden rounded-[2.5rem] sm:h-[calc(100svh-12rem)] sm:rounded-[5rem]">
         <Shot name="hero-fond" tone="dusk" class="absolute inset-0 -z-10" />
         <div class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(20_20_19/.82)_0%,rgb(20_20_19/.35)_55%,transparent_100%)]"></div>
-        <div class="pointer-events-none absolute right-[4%] top-[17%] z-0 aspect-square w-[min(42vw,32rem)] rounded-full bg-ember" aria-hidden="true"></div>
-
         {portrait && (
-          <div class="absolute bottom-0 right-[6%] z-10 hidden h-[74%] w-[min(30vw,30rem)] lg:block">
-            <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[480, 800, 1100]} sizes="30vw" class="absolute inset-x-0 bottom-0 h-full w-full object-contain object-bottom" loading="eager" fetchpriority="high" />
+          <div class="absolute bottom-0 right-[3%] z-10 hidden h-[88%] w-[min(38vw,38rem)] overflow-hidden lg:block">
+            <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[600, 900, 1200, 1500]} sizes="38vw" class="absolute inset-x-0 top-0 h-[125%] w-full object-cover object-top" loading="eager" fetchpriority="high" />
           </div>
         )}
 
