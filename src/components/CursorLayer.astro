@@ -1,0 +1,203 @@
+---
+/**
+ * Granular cursor layer.
+ * Rendered once by BaseLayout and kept behind all page content.
+ */
+---
+
+<canvas id="buffard-canvas" aria-hidden="true"></canvas>
+
+<style is:global>
+  #buffard-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  const canvas = document.getElementById('buffard-canvas') as HTMLCanvasElement | null;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  if (canvas && !reduceMotion && finePointer) {
+    const ctx = canvas.getContext('2d');
+
+    if (ctx) {
+      // Palette issue du site : orange brûlé, vert mousse et tons pierre.
+      const palette = ['#ee7a45', '#8fae73', '#a76d5a', '#9b968d'];
+      const pick = () => palette[Math.floor(Math.random() * palette.length)];
+
+      // Masque de bruit : le grain ronge les taches plutôt que de couvrir la page.
+      const tile = document.createElement('canvas');
+      tile.width = tile.height = 200;
+      const tileContext = tile.getContext('2d');
+      let pattern: CanvasPattern | null = null;
+
+      if (tileContext) {
+        const noise = tileContext.createImageData(tile.width, tile.height);
+        for (let i = 0; i < noise.data.length; i += 4) {
+          noise.data[i] = noise.data[i + 1] = noise.data[i + 2] = 255;
+          noise.data[i + 3] = 40 + Math.random() * 215;
+        }
+        tileContext.putImageData(noise, 0, 0);
+      }
+
+      let width = 0;
+      let height = 0;
+      let dpr = 1;
+      let frameId = 0;
+      let previousFrame = 0;
+
+      const resize = () => {
+        // DPR plafonné à 1,5 pour éviter de trop charger les écrans haute densité.
+        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = Math.round(width * dpr);
+        canvas.height = Math.round(height * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        pattern = tileContext ? ctx.createPattern(tile, 'repeat') : null;
+        scheduleFrame();
+      };
+
+      const mouse = { x: width / 2, y: height / 2 };
+      const position = { x: width / 2, y: height / 2 };
+      const lastDot = { x: width / 2, y: height / 2 };
+
+      type Dot = {
+        x: number;
+        y: number;
+        radius: number;
+        color: string;
+        life: number;
+      };
+
+      const dots: Dot[] = [];
+      const maxDots = 42;
+      let pointerInside = false;
+      let pointerInitialized = false;
+      let headColor = pick();
+
+      const addDot = (x: number, y: number) => {
+        dots.push({
+          x,
+          y,
+          radius: 13 + Math.random() * 15,
+          color: pick(),
+          life: 1,
+        });
+        if (dots.length > maxDots) dots.splice(0, dots.length - maxDots);
+        if (Math.random() < 0.15) headColor = pick();
+      };
+
+      const drawBlob = (x: number, y: number, radius: number, color: string, alpha: number) => {
+        const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
+        gradient.addColorStop(0, color + 'ff');
+        gradient.addColorStop(0.55, color + '99');
+        gradient.addColorStop(1, color + '00');
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fill();
+      };
+
+      const scheduleFrame = () => {
+        if (!frameId) frameId = window.requestAnimationFrame(drawFrame);
+      };
+
+      const drawFrame = (now: number) => {
+        frameId = 0;
+        const deltaSeconds = previousFrame
+          ? Math.min((now - previousFrame) / 1000, 0.05)
+          : 1 / 60;
+        previousFrame = now;
+
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 1;
+        ctx.clearRect(0, 0, width, height);
+
+        // Suivi avec inertie, sans boucle permanente lorsque le pointeur est immobile.
+        position.x += (mouse.x - position.x) * 0.18;
+        position.y += (mouse.y - position.y) * 0.18;
+
+        if (pointerInside) {
+          const distance = Math.hypot(position.x - lastDot.x, position.y - lastDot.y);
+          if (distance > 24) {
+            const steps = Math.min(4, Math.floor(distance / 24));
+            for (let i = 1; i <= steps; i++) {
+              const ratio = i / steps;
+              addDot(
+                lastDot.x + (position.x - lastDot.x) * ratio,
+                lastDot.y + (position.y - lastDot.y) * ratio,
+              );
+            }
+            lastDot.x = position.x;
+            lastDot.y = position.y;
+          }
+        }
+
+        // Durée de vie réelle : environ une seconde, indépendante du taux de rafraîchissement.
+        for (let i = dots.length - 1; i >= 0; i--) {
+          const dot = dots[i];
+          dot.life -= deltaSeconds;
+          if (dot.life <= 0) {
+            dots.splice(i, 1);
+            continue;
+          }
+          drawBlob(dot.x, dot.y, dot.radius * (1.08 - dot.life * 0.08), dot.color, dot.life * 0.72);
+        }
+
+        // Tache principale, légèrement plus large que les points de la traînée.
+        if (pointerInside) drawBlob(position.x, position.y, 58, headColor, 0.78);
+
+        // Le bruit agit uniquement sur les pixels dessinés : fond transparent conservé.
+        if (pattern) {
+          ctx.globalCompositeOperation = 'destination-in';
+          ctx.globalAlpha = 1;
+          ctx.fillStyle = pattern;
+          ctx.fillRect(0, 0, width, height);
+        }
+
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.globalAlpha = 1;
+
+        const stillMoving = Math.hypot(mouse.x - position.x, mouse.y - position.y) > 0.5;
+        if (stillMoving || dots.length > 0) scheduleFrame();
+        else previousFrame = 0;
+      };
+
+      window.addEventListener('pointermove', (event) => {
+        if (!pointerInitialized) {
+          mouse.x = position.x = lastDot.x = event.clientX;
+          mouse.y = position.y = lastDot.y = event.clientY;
+          pointerInitialized = true;
+        } else {
+          mouse.x = event.clientX;
+          mouse.y = event.clientY;
+        }
+        pointerInside = true;
+        scheduleFrame();
+      }, { passive: true });
+
+      document.documentElement.addEventListener('pointerout', (event) => {
+        if ((event as PointerEvent).relatedTarget === null) {
+          pointerInside = false;
+          scheduleFrame();
+        }
+      });
+
+      window.addEventListener('blur', () => {
+        pointerInside = false;
+        scheduleFrame();
+      });
+
+      window.addEventListener('resize', resize, { passive: true });
+      resize();
+    }
+  }
+</script>
