@@ -21,9 +21,9 @@ export const site = {
     'J’explore les usages, les perceptions et les arbitrages pour faire émerger des enseignements utiles à la décision.',
 
   intro: [
-    'Formé à l’EHESS, passé par Kantar puis CSA / Havas, je pilote des études qualitatives de bout en bout : cahier des charges, design méthodologique, terrain, analyse, restitution en comité de direction.',
-    'Ce qui m’intéresse, c’est de comprendre ce dont les personnes ont réellement besoin — y compris ce qu’elles n’expriment pas directement. Je cherche à dépasser les déclarations pour regarder les pratiques, les contraintes et les arbitrages qui orientent leurs choix.',
-    'Pour y parvenir, je fais dialoguer les observations de terrain, les données et les apports de la recherche. J’aime remonter des faits aux mécanismes qui les expliquent, confronter les interprétations et construire une lecture solide d’un phénomène.',
+    "Formé à l’EHESS, passé par Kantar puis CSA / Havas, je pilote des études qualitatives de bout en bout : du cadrage de la demande à la conception méthodologique, la conduite du terrain, l’analyse et la présentation des enseignements en comité de direction.",
+    "Ce qui m’intéresse, c’est de comprendre ce dont les personnes ont réellement besoin, y compris ce qu’elles n’expriment pas directement. Je m’intéresse autant à leurs discours qu’à leurs pratiques, aux contraintes qu’elles rencontrent et aux critères qui orientent leurs choix.",
+    "Mon travail consiste à mettre ces éléments en perspective pour comprendre ce qui structure les comportements, distinguer les constats des interprétations et faire émerger des enseignements solides, utiles à la décision.",
   ],
 
   figures: [
