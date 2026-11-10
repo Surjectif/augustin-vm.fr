@@ -68,7 +68,7 @@ export const site = {
     { title: 'Analyse et interprétation', items: ['Analyse thématique', 'Analyse des usages et parcours', 'Articulation quali / quanti', 'Analyse de données'] },
     { title: 'Restitution et recommandations', items: ['Synthèses et rapports', 'Recommandations stratégiques'] },
   ],
-  analysisTools: ['Modalisa', 'Python', 'R', 'Pack Office'],
+  analysisTools: ['Modalisa', 'Python', 'Pack Office', 'R'],
   creativeTools: ['GIMP', 'TouchDesigner', 'Photoshop', 'Illustrator'],
   languages: [
     { name: 'Allemand', level: 'C1/C2' },
