@@ -117,17 +117,6 @@ const boxes = [
       </ol>
     </section>
 
-    <!-- SAVOIR-FAIRE -->
-    <section class="wrap pb-20 sm:pb-28">
-      <p class="kicker" data-reveal>Savoir-faire</p>
-      <ul class="mt-7 flex flex-wrap gap-3">
-        {site.skills.map((skill, i) => {
-          const icons = ['⌕', '◉', '⌂', '▤', '◎', '⇄', '↗'];
-          return <li class="inline-flex items-center gap-3 rounded-full border border-cream/20 bg-coal px-5 py-3 text-cream"><span class="grid size-7 place-items-center rounded-full bg-ember/15 text-ember" aria-hidden="true">{icons[i % icons.length]}</span>{skill}</li>;
-        })}
-      </ul>
-    </section>
-
     <!-- TYPES D'ÉTUDES -->
     <section class="wrap pb-20 sm:pb-28">
       <p class="kicker" data-reveal>Types d’études</p>
@@ -144,6 +133,17 @@ const boxes = [
         ].map((type, i) => {
           const icons = ['⌕', '◉', '⌂', '▤', '◎', '⇄', '↗', '＋'];
           return <li class="inline-flex items-center gap-3 rounded-full border border-cream/20 bg-coal px-5 py-3 text-cream"><span class="grid size-7 place-items-center rounded-full bg-ember/15 text-ember" aria-hidden="true">{icons[i % icons.length]}</span>{type}</li>;
+        })}
+      </ul>
+    </section>
+
+    <!-- SAVOIR-FAIRE -->
+    <section class="wrap pb-20 sm:pb-28">
+      <p class="kicker" data-reveal>Savoir-faire</p>
+      <ul class="mt-7 flex flex-wrap gap-3">
+        {site.skills.map((skill, i) => {
+          const icons = ['⌕', '◉', '⌂', '▤', '◎', '⇄', '↗'];
+          return <li class="inline-flex items-center gap-3 rounded-full border border-cream/20 bg-coal px-5 py-3 text-cream"><span class="grid size-7 place-items-center rounded-full bg-ember/15 text-ember" aria-hidden="true">{icons[i % icons.length]}</span>{skill}</li>;
         })}
       </ul>
     </section>
