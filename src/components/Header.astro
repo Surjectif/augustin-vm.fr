@@ -40,8 +40,8 @@ const nav = isEnglish ? [
           </ul>
         </nav>
       </details>
-      <a href={withBase('/cv.pdf')} target="_blank" rel="noopener" class="pill-solid !px-3.5 !py-2.5 !text-sm sm:!px-5">CV <span aria-hidden="true">↗</span></a>
       <a href={withBase(isEnglish ? '/' : '/en.html')} class="pill-line !px-3 !py-2.5 !text-sm" aria-label={isEnglish ? "Switch to French" : "Switch to English"}>{isEnglish ? "FR" : "EN"}</a>
+      <a href={withBase('/cv.pdf')} target="_blank" rel="noopener" class="pill-solid !px-3.5 !py-2.5 !text-sm sm:!px-5">CV <span aria-hidden="true">↗</span></a>
       <a href={withBase(isEnglish ? '/en.html#contact' : '/#contact')} class="pill-line !px-3.5 !py-2.5 !text-sm sm:!px-5 sm:!text-[1.35rem]">{isEnglish ? "Contact" : "Contact"} <span aria-hidden="true">→</span></a>
     </div>
   </div>
