@@ -64,11 +64,11 @@ export const site = {
   ],
 
   skillGroups: [
-    { title: 'Research methods', items: ['In-depth interviews', 'Focus groups', 'Ethnography', 'Online communities', 'Desk research', 'User research (UX Research)'] },
-    { title: 'Analysis & interpretation', items: ['Thematic analysis', 'User journey & usage analysis', 'Qualitative / quantitative integration', 'Data analysis'] },
+    { title: 'Research methods', items: ['In-depth interviews', 'Focus groups', 'Ethnography', 'Online communities', 'User research (UX Research)', 'Desk research'] },
+    { title: 'Analysis & interpretation', items: ['Thematic analysis', 'Data analysis', 'User journey & usage analysis', 'Qualitative / quantitative integration'] },
     { title: 'Reporting & recommendations', items: ['Research summaries and reports', 'Strategic recommendations'] },
   ],
-  analysisTools: ['Modalisa', 'Python', 'R', 'Office suite'],
+  analysisTools: ['Office suite', 'R', 'Modalisa', 'Python'],
   creativeTools: ['Photoshop', 'Illustrator', 'TouchDesigner'],
   languages: [
     { name: 'German', level: 'C1/C2' },
