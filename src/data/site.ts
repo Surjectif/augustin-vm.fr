@@ -23,7 +23,7 @@ export const site = {
   intro: [
     "Formé à l’EHESS, passé par Kantar puis CSA / Havas, je pilote des études qualitatives de bout en bout : du cadrage de la demande à la conception méthodologique, la conduite du terrain, l’analyse et la présentation des enseignements en comité de direction.",
     "Ce qui m’intéresse, c’est de comprendre ce dont les personnes ont réellement besoin, y compris ce qu’elles n’expriment pas directement. Je m’intéresse autant à leurs discours qu’à leurs pratiques, aux contraintes qu’elles rencontrent et aux critères qui orientent leurs choix.",
-    "Mon travail consiste à mettre ces éléments en perspective pour comprendre ce qui structure les comportements et distinguer les constats des interprétations. Il s’agit ensuite de faire émerger des enseignements solides, utiles à la décision, et de formuler des recommandations que les équipes peuvent s’approprier et mettre en œuvre.",
+    "Mon travail consiste à partir des matériaux d’enquête pour construire une interprétation argumentée des comportements et en tirer des enseignements hiérarchisés. L’objectif est de donner aux équipes des repères clairs pour orienter leurs décisions, ainsi que des recommandations concrètes qu’elles puissent s’approprier et mettre en œuvre.",
   ],
 
   figures: [
@@ -53,11 +53,11 @@ export const site = {
 
   // ── Méthode : chaîne façon réseau d’opérateurs TouchDesigner ────────────
   method: [
-    { op: 'brief1', label: 'Cadrer', text: 'Reformuler la vraie question derrière le cahier des charges.' },
-    { op: 'field1', label: 'Aller sur le terrain', text: 'Entretiens, focus groups, observation, communautés en ligne.' },
-    { op: 'verbatim1', label: 'Écouter', text: 'Analyse thématique des verbatim, croisée avec la littérature.' },
-    { op: 'synth1', label: 'Synthétiser', text: 'Toplines, rapports, personas, parcours : ce qui sert.' },
-    { op: 'out1', label: 'Recommander', text: 'Des recommandations actionnables, défendues en CODIR.' },
+    { op: 'brief1', label: 'Clarifier', text: 'Préciser les enjeux, formuler les questions de recherche et poser les hypothèses à explorer.' },
+    { op: 'design1', label: 'Concevoir', text: 'Définir les publics, choisir les méthodes et construire un dispositif adapté à la problématique.' },
+    { op: 'field1', label: 'Enquêter', text: 'Conduire le terrain : entretiens, focus groups, observation ou communautés en ligne.' },
+    { op: 'analysis1', label: 'Analyser', text: 'Croiser les matériaux, confronter les points de vue et dégager les logiques qui structurent les comportements.' },
+    { op: 'out1', label: 'Recommander', text: 'Présenter les enseignements et formuler des recommandations utiles à la décision.' },
   ],
 
   skills: [

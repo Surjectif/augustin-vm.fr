@@ -23,7 +23,7 @@ export const site = {
   intro: [
     "Having studied at EHESS and worked at Kantar and CSA / Havas, I lead qualitative research projects end to end: from framing the brief and designing the methodology to conducting fieldwork, analysing findings and presenting insights to executive teams.",
     "What interests me is understanding what people genuinely need, including what they do not express directly. I pay attention not only to what people say, but also to their practices, the constraints they face and the criteria shaping their choices.",
-    "My work is to put these elements into perspective to understand what shapes behaviour and distinguish observations from interpretations. The aim is then to develop robust insights that inform decisions and formulate recommendations that teams can take ownership of and put into practice.",
+    "I use research materials to build an evidence-based interpretation of behaviour and identify the insights that matter most. The aim is to give teams clear guidance for their decisions, alongside practical recommendations they can take ownership of and put into action.",
   ],
 
   figures: [
@@ -53,11 +53,11 @@ export const site = {
 
   // ── Méthode : chaîne façon réseau d’opérateurs TouchDesigner ────────────
   method: [
-    { op: 'brief1', label: 'Frame the brief', text: 'Identify the real question behind the brief.' },
-    { op: 'field1', label: 'Conduct fieldwork', text: 'Interviews, focus groups, observation and online communities.' },
-    { op: 'verbatim1', label: 'Listen', text: 'Thematic analysis of verbatims, croisée avec la littérature.' },
-    { op: 'synth1', label: 'Synthesize', text: 'Toplines, reports, personas and journeys: useful outputs.' },
-    { op: 'out1', label: 'Recommend', text: 'Actionable recommendations, presented to executive teams.' },
+    { op: 'brief1', label: 'Clarify', text: 'Define the key issues, frame the research questions and identify the hypotheses to explore.' },
+    { op: 'design1', label: 'Design', text: 'Select the audiences and methods, then build a research approach suited to the brief.' },
+    { op: 'field1', label: 'Investigate', text: 'Conduct fieldwork through interviews, focus groups, observation or online communities.' },
+    { op: 'analysis1', label: 'Analyse', text: 'Bring evidence together, compare perspectives and identify the dynamics shaping behaviour.' },
+    { op: 'out1', label: 'Recommend', text: 'Present the findings and formulate recommendations that inform decisions.' },
   ],
 
   skills: [
