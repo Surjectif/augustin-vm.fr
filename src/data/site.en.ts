@@ -53,11 +53,11 @@ export const site = {
 
   // ── Méthode : chaîne façon réseau d’opérateurs TouchDesigner ────────────
   method: [
-    { op: 'brief1', label: 'Clarify', text: 'Define the key issues, frame the research questions and identify the hypotheses to explore.' },
+    { op: 'brief1', label: 'Clarify', text: 'Clarify the issues, formulate research questions and objectives, and identify the hypotheses to explore.' },
     { op: 'design1', label: 'Design', text: 'Select the audiences and methods, then build a research approach suited to the brief.' },
     { op: 'field1', label: 'Investigate', text: 'Conduct fieldwork through interviews, focus groups, observation or online communities.' },
     { op: 'analysis1', label: 'Analyse', text: 'Bring evidence together, compare perspectives and identify the dynamics shaping behaviour.' },
-    { op: 'out1', label: 'Recommend', text: 'Present the findings and formulate recommendations that inform decisions.' },
+    { op: 'out1', label: 'Recommend', text: 'Present the findings and formulate actionable recommendations.' },
   ],
 
   skills: [

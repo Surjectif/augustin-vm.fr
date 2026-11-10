@@ -53,11 +53,11 @@ export const site = {
 
   // ── Méthode : chaîne façon réseau d’opérateurs TouchDesigner ────────────
   method: [
-    { op: 'brief1', label: 'Clarifier', text: 'Préciser les enjeux, formuler les questions de recherche et poser les hypothèses à explorer.' },
+    { op: 'brief1', label: 'Clarifier', text: 'Préciser les enjeux, formuler les questions et objectifs de recherche et poser les hypothèses à explorer.' },
     { op: 'design1', label: 'Concevoir', text: 'Définir les publics, choisir les méthodes et construire un dispositif adapté à la problématique.' },
     { op: 'field1', label: 'Enquêter', text: 'Conduire le terrain : entretiens, focus groups, observation ou communautés en ligne.' },
     { op: 'analysis1', label: 'Analyser', text: 'Croiser les matériaux, confronter les points de vue et dégager les logiques qui structurent les comportements.' },
-    { op: 'out1', label: 'Recommander', text: 'Présenter les enseignements et formuler des recommandations utiles à la décision.' },
+    { op: 'out1', label: 'Recommander', text: 'Présenter les enseignements et formuler des recommandations opérationnelles.' },
   ],
 
   skills: [
