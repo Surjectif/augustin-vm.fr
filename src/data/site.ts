@@ -64,11 +64,11 @@ export const site = {
   ],
 
   skillGroups: [
-    { title: 'Méthodes d’enquête', items: ['Entretiens approfondis', 'Focus groups', 'Ethnographie', 'Communautés en ligne', 'Desk research', 'Recherche utilisateur (UX Research)'] },
-    { title: 'Analyse et interprétation', items: ['Analyse thématique', 'Analyse des usages et parcours', 'Articulation quali / quanti', 'Analyse de données'] },
+    { title: 'Méthodes d’enquête', items: ['Entretiens approfondis', 'Focus groups', 'Ethnographie', 'Communautés en ligne', 'Recherche utilisateur (UX Research)', 'Desk research'] },
+    { title: 'Analyse et interprétation', items: ['Analyse thématique', 'Analyse de données', 'Analyse des usages et parcours', 'Articulation quali / quanti'] },
     { title: 'Restitution et recommandations', items: ['Synthèses et rapports', 'Recommandations stratégiques'] },
   ],
-  analysisTools: ['Modalisa', 'Python', 'Pack Office', 'R'],
+  analysisTools: ['Pack Office', 'R', 'Modalisa', 'Python'],
   creativeTools: ['GIMP', 'TouchDesigner', 'Photoshop', 'Illustrator'],
   languages: [
     { name: 'Allemand', level: 'C1/C2' },
