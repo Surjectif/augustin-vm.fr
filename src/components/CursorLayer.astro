@@ -27,11 +27,25 @@
     const ctx = canvas.getContext('2d');
 
     if (ctx) {
-      // Palette issue du site : orange brûlé, vert mousse et tons pierre.
-      const palette = ['#ee7a45', '#8fae73', '#a76d5a', '#9b968d'];
-      const pick = () => palette[Math.floor(Math.random() * palette.length)];
+      const hex = ['#ff6a2b', '#f4b6d2', '#b9a6f2', '#4aa8d8', '#2fa39a', '#1f7a5a', '#e8f23a'];
+      const palette = hex.map((value) => [
+        parseInt(value.slice(1, 3), 16),
+        parseInt(value.slice(3, 5), 16),
+        parseInt(value.slice(5, 7), 16),
+      ]);
 
-      // Masque de bruit : le grain ronge les taches plutôt que de couvrir la page.
+      let colorT = 0;
+      const currentColor = () => {
+        const index = Math.floor(colorT) % palette.length;
+        const fraction = colorT - Math.floor(colorT);
+        const smooth = fraction * fraction * (3 - 2 * fraction);
+        const start = palette[index];
+        const end = palette[(index + 1) % palette.length];
+        return start.map((value, channel) =>
+          Math.round(value + (end[channel] - value) * smooth),
+        );
+      };
+
       const tile = document.createElement('canvas');
       tile.width = tile.height = 200;
       const tileContext = tile.getContext('2d');
@@ -53,8 +67,7 @@
       let previousFrame = 0;
 
       const resize = () => {
-        // DPR plafonné à 1,5 pour éviter de trop charger les écrans haute densité.
-        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
         width = window.innerWidth;
         height = window.innerHeight;
         canvas.width = Math.round(width * dpr);
@@ -64,41 +77,26 @@
         scheduleFrame();
       };
 
-      const mouse = { x: width / 2, y: height / 2 };
-      const position = { x: width / 2, y: height / 2 };
-      const lastDot = { x: width / 2, y: height / 2 };
+      const mouse = { x: 0, y: 0 };
+      const position = { x: 0, y: 0 };
+      const lastStamp = { x: 0, y: 0 };
 
-      type Dot = {
-        x: number;
-        y: number;
-        radius: number;
-        color: string;
-        life: number;
-      };
+      type Stamp = { x: number; y: number; radius: number; color: number[]; life: number };
+      const trail: Stamp[] = [];
+      const MAX_STAMPS = 700;
+      const HEAD_RADIUS = 34;
+      const STAMP_RADIUS = 22;
+      const STEP = 5;
+      const FADE_PER_SECOND = 1;
 
-      const dots: Dot[] = [];
-      const maxDots = 42;
       let pointerInside = false;
       let pointerInitialized = false;
-      let headColor = pick();
 
-      const addDot = (x: number, y: number) => {
-        dots.push({
-          x,
-          y,
-          radius: 13 + Math.random() * 15,
-          color: pick(),
-          life: 1,
-        });
-        if (dots.length > maxDots) dots.splice(0, dots.length - maxDots);
-        if (Math.random() < 0.15) headColor = pick();
-      };
-
-      const drawBlob = (x: number, y: number, radius: number, color: string, alpha: number) => {
+      const drawBlob = (x: number, y: number, radius: number, color: number[], alpha: number) => {
         const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius);
-        gradient.addColorStop(0, color + 'ff');
-        gradient.addColorStop(0.55, color + '99');
-        gradient.addColorStop(1, color + '00');
+        gradient.addColorStop(0, `rgba(${color[0]},${color[1]},${color[2]},1)`);
+        gradient.addColorStop(0.55, `rgba(${color[0]},${color[1]},${color[2]},0.6)`);
+        gradient.addColorStop(1, `rgba(${color[0]},${color[1]},${color[2]},0)`);
         ctx.globalAlpha = alpha;
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -121,41 +119,52 @@
         ctx.globalAlpha = 1;
         ctx.clearRect(0, 0, width, height);
 
-        // Suivi avec inertie, sans boucle permanente lorsque le pointeur est immobile.
-        position.x += (mouse.x - position.x) * 0.18;
-        position.y += (mouse.y - position.y) * 0.18;
+        position.x += (mouse.x - position.x) * 0.12;
+        position.y += (mouse.y - position.y) * 0.12;
 
-        if (pointerInside) {
-          const distance = Math.hypot(position.x - lastDot.x, position.y - lastDot.y);
-          if (distance > 24) {
-            const steps = Math.min(4, Math.floor(distance / 24));
-            for (let i = 1; i <= steps; i++) {
-              const ratio = i / steps;
-              addDot(
-                lastDot.x + (position.x - lastDot.x) * ratio,
-                lastDot.y + (position.y - lastDot.y) * ratio,
-              );
-            }
-            lastDot.x = position.x;
-            lastDot.y = position.y;
+        const dx = position.x - lastStamp.x;
+        const dy = position.y - lastStamp.y;
+        const distance = Math.hypot(dx, dy);
+
+        if (distance > 0.01) {
+          colorT += distance * 0.0004;
+          const color = currentColor();
+          const steps = Math.max(1, Math.floor(distance / STEP));
+          for (let i = 1; i <= steps; i++) {
+            const ratio = i / steps;
+            trail.push({
+              x: lastStamp.x + dx * ratio + (Math.random() - 0.5) * 2,
+              y: lastStamp.y + dy * ratio + (Math.random() - 0.5) * 2,
+              radius: STAMP_RADIUS + Math.random() * 8,
+              color,
+              life: 1,
+            });
           }
+          lastStamp.x = position.x;
+          lastStamp.y = position.y;
+          if (trail.length > MAX_STAMPS) trail.splice(0, trail.length - MAX_STAMPS);
         }
 
-        // Durée de vie réelle : environ une seconde, indépendante du taux de rafraîchissement.
-        for (let i = dots.length - 1; i >= 0; i--) {
-          const dot = dots[i];
-          dot.life -= deltaSeconds;
-          if (dot.life <= 0) {
-            dots.splice(i, 1);
+        const color = currentColor();
+
+        for (let i = trail.length - 1; i >= 0; i--) {
+          const stamp = trail[i];
+          stamp.life -= deltaSeconds * FADE_PER_SECOND;
+          if (stamp.life <= 0) {
+            trail.splice(i, 1);
             continue;
           }
-          drawBlob(dot.x, dot.y, dot.radius * (1.08 - dot.life * 0.08), dot.color, dot.life * 0.72);
+          drawBlob(
+            stamp.x,
+            stamp.y,
+            stamp.radius * (1 - (1 - stamp.life) * 0.35),
+            stamp.color,
+            stamp.life * 0.28,
+          );
         }
 
-        // Tache principale, légèrement plus large que les points de la traînée.
-        if (pointerInside) drawBlob(position.x, position.y, 58, headColor, 0.78);
+        if (pointerInside) drawBlob(position.x, position.y, HEAD_RADIUS, color, 0.9);
 
-        // Le bruit agit uniquement sur les pixels dessinés : fond transparent conservé.
         if (pattern) {
           ctx.globalCompositeOperation = 'destination-in';
           ctx.globalAlpha = 1;
@@ -167,14 +176,14 @@
         ctx.globalAlpha = 1;
 
         const stillMoving = Math.hypot(mouse.x - position.x, mouse.y - position.y) > 0.5;
-        if (stillMoving || dots.length > 0) scheduleFrame();
+        if (stillMoving || trail.length > 0) scheduleFrame();
         else previousFrame = 0;
       };
 
       window.addEventListener('pointermove', (event) => {
         if (!pointerInitialized) {
-          mouse.x = position.x = lastDot.x = event.clientX;
-          mouse.y = position.y = lastDot.y = event.clientY;
+          mouse.x = position.x = lastStamp.x = event.clientX;
+          mouse.y = position.y = lastStamp.y = event.clientY;
           pointerInitialized = true;
         } else {
           mouse.x = event.clientX;
