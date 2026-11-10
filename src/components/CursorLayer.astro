@@ -126,10 +126,10 @@
         const dy = position.y - lastStamp.y;
         const distance = Math.hypot(dx, dy);
 
-        if (distance > 0.01) {
+        if (distance >= STEP) {
           colorT += distance * 0.0004;
           const color = currentColor();
-          const steps = Math.max(1, Math.floor(distance / STEP));
+          const steps = Math.floor(distance / STEP);
           for (let i = 1; i <= steps; i++) {
             const ratio = i / steps;
             trail.push({
