@@ -201,7 +201,15 @@ const boxes = [
           <div class="rounded-[2.5rem] bg-coal p-9" data-reveal>
             <p class="kicker">{b.title}</p>
             <ul class="mt-7 flex flex-wrap gap-2">
-              {b.items.map((t) => <li class="rounded-full border border-cream/20 px-4 py-2 text-[0.98rem] text-cream">{t}</li>)}
+              {b.title === 'Outils d’analyse' ? (
+                <>
+                  <li class="rounded-full border border-cream/20 px-4 py-2 text-[0.98rem] text-cream">{b.items[0]}</li>
+                  <li class="rounded-full border border-cream/20 px-4 py-2 text-[0.98rem] text-cream">{b.items[1]}</li>
+                  <li class="basis-full h-0" aria-hidden="true"></li>
+                  <li class="rounded-full border border-cream/20 px-4 py-2 text-[0.98rem] text-cream">{b.items[2]}</li>
+                  <li class="rounded-full border border-cream/20 px-4 py-2 text-[0.98rem] text-cream">{b.items[3]}</li>
+                </>
+              ) : b.items.map((t) => <li class="rounded-full border border-cream/20 px-4 py-2 text-[0.98rem] text-cream">{t}</li>)}
             </ul>
           </div>
         ))}
@@ -218,11 +226,11 @@ const boxes = [
           {site.experience.map((s, i) => (
             <li class={`flex flex-col rounded-[2.5rem] bg-coal p-4 pb-8 transition-colors hover:bg-tile ${i === 0 ? 'lg:col-span-2' : ''}`} data-reveal>
               <div class="flex flex-1 flex-col px-4 pt-7">
-                <div class="mb-6 flex h-28 items-center justify-start gap-8 px-4" aria-label={i === 0 ? "CSA et Havas" : "Kantar"}>
+                <div class="mb-6 flex h-28 items-center justify-start gap-6" aria-label={i === 0 ? "CSA et Havas" : "Kantar"}>
                   {i === 0 ? (
                     <>
                       {logos.csa && <Image src={logos.csa} alt="CSA" class="h-28 w-28 object-contain" />}
-                      {logos.havas && <Image src={logos.havas} alt="Havas" class="h-20 w-auto max-w-[16rem] object-contain" />}
+                      {logos.havas && <Image src={logos.havas} alt="Havas" class="h-20 w-auto max-w-[16rem] translate-y-2 object-contain" />}
                     </>
                   ) : (
                     logos.kantar && <Image src={logos.kantar} alt="Kantar" class="h-14 w-auto max-w-[12rem] object-contain brightness-0 invert" />
