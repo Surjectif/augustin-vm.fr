@@ -27,9 +27,9 @@ export const site = {
   ],
 
   figures: [
-    { value: 4, suffix: ' ans', label: 'd’expérience' },
-    { value: 200, suffix: '+', label: 'entretiens menés' },
-    { value: 20, suffix: '+', label: 'focus groups animés' },
+    { value: 15, suffix: '+', label: 'études qualitatives par an' },
+    { value: 250, suffix: '+', label: 'entretiens menés' },
+    { value: 30, suffix: '+', label: 'focus groups animés' },
   ],
 
   // Les exemples de projets fictifs ont été retirés : ne publier que des cas réels autorisés.
@@ -43,9 +43,12 @@ export const site = {
   ],
 
   // ── Parcours ───────────────────────────────────────────────────────────
-  path: [
+  experience: [
     { photo: 'parcours-csa', when: '2023 →', where: 'CSA / Havas', what: 'Chargé d’études qualitatives senior', detail: 'Pilotage complet, cibles B2B, B2C et experts, articulation avec les équipes quanti.' },
     { photo: 'parcours-kantar', when: '2022', where: 'Kantar Insights', what: 'Assistant chargé d’études quali', detail: 'Guides d’entretien, animation, modération de communautés en ligne, analyse de verbatim.' },
+  ],
+
+  education: [
     { photo: 'parcours-ehess', when: '2018–20', where: 'EHESS, Paris', what: 'Master 2 Sociologie', detail: 'Deux mémoires sur les makerspaces, six mois de terrain.' },
     { photo: 'parcours-berlin', when: '2017–18', where: 'TU Berlin', what: 'Sociologie des techniques et de l’innovation', detail: 'Licence 3, en allemand.' },
     { photo: 'parcours-strasbourg', when: '2015–17', where: 'Université de Strasbourg', what: 'Sciences sociales, parcours renforcé', detail: 'Socio, éco, droit.' },
@@ -60,10 +63,10 @@ export const site = {
     { op: 'out1', label: 'Recommander', text: 'Présenter les enseignements et formuler des recommandations opérationnelles.' },
   ],
 
-  skills: [
-    'Focus groups', 'Entretiens approfondis', 'Ethnographie', 'Desk research',
-    'Communautés en ligne', 'Articulation quali / quanti', 'Recommandations stratégiques',
-    'Recherche utilisateur (UX Research)', 'Analyse des usages et parcours', 'Analyse de données',
+  skillGroups: [
+    { title: 'Méthodes d’enquête', items: ['Entretiens approfondis', 'Focus groups', 'Ethnographie', 'Communautés en ligne', 'Desk research', 'Recherche utilisateur (UX Research)'] },
+    { title: 'Analyse et interprétation', items: ['Analyse thématique', 'Analyse des usages et parcours', 'Articulation quali / quanti', 'Analyse de données'] },
+    { title: 'Restitution et recommandations', items: ['Synthèses et rapports', 'Recommandations stratégiques'] },
   ],
   analysisTools: ['Modalisa', 'Python', 'R', 'Pack Office'],
   creativeTools: ['Photoshop', 'Illustrator', 'TouchDesigner'],

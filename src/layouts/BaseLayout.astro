@@ -1,5 +1,7 @@
 ---
 import '@/styles/global.css';
+import { getImage } from 'astro:assets';
+import portrait from '@/assets/photos/portrait.jpg';
 import { site } from '@/data/site';
 import { withBase } from '@/lib/url';
 
@@ -12,6 +14,7 @@ interface Props {
 
 const { title, description, noindex = false, structuredData = false } = Astro.props;
 const p = site.person;
+const socialImage = await getImage({ src: portrait, width: 1200, height: 630, fit: 'cover', format: 'jpeg' });
 
 // On garde le « / » final de l'accueil : c'est l'URL que sert GitHub Pages.
 const cleanPath = Astro.url.pathname.replace(/(index)?\.html$/, '') || '/';
@@ -31,7 +34,7 @@ const person = {
     { '@type': 'CollegeOrUniversity', name: 'Technische Universität Berlin' },
     { '@type': 'CollegeOrUniversity', name: 'Université de Strasbourg' },
   ],
-  knowsAbout: [...site.skills],
+  knowsAbout: site.skillGroups.flatMap((group) => group.items),
   knowsLanguage: ['fr', 'de', 'en', 'da', 'pt-BR'],
 };
 ---
@@ -54,6 +57,13 @@ const person = {
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(socialImage.src, site.url).href} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={Astro.url.pathname.startsWith("/en") ? "Portrait of Augustin Vinot-Marull" : "Portrait d’Augustin Vinot-Marull"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={new URL(socialImage.src, site.url).href} />
     <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <link rel="sitemap" type="application/xml" href={withBase('/sitemap-index.xml')} />
     {structuredData && <script type="application/ld+json" is:inline set:html={JSON.stringify(person)} />}

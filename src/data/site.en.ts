@@ -27,9 +27,9 @@ export const site = {
   ],
 
   figures: [
-    { value: 4, suffix: ' years', label: 'of experience' },
-    { value: 200, suffix: '+', label: 'interviews conducted' },
-    { value: 20, suffix: '+', label: 'focus groups moderated' },
+    { value: 15, suffix: '+', label: 'qualitative studies per year' },
+    { value: 250, suffix: '+', label: 'interviews conducted' },
+    { value: 30, suffix: '+', label: 'focus groups moderated' },
   ],
 
   // Les exemples de projets fictifs ont été retirés : ne publier que des cas réels autorisés.
@@ -43,9 +43,12 @@ export const site = {
   ],
 
   // ── Parcours ───────────────────────────────────────────────────────────
-  path: [
+  experience: [
     { photo: 'parcours-csa', when: '2023 →', where: 'CSA / Havas', what: 'Senior Qualitative Research Consultant', detail: 'End-to-end project management, B2B and B2C audiences, expert interviews, and coordination with quantitative research teams.' },
     { photo: 'parcours-kantar', when: '2022', where: 'Kantar Insights', what: 'Junior Qualitative Research Assistant', detail: 'Interview guides, moderation, online communities, and verbatim analysis.' },
+  ],
+
+  education: [
     { photo: 'parcours-ehess', when: '2018–20', where: 'EHESS, Paris', what: 'Master’s degree in Sociology', detail: 'Two dissertations on makerspaces and six months of fieldwork.' },
     { photo: 'parcours-berlin', when: '2017–18', where: 'TU Berlin', what: 'Sociology of technology and innovation', detail: 'Third-year undergraduate studies, taught in German.' },
     { photo: 'parcours-strasbourg', when: '2015–17', where: 'Université de Strasbourg', what: 'Social Sciences, advanced track', detail: 'Sociology, economics and law.' },
@@ -60,10 +63,10 @@ export const site = {
     { op: 'out1', label: 'Recommend', text: 'Present the findings and formulate actionable recommendations.' },
   ],
 
-  skills: [
-    'Focus groups', 'In-depth interviews', 'Ethnography', 'Desk research',
-    'Online communities', 'Qualitative / quantitative integration', 'Strategic recommendations',
-    'User research (UX Research)', 'User journey & usage analysis', 'Data analysis',
+  skillGroups: [
+    { title: 'Research methods', items: ['In-depth interviews', 'Focus groups', 'Ethnography', 'Online communities', 'Desk research', 'User research (UX Research)'] },
+    { title: 'Analysis & interpretation', items: ['Thematic analysis', 'User journey & usage analysis', 'Qualitative / quantitative integration', 'Data analysis'] },
+    { title: 'Reporting & recommendations', items: ['Research summaries and reports', 'Strategic recommendations'] },
   ],
   analysisTools: ['Modalisa', 'Python', 'R', 'Office suite'],
   creativeTools: ['Photoshop', 'Illustrator', 'TouchDesigner'],

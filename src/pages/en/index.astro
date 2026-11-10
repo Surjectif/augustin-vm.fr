@@ -8,11 +8,12 @@ import { site as site } from '@/data/site.en';
 import { photo } from '@/lib/photos';
 
 const p = site.person;
-const pathTones = ['ember', 'stone', 'dusk', 'moss', 'stone'] as const;
+const experienceTones = ['ember', 'stone'] as const;
+const educationTones = ['dusk', 'moss', 'stone'] as const;
 const portrait = photo('portrait');
 const boxes = [
-  { title: 'Research & analysis', items: [...site.analysisTools] as string[] },
-  { title: 'Visual creation', items: [...site.creativeTools] as string[] },
+  { title: 'Research & analysis tools', items: [...site.analysisTools] as string[] },
+  { title: 'Complementary creative practice', items: [...site.creativeTools] as string[] },
   { title: 'Languages', items: site.languages.map((l) => `${l.name} · ${l.level}`) },
 ];
 ---
@@ -171,15 +172,19 @@ const boxes = [
       </ul>
     </section>
 
-    <!-- SAVOIR-FAIRE -->
+    <!-- EXPERTISE -->
     <section class="wrap pb-20 sm:pb-28">
       <p class="kicker" data-reveal>Expertise</p>
-      <ul class="mt-7 flex flex-wrap gap-3">
-        {site.skills.map((skill, i) => {
-          const icons = ['⌕', '◉', '⌂', '▤', '◎', '⇄', '↗'];
-          return <li class="inline-flex items-center gap-3 rounded-full border border-cream/20 bg-coal px-5 py-3 text-cream"><span class="grid size-7 place-items-center rounded-full bg-ember/15 text-ember" aria-hidden="true">{icons[i % icons.length]}</span>{skill}</li>;
-        })}
-      </ul>
+      <div class="mt-7 grid gap-8 lg:grid-cols-3">
+        {site.skillGroups.map((group) => (
+          <div data-reveal>
+            <h3 class="text-[1.35rem]">{group.title}</h3>
+            <ul class="mt-5 flex flex-wrap gap-2">
+              {group.items.map((skill) => <li class="rounded-full border border-cream/20 bg-coal px-4 py-2 text-[0.98rem] text-cream">{skill}</li>)}
+            </ul>
+          </div>
+        ))}
+      </div>
     </section>
 
         <!-- ═══ OUTILS & LANGUES : pilules ═══════════════════════════════════ -->
@@ -196,23 +201,40 @@ const boxes = [
       </div>
     </section>
 
-    <!-- ═══ PARCOURS : tuiles arrondies ══════════════════════════════════ -->
+    <!-- ═══ EXPERIENCE & EDUCATION ═════════════════════════════════════ -->
     <section id="parcours" class="wrap scroll-mt-32 pb-28 sm:pb-36">
-      <p class="kicker" data-reveal>Experience</p>
+      <p class="kicker" data-reveal>Background</p>
       <h2 class="mt-6 text-[clamp(2.4rem,4.6vw,4.4rem)]" data-reveal>Strasbourg, Berlin, Paris</h2>
-
-      <ol class="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {site.path.map((s, i) => (
-          <li class={`flex flex-col rounded-[2.5rem] bg-coal p-4 pb-8 transition-colors hover:bg-tile ${i === 0 ? 'lg:col-span-2' : ''}`} data-reveal>
-            <Shot name={s.photo} tone={pathTones[i]} alt={s.where} class="h-44 rounded-full" />
-            <div class="flex flex-1 flex-col px-4 pt-7">
-              <p class="kicker">{s.when} · {s.where}</p>
-              <h3 class="mt-4 text-[1.75rem]">{s.what}</h3>
-              <p class="mt-3 text-soft">{s.detail}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
+      <div class="mt-14">
+        <h3 class="text-[1.6rem]" data-reveal>Professional experience</h3>
+        <ol class="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {site.experience.map((s, i) => (
+            <li class={`flex flex-col rounded-[2.5rem] bg-coal p-4 pb-8 transition-colors hover:bg-tile ${i === 0 ? 'lg:col-span-2' : ''}`} data-reveal>
+              <Shot name={s.photo} tone={experienceTones[i]} alt={s.where} class="h-44 rounded-full" />
+              <div class="flex flex-1 flex-col px-4 pt-7">
+                <p class="kicker">{s.when} · {s.where}</p>
+                <h4 class="mt-4 text-[1.75rem]">{s.what}</h4>
+                <p class="mt-3 text-soft">{s.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <div class="mt-16">
+        <h3 class="text-[1.6rem]" data-reveal>Education</h3>
+        <ol class="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {site.education.map((s, i) => (
+            <li class="flex flex-col rounded-[2.5rem] bg-coal p-4 pb-8 transition-colors hover:bg-tile" data-reveal>
+              <Shot name={s.photo} tone={educationTones[i]} alt={s.where} class="h-44 rounded-full" />
+              <div class="flex flex-1 flex-col px-4 pt-7">
+                <p class="kicker">{s.when} · {s.where}</p>
+                <h4 class="mt-4 text-[1.75rem]">{s.what}</h4>
+                <p class="mt-3 text-soft">{s.detail}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
     </section>
 
     <!-- ═══ CONTACT : bloc orange ════════════════════════════════════════ -->
