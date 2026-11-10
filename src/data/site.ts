@@ -69,7 +69,7 @@ export const site = {
     { title: 'Restitution et recommandations', items: ['Synthèses et rapports', 'Recommandations stratégiques'] },
   ],
   analysisTools: ['Modalisa', 'Python', 'R', 'Pack Office'],
-  creativeTools: ['Photoshop', 'Illustrator', 'TouchDesigner'],
+  creativeTools: ['GIMP', 'TouchDesigner', 'Photoshop', 'Illustrator'],
   languages: [
     { name: 'Allemand', level: 'C1/C2' },
     { name: 'Anglais', level: 'C1' },
