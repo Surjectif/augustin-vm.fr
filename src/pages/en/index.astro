@@ -8,7 +8,7 @@ import { site as site } from '@/data/site.en';
 import { photo } from '@/lib/photos';
 
 const p = site.person;
-const pathTones: Tone[] = ['ember', 'stone', 'dusk', 'moss', 'stone'];
+const pathTones = ['ember', 'stone', 'dusk', 'moss', 'stone'] as const;
 const portrait = photo('portrait');
 const boxes = [
   { title: 'Research & analysis', items: [...site.analysisTools] as string[] },
