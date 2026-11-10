@@ -31,20 +31,19 @@ const boxes = [
       <div class="relative isolate h-[calc(100svh-8.75rem)] min-h-[36rem] overflow-hidden rounded-[2.5rem] sm:h-[calc(100svh-12rem)] sm:rounded-[5rem]">
         <Shot name="hero-fond" tone="dusk" class="absolute inset-0 -z-10" />
         <div class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(20_20_19/.82)_0%,rgb(20_20_19/.35)_55%,transparent_100%)]"></div>
-        <div class="orbit -right-[18vw] -top-[30vh] aspect-square w-[70vw] opacity-60" data-speed="-0.15" aria-hidden="true"></div>
+        <div class="pointer-events-none absolute right-[4%] top-[17%] z-0 aspect-square w-[min(42vw,32rem)] rounded-full bg-ember" aria-hidden="true"></div>
 
         {portrait && (
-          <div class="absolute bottom-0 right-[6%] hidden h-[82%] w-[min(30vw,30rem)] overflow-hidden rounded-t-full bg-white lg:block">
+          <div class="absolute bottom-0 right-[6%] z-10 hidden h-[82%] w-[min(30vw,30rem)] overflow-hidden rounded-t-full bg-white lg:block">
             <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[480, 800, 1100]} sizes="30vw" class="absolute inset-x-0 bottom-0 h-[112%] w-full object-cover object-top" loading="eager" fetchpriority="high" />
           </div>
         )}
 
-        <div class="absolute inset-x-0 bottom-0 px-6 pb-14 sm:px-16 sm:pb-20 lg:pl-[5.5rem] lg:pr-[40%]">
+        <div class="absolute inset-x-0 bottom-0 z-20 px-6 pb-14 sm:px-16 sm:pb-20 lg:pl-[5.5rem] lg:pr-[40%]">
           <p class="kicker" data-reveal>{p.role} · {p.city}</p>
           <h1 class="mt-6 max-w-[15ch] text-[clamp(2.9rem,6.4vw,6.2rem)] lg:text-[clamp(3rem,4.7vw,5rem)]" data-reveal>Understanding what <span class="underline decoration-ember decoration-[3px] underline-offset-[0.12em]">really</span> matters to people.</h1>
           <p class="mt-6 max-w-[36rem] text-lg text-cream/85 sm:text-xl" data-reveal>{site.pitch}</p>
           <div class="mt-10 flex flex-wrap gap-3" data-reveal>
-            <a href="#etudes" class="pill-line">Selected research</a>
             <a href="#contact" class="pill-line">Get in touch</a>
             <a href="/cv.pdf" target="_blank" rel="noopener" class="pill-solid">My CV <span aria-hidden="true">↗</span></a>
             <a href={p.linkedin} target="_blank" rel="noopener noreferrer" class="pill-line">LinkedIn <span aria-hidden="true">↗</span></a>
