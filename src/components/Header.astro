@@ -18,21 +18,51 @@ const nav = isEnglish ? [
       <span class="grid size-11 place-items-center rounded-full bg-ember text-[0.95rem] font-semibold text-night">AV</span>
       <span class="hidden text-[1.05rem] font-medium text-cream xl:inline">Augustin Vinot-Marull</span>
     </a>
-    <nav aria-label="Navigation principale" class="hidden md:block">
+    <nav data-desktop-nav aria-label={isEnglish ? "Main navigation" : "Navigation principale"} class="hidden md:block">
       <ul class="flex items-center justify-between gap-0 text-[1.35rem] text-cream">
         {nav.map(([label, href]) => (
           <li><a href={withBase(href)} class="nav-link whitespace-nowrap px-3 py-2 transition-colors">{label}</a></li>
         ))}
       </ul>
     </nav>
-    <div class="flex items-center gap-2"><a href={withBase(isEnglish ? '/' : '/en.html')} class="pill-line !px-4 !py-2.5 !text-sm" aria-label={isEnglish ? "Switch to French" : "Switch to English"}>{isEnglish ? "FR" : "EN"}</a><a href={withBase(isEnglish ? '/en.html#contact' : '/#contact')} class="pill-line !px-5 !py-2.5 !text-[1.35rem]">{isEnglish ? "Contact" : "Contact"} <span aria-hidden="true">→</span></a></div>
+    <div class="flex items-center gap-2">
+      <details class="relative md:hidden" data-mobile-nav>
+        <summary aria-label={isEnglish ? "Open main menu" : "Ouvrir le menu principal"} class="pill-line flex cursor-pointer list-none items-center gap-2 !px-3.5 !py-2.5 !text-sm transition-colors hover:text-ember focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember">
+          <span>Menu</span>
+          <svg aria-hidden="true" viewBox="0 0 20 20" class="size-4" fill="none">
+            <path d="M3 5.5h14M3 10h14M3 14.5h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </summary>
+        <nav aria-label={isEnglish ? "Mobile navigation" : "Navigation mobile"} class="absolute right-0 top-[calc(100%+0.75rem)] z-50 w-[min(19rem,calc(100vw-1.5rem))] rounded-[1.7rem] border border-cream/15 bg-coal/95 p-3 shadow-2xl backdrop-blur-xl">
+          <ul class="flex flex-col gap-1">
+            {nav.map(([label, href]) => (
+              <li><a href={withBase(href)} class="mobile-nav-link block rounded-full px-4 py-3 text-base text-cream transition-colors hover:bg-tile hover:text-ember focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ember">{label}</a></li>
+            ))}
+          </ul>
+        </nav>
+      </details>
+      <a href={withBase(isEnglish ? '/' : '/en.html')} class="pill-line !px-3 !py-2.5 !text-sm" aria-label={isEnglish ? "Switch to French" : "Switch to English"}>{isEnglish ? "FR" : "EN"}</a>
+      <a href={withBase(isEnglish ? '/en.html#contact' : '/#contact')} class="pill-line !px-3.5 !py-2.5 !text-sm sm:!px-5 sm:!text-[1.35rem]">{isEnglish ? "Contact" : "Contact"} <span aria-hidden="true">→</span></a>
+    </div>
   </div>
 </header>
 
 <style>
-  nav ul { min-width: min(42vw, 36rem); }
-  nav li { display: flex; align-items: center; }
-  nav li + li { border-left: 1px solid rgb(255 255 255 / 0.38); margin-left: clamp(0.7rem, 1.4vw, 1.4rem); padding-left: clamp(0.7rem, 1.4vw, 1.4rem); }
+  nav[data-desktop-nav] ul { min-width: min(42vw, 36rem); }
+  nav[data-desktop-nav] li { display: flex; align-items: center; }
+  nav[data-desktop-nav] li + li { border-left: 1px solid rgb(255 255 255 / 0.38); margin-left: clamp(0.7rem, 1.4vw, 1.4rem); padding-left: clamp(0.7rem, 1.4vw, 1.4rem); }
+  [data-mobile-nav] > summary::-webkit-details-marker { display: none; }
+  [data-mobile-nav] > summary::marker { content: ""; }
+  [data-mobile-nav][open] > summary { color: var(--color-ember); }
+  @media (max-width: 767px) {
+    [data-site-header] { transition: opacity 180ms ease, padding 180ms ease; }
+    [data-site-header].is-compact { padding-top: 0.4rem; }
+    [data-site-header].is-compact > div {
+      height: 3.65rem;
+      border-color: rgb(243 240 238 / 0.16);
+      background-color: rgb(28 27 25 / 0.96);
+    }
+  }
   .nav-link {
     display: inline-block;
     text-decoration: underline;
@@ -43,8 +73,8 @@ const nav = isEnglish ? [
   }
   .nav-link:hover, .nav-link:focus-visible { text-decoration-color: var(--color-ember); }
   @media (max-width: 900px) {
-    nav ul { min-width: auto; }
-    nav li + li { margin-left: 0.55rem; padding-left: 0.55rem; }
+    nav[data-desktop-nav] ul { min-width: auto; }
+    nav[data-desktop-nav] li + li { margin-left: 0.55rem; padding-left: 0.55rem; }
   }
 </style>
 
@@ -56,6 +86,15 @@ const nav = isEnglish ? [
     let ticking = false;
     const updateHeaderVisibility = () => {
       const heroBottom = heroBlock.getBoundingClientRect().bottom;
+      if (window.matchMedia('(max-width: 767px)').matches) {
+        // On mobile, keep navigation available after the hero and compact it.
+        siteHeader.style.opacity = '1';
+        siteHeader.style.pointerEvents = 'auto';
+        siteHeader.classList.toggle('is-compact', heroBottom < 0);
+        ticking = false;
+        return;
+      }
+      siteHeader.classList.remove('is-compact');
       const fadeDistance = 180;
       const progress = Math.min(1, Math.max(0, -heroBottom / fadeDistance));
       siteHeader.style.opacity = String(1 - progress);
@@ -70,6 +109,18 @@ const nav = isEnglish ? [
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
+    window.matchMedia('(max-width: 767px)').addEventListener('change', onScroll);
+
+    const mobileNav = document.querySelector<HTMLDetailsElement>('[data-mobile-nav]');
+    mobileNav?.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => { mobileNav.open = false; });
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && mobileNav?.open) {
+        mobileNav.open = false;
+        mobileNav.querySelector('summary')?.focus();
+      }
+    });
     updateHeaderVisibility();
   }
 </script>
