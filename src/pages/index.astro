@@ -32,7 +32,7 @@ const boxes = [
         {portrait && (
           <div class="absolute bottom-0 right-[3%] z-10 hidden h-[88%] w-[min(38vw,38rem)] overflow-visible lg:block">
             <div aria-hidden="true" class="pointer-events-none absolute -bottom-[3%] right-[-1%] z-0 aspect-square w-[min(34vw,32rem)] overflow-hidden rounded-full border border-ember/55">
-              <span class="absolute inset-y-0 left-0 w-1/2 rounded-l-full bg-ember"></span>
+              
             </div>
             <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[600, 900, 1200, 1500]} sizes="38vw" class="absolute inset-x-0 top-0 z-10 h-[125%] w-full object-cover object-top brightness-[0.90]" loading="eager" fetchpriority="high" />
           </div>
@@ -209,6 +209,12 @@ const boxes = [
           {site.experience.map((s, i) => (
             <li class={`flex flex-col rounded-[2.5rem] bg-coal p-4 pb-8 transition-colors hover:bg-tile ${i === 0 ? 'lg:col-span-2' : ''}`} data-reveal>
               <div class="flex flex-1 flex-col px-4 pt-7">
+                {i === 0 ? (<div class="mb-5 flex h-12 items-center gap-5 px-4" aria-label="CSA et Havas">
+                  <img src="https://s3.eu-west-3.amazonaws.com/pub.be/2016/02/csa-log-4x4.png" alt="CSA" class="h-10 w-10 object-contain" loading="lazy" />
+                  <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Havas_Logo_2023.svg" alt="Havas" class="h-8 w-auto max-w-[8rem] object-contain" loading="lazy" />
+                </div>) : (<div class="mb-5 flex h-12 items-center gap-5 px-4" aria-label="Kantar">
+                  <img src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Kantar_Group_logo.svg" alt="Kantar" class="h-9 w-auto max-w-[10rem] object-contain" loading="lazy" />
+                </div>)}
                 <p class="kicker">{s.when} · {s.where}</p>
                 <h4 class="mt-4 text-[1.75rem]">{s.what}</h4>
                 <p class="mt-3 text-soft">{s.detail}</p>
@@ -223,6 +229,7 @@ const boxes = [
           {site.education.map((s, i) => (
             <li class="flex flex-col rounded-[2.5rem] bg-coal p-4 pb-8 transition-colors hover:bg-tile" data-reveal>
               <div class="flex flex-1 flex-col px-4 pt-7">
+                {i === 0 ? (<div class="mb-5 flex h-12 items-center px-4"><img src="https://edch.eu/sites/default/files/2025-02/Logo_EHESS_2021_RVB.png" alt="EHESS" class="h-11 w-auto max-w-[11rem] object-contain object-left" loading="lazy" /></div>) : i === 1 ? (<div class="mb-5 flex h-12 items-center px-4"><img src="https://minio.enhance.pw.edu.pl/enhance-public/9c6e7609-4edc-4c62-ada6-fccef8fbd5fc.png" alt="Technische Universität Berlin" class="h-11 w-auto max-w-[11rem] object-contain object-left" loading="lazy" /></div>) : (<div class="mb-5 flex h-12 items-center px-4"><img src="https://igg.unistra.fr/people/lum_vis/img/logo/logo-Unistra.jpg" alt="Université de Strasbourg" class="h-11 w-auto max-w-[11rem] object-contain object-left" loading="lazy" /></div>)}
                 <p class="kicker">{s.when} · {s.where}</p>
                 <h4 class="mt-4 text-[1.75rem]">{s.what}</h4>
                 <p class="mt-3 text-soft">{s.detail}</p>
