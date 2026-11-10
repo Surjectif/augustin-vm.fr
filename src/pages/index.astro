@@ -30,8 +30,11 @@ const boxes = [
         <Shot name="hero-fond" tone="dusk" class="absolute inset-0 -z-10" />
         <div class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(20_20_19/.82)_0%,rgb(20_20_19/.35)_55%,transparent_100%)]"></div>
         {portrait && (
-          <div class="absolute bottom-0 right-[3%] z-10 hidden h-[88%] w-[min(38vw,38rem)] overflow-hidden lg:block">
-            <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[600, 900, 1200, 1500]} sizes="38vw" class="absolute inset-x-0 top-0 h-[125%] w-full object-cover object-top" loading="eager" fetchpriority="high" />
+          <div class="absolute bottom-0 right-[3%] z-10 hidden h-[88%] w-[min(38vw,38rem)] overflow-visible lg:block">
+            <div aria-hidden="true" class="pointer-events-none absolute -bottom-[3%] right-[-1%] z-0 aspect-square w-[min(34vw,32rem)] overflow-hidden rounded-full border border-ember/55">
+              <span class="absolute inset-y-0 left-0 w-1/2 rounded-l-full bg-ember"></span>
+            </div>
+            <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[600, 900, 1200, 1500]} sizes="38vw" class="absolute inset-x-0 top-0 z-10 h-[125%] w-full object-cover object-top brightness-[0.90]" loading="eager" fetchpriority="high" />
           </div>
         )}
 
