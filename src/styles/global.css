@@ -76,8 +76,8 @@
 
 
 /* Surfaces légèrement translucides : le pointeur reste perceptible derrière les cartes. */
-.bg-coal { background-color: rgb(28 27 25 / 94%); }
-.bg-tile { background-color: rgb(38 37 34 / 94%); }
+.bg-coal { background-color: rgb(28 27 25 / 89%); }
+.bg-tile { background-color: rgb(38 37 34 / 89%); }
 
 /* Carrousel d'études : fondu entre l'image et le texte actifs. */
 @layer components {

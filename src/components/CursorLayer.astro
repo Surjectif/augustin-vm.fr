@@ -127,7 +127,7 @@
         const distance = Math.hypot(dx, dy);
 
         if (distance >= STEP) {
-          colorT += distance * 0.0004;
+          colorT += distance * 0.0005 + deltaSeconds * 0.00018;
           const color = currentColor();
           const steps = Math.floor(distance / STEP);
           for (let i = 1; i <= steps; i++) {

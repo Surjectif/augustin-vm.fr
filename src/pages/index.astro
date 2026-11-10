@@ -8,8 +8,6 @@ import { site } from '@/data/site';
 import { photo } from '@/lib/photos';
 
 const p = site.person;
-const experienceTones = ['ember', 'stone'] as const;
-const educationTones = ['dusk', 'moss', 'stone'] as const;
 const portrait = photo('portrait');
 const boxes = [
   { title: 'Outils d’analyse', items: [...site.analysisTools] as string[] },
@@ -209,7 +207,6 @@ const boxes = [
         <ol class="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {site.experience.map((s, i) => (
             <li class={`flex flex-col rounded-[2.5rem] bg-coal p-4 pb-8 transition-colors hover:bg-tile ${i === 0 ? 'lg:col-span-2' : ''}`} data-reveal>
-              <Shot name={s.photo} tone={experienceTones[i]} alt={s.where} class="h-44 rounded-full" />
               <div class="flex flex-1 flex-col px-4 pt-7">
                 <p class="kicker">{s.when} · {s.where}</p>
                 <h4 class="mt-4 text-[1.75rem]">{s.what}</h4>
@@ -224,7 +221,6 @@ const boxes = [
         <ol class="mt-7 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {site.education.map((s, i) => (
             <li class="flex flex-col rounded-[2.5rem] bg-coal p-4 pb-8 transition-colors hover:bg-tile" data-reveal>
-              <Shot name={s.photo} tone={educationTones[i]} alt={s.where} class="h-44 rounded-full" />
               <div class="flex flex-1 flex-col px-4 pt-7">
                 <p class="kicker">{s.when} · {s.where}</p>
                 <h4 class="mt-4 text-[1.75rem]">{s.what}</h4>
