@@ -21,9 +21,9 @@ export const site = {
     'I explore behaviours, perceptions and trade-offs to generate insights that inform decision-making.',
 
   intro: [
-    'Educated at EHESS, with experience at Kantar and CSA / Havas, I lead qualitative research projects end to end: from research design and fieldwork to analysis and executive presentations.',
-    'I want to understand what people genuinely need — including what they may not express directly. I look beyond stated opinions to examine the practices, constraints and trade-offs that shape their choices.',
-    'To do so, I bring field observations, data and research literature into conversation. I work from evidence towards the mechanisms that explain it, testing interpretations and building a well-supported understanding of a phenomenon.',
+    "Having studied at EHESS and worked at Kantar and CSA / Havas, I lead qualitative research projects end to end: from framing the brief and designing the methodology to conducting fieldwork, analysing findings and presenting insights to executive teams.",
+    "What interests me is understanding what people genuinely need, including what they do not express directly. I pay attention not only to what people say, but also to their practices, the constraints they face and the criteria shaping their choices.",
+    "My work is to put these elements into perspective: to understand what shapes behaviour, distinguish observations from interpretations, and develop robust insights that can inform decisions.",
   ],
 
   figures: [
