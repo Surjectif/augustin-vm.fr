@@ -39,17 +39,15 @@ const boxes = [
         <Shot name="hero-fond" tone="dusk" class="absolute inset-0 -z-10" />
         <div class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(20_20_19/.82)_0%,rgb(20_20_19/.35)_55%,transparent_100%)]"></div>
         {portrait && (
-          <div class="absolute bottom-0 right-[3%] z-10 hidden h-[88%] w-[min(38vw,38rem)] overflow-visible lg:block">
-            <div aria-hidden="true" class="pointer-events-none absolute -bottom-[3%] right-[-1%] z-0 aspect-square w-[min(34vw,32rem)] overflow-hidden rounded-full border border-ember/55">
-              
-            </div>
-            <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[600, 900, 1200, 1500]} sizes="38vw" class="absolute inset-x-0 top-0 z-10 h-[125%] w-full object-cover object-top brightness-[0.90]" loading="eager" fetchpriority="high" />
+          <div class="absolute bottom-0 right-[3%] z-10 hidden h-[92%] w-[min(34vw,27rem)] overflow-hidden lg:block xl:h-[88%] xl:w-[min(38vw,38rem)] xl:overflow-visible">
+            <div aria-hidden="true" class="pointer-events-none absolute -bottom-[3%] right-[-1%] z-0 aspect-square w-[min(30vw,24rem)] overflow-hidden rounded-full border border-ember/55 xl:w-[min(34vw,32rem)]"></div>
+            <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[600, 900, 1200, 1500]} sizes="(min-width: 1280px) 38vw, 34vw" class="absolute inset-x-0 bottom-0 z-10 h-full w-full object-contain object-bottom brightness-[0.90] xl:top-0 xl:bottom-auto xl:h-[125%] xl:object-cover xl:object-top" loading="eager" fetchpriority="high" />
           </div>
         )}
 
-        <div class="absolute inset-x-0 bottom-0 z-20 px-6 pb-14 sm:px-16 sm:pb-20 lg:pl-[5.5rem] lg:pr-[40%]">
+        <div class="absolute inset-x-0 bottom-0 z-20 px-6 pb-14 sm:px-16 sm:pb-20 lg:pl-12 lg:pr-[38%] xl:pl-[5.5rem] xl:pr-[40%]">
           <p class="kicker" data-reveal>{p.role} · {p.city}</p>
-          <h1 class="mt-6 max-w-[15ch] text-[clamp(2.9rem,6.4vw,6.2rem)] lg:text-[clamp(3rem,4.7vw,5rem)]" data-reveal>Comprendre ce qui compte <span class="underline decoration-ember decoration-[3px] underline-offset-[0.12em]">vraiment</span> pour les gens.</h1>
+          <h1 class="mt-6 max-w-[15ch] text-[clamp(2.9rem,6.4vw,6.2rem)] lg:text-[clamp(2.7rem,4vw,3.8rem)] xl:text-[clamp(3rem,4.7vw,5rem)]" data-reveal>Comprendre ce qui compte <span class="underline decoration-ember decoration-[3px] underline-offset-[0.12em]">vraiment</span> pour les gens.</h1>
           <p class="mt-6 max-w-[36rem] text-lg text-cream/85 sm:text-xl" data-reveal>{site.pitch}</p>
           <div class="mt-10 flex flex-wrap gap-3" data-reveal>
             <a href="#contact" class="pill-line">Me contacter</a>
