@@ -23,6 +23,29 @@ const boxes = [
   { title: 'Outils de création', items: [...site.creativeTools] as string[] },
   { title: 'Langues', items: site.languages.map((l) => `${l.name} · ${l.level}`) },
 ];
+
+const introHighlights: string[][] = [["EHESS","études qualitatives de bout en bout"],[],["interprétation argumentée","recommandations concrètes"]];
+const splitIntro = (text: string, index: number) => {
+  const terms = introHighlights[index] ?? [];
+  const segments: { text: string; highlighted: boolean }[] = [];
+  let position = 0;
+  while (position < text.length) {
+    let next: { term: string; index: number } | undefined;
+    for (const term of terms) {
+      const matchAt = text.indexOf(term, position);
+      if (matchAt >= 0 && (!next || matchAt < next.index)) next = { term, index: matchAt };
+    }
+    if (!next) {
+      segments.push({ text: text.slice(position), highlighted: false });
+      break;
+    }
+    if (next.index > position) segments.push({ text: text.slice(position, next.index), highlighted: false });
+    segments.push({ text: next.term, highlighted: true });
+    position = next.index + next.term.length;
+  }
+  return segments;
+};
+
 ---
 
 <BaseLayout
@@ -74,7 +97,9 @@ const boxes = [
           <h2 class="text-[clamp(2.4rem,4.6vw,4.4rem)]" data-reveal>Sociologue de formation, enquêteur de métier</h2>
         </div>
         <div class="space-y-5 text-[1.2rem] text-soft lg:col-span-5 lg:pt-3" data-reveal>
-          {site.intro.map((t) => <p>{t}</p>)}
+          {site.intro.map((t, i) => (
+            <p>{splitIntro(t, i).map(({ text, highlighted }) => highlighted ? <span class="font-medium text-ember">{text}</span> : text)}</p>
+          ))}
         </div>
       </div>
 
