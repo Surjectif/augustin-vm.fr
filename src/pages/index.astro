@@ -98,7 +98,7 @@ const splitIntro = (text: string, index: number) => {
         </div>
         <div class="space-y-5 text-[1.2rem] text-soft lg:col-span-5 lg:pt-3" data-reveal>
           {site.intro.map((t, i) => (
-            <p>{splitIntro(t, i).map(({ text, highlighted }) => highlighted ? <span class="font-medium text-ember">{text}</span> : text)}</p>
+            <p>{splitIntro(t, i).map(({ text, highlighted }) => highlighted ? <span class="box-decoration-clone rounded-[0.35em] bg-ember px-[0.22em] py-[0.04em] font-medium text-[#141413]">{text}</span> : text)}</p>
           ))}
         </div>
       </div>
