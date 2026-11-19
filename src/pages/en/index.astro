@@ -41,7 +41,7 @@ const boxes = [
         {portrait && (
           <>
             <div class="absolute bottom-0 right-[3%] z-10 hidden h-[88%] w-[min(38vw,38rem)] overflow-hidden lg:block">
-              <div aria-hidden="true" class="pointer-events-none absolute bottom-0 right-0 z-0 aspect-square w-[min(34vw,32rem)] overflow-hidden rounded-full border border-ember/55"></div>
+              <div aria-hidden="true" class="pointer-events-none absolute bottom-0 right-0 z-0 aspect-square w-[min(28vw,26rem,55svh)] overflow-hidden rounded-full border border-ember/55"></div>
               <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[600, 900, 1200, 1500]} sizes="38vw" class="absolute inset-x-0 top-0 z-10 h-[125%] w-full object-cover object-top brightness-[0.90]" loading="eager" fetchpriority="high" />
             </div>
             <div class="absolute bottom-0 right-0 z-10 h-[70%] w-[42%] overflow-hidden lg:hidden">
