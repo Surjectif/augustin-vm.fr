@@ -24,7 +24,11 @@ const boxes = [
   { title: 'Langues', items: site.languages.map((l) => `${l.name} · ${l.level}`) },
 ];
 
-const introHighlights: string[][] = [["EHESS","études qualitatives de bout en bout"],[],["interprétation argumentée","recommandations concrètes"]];
+const introHighlights: string[][] = [
+  ["EHESS", "études qualitatives de bout en bout"],
+  ["comprendre ce dont les personnes ont réellement besoin", "discours", "pratiques"],
+  ["interprétation argumentée", "enseignements hiérarchisés", "recommandations concrètes"],
+];
 const splitIntro = (text: string, index: number) => {
   const terms = introHighlights[index] ?? [];
   const segments: { text: string; highlighted: boolean }[] = [];
