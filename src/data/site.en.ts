@@ -8,7 +8,7 @@ export const site = {
 
   person: {
     firstName: 'Augustin',
-    lastName: 'Vinot--Marull',
+    lastName: 'Vinot-Marull',
     role: 'Senior Qualitative Research Consultant · UX Researcher',
     city: 'Paris',
     email: 'augustin.vinotmarull@gmail.com',
