@@ -69,7 +69,7 @@ const splitIntro = (text: string, index: number) => {
         <!-- Portrait : couche autonome, ancrée au bas/droite du cadre. -->
         {portrait && (
           <div class="pointer-events-none absolute bottom-0 right-[-14%] z-0 h-[84%] w-[112%] sm:right-[2%] sm:h-[86%] sm:w-[min(46vw,40rem)] lg:right-[3%] lg:h-[96%] lg:w-[min(40vw,44rem)]">
-            <div aria-hidden="true" class="absolute bottom-0 right-0 z-0 aspect-square w-[min(70vw,28rem)] rounded-full border border-ember/55 sm:w-[min(40vw,32rem)] lg:w-[min(34vw,36rem,68svh)]"></div>
+            <div aria-hidden="true" class="absolute right-[-4%] top-[8%] z-20 aspect-square w-[min(86vw,30rem)] rounded-full border border-ember/65 sm:w-[min(44vw,36rem)] lg:w-[min(38vw,40rem,76svh)]"></div>
             <Image
               src={portrait}
               alt={`${p.firstName} ${p.lastName}`}
@@ -91,7 +91,7 @@ const splitIntro = (text: string, index: number) => {
         </div>
 
         <!-- Identité desktop : toujours visible en haut à droite. -->
-        <div class="absolute right-10 top-8 z-40 hidden max-w-[34%] text-right lg:block lg:right-14 lg:top-10">
+        <div class="absolute left-10 top-8 z-40 hidden max-w-[40%] text-left lg:block lg:left-14 lg:top-10">
           <p class="mb-2 text-[clamp(1.5rem,2.8vw,2.3rem)] font-medium tracking-[-0.04em] text-cream" data-reveal>{p.firstName} {p.lastName}</p>
           <p class="kicker leading-snug" data-reveal>{p.role} · {p.city}</p>
         </div>
