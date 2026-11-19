@@ -39,15 +39,20 @@ const boxes = [
         <Shot name="hero-fond" tone="dusk" class="absolute inset-0 -z-10" />
         <div class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(20_20_19/.82)_0%,rgb(20_20_19/.35)_55%,transparent_100%)]"></div>
         {portrait && (
-          <div class="absolute bottom-0 right-[3%] z-10 hidden h-[88%] w-[min(38vw,38rem)] overflow-visible lg:block">
-            <div aria-hidden="true" class="pointer-events-none absolute -bottom-[3%] right-[-1%] z-0 aspect-square w-[min(34vw,32rem)] overflow-hidden rounded-full border border-ember/55">
-              
+          <>
+            <div class="absolute bottom-0 right-[3%] z-10 hidden h-[88%] w-[min(38vw,38rem)] overflow-hidden lg:block">
+              <div aria-hidden="true" class="pointer-events-none absolute -bottom-[3%] right-[-1%] z-0 aspect-square w-[min(34vw,32rem)] overflow-hidden rounded-full border border-ember/55"></div>
+              <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[600, 900, 1200, 1500]} sizes="38vw" class="absolute inset-x-0 top-0 z-10 h-[125%] w-full object-cover object-top brightness-[0.90]" loading="eager" fetchpriority="high" />
             </div>
-            <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[600, 900, 1200, 1500]} sizes="38vw" class="absolute inset-x-0 top-0 z-10 h-[125%] w-full object-cover object-top brightness-[0.90]" loading="eager" fetchpriority="high" />
-          </div>
+            <div class="absolute bottom-0 right-0 z-10 h-[58%] w-[76%] overflow-hidden lg:hidden">
+              <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[400, 700, 900]} sizes="76vw" class="absolute inset-0 h-full w-full object-cover object-top brightness-[0.82]" loading="eager" />
+            </div>
+          </>
         )}
 
-        <div class="absolute inset-x-0 bottom-0 z-20 px-6 pb-14 sm:px-16 sm:pb-20 lg:pl-[5.5rem] lg:pr-[40%]">
+        <div class="absolute inset-0 z-20 bg-[linear-gradient(0deg,rgb(20_20_19/.88)_0%,rgb(20_20_19/.48)_43%,transparent_76%)] lg:bg-none"></div>
+        <div class="absolute inset-x-0 bottom-0 z-20 px-6 pb-10 sm:px-16 sm:pb-20 lg:pl-[5.5rem] lg:pr-[40%]">
+          <p class="mb-3 text-[clamp(1.5rem,2.8vw,2.3rem)] font-medium tracking-[-0.04em] text-cream" data-reveal>{p.firstName} {p.lastName}</p>
           <p class="kicker" data-reveal>{p.role} · {p.city}</p>
           <h1 class="mt-6 max-w-[15ch] text-[clamp(2.9rem,6.4vw,6.2rem)] lg:text-[clamp(3rem,4.7vw,5rem)]" data-reveal>Understanding what <span class="underline decoration-ember decoration-[3px] underline-offset-[0.12em]">really</span> matters to people.</h1>
           <p class="mt-6 max-w-[36rem] text-lg text-cream/85 sm:text-xl" data-reveal>{site.pitch}</p>
@@ -65,11 +70,6 @@ const boxes = [
       <div class="grid gap-10 lg:grid-cols-12">
         <div class="lg:col-span-7">
           <h2 class="text-[clamp(2.4rem,4.6vw,4.4rem)]" data-reveal>Sociologist by training, researcher by practice</h2>
-          {portrait && (
-            <div class="relative mt-10 aspect-[3/4] w-[min(80vw,22rem)] lg:hidden" data-reveal>
-              <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[400, 700]} sizes="80vw" class="absolute inset-x-0 bottom-0 h-full w-full object-contain object-bottom" />
-            </div>
-          )}
         </div>
         <div class="space-y-5 text-[1.2rem] text-soft lg:col-span-5 lg:pt-3" data-reveal>
           {site.intro.map((t) => <p>{t}</p>)}
