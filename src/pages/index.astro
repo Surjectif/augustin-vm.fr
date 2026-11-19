@@ -35,7 +35,7 @@ const boxes = [
   <main id="contenu">
     <!-- ═══ HERO : grand bloc arrondi, en retrait des bords ══════════════ -->
     <section class="px-3 pt-[7.5rem] pb-5 sm:px-6 sm:pt-[10rem] sm:pb-8">
-      <div class="relative isolate h-[calc(100svh-8.75rem)] min-h-[36rem] overflow-hidden rounded-[2.5rem] sm:h-[calc(100svh-12rem)] sm:rounded-[5rem]">
+      <div class="relative isolate h-[calc(100svh-8.75rem)] min-h-[39rem] sm:min-h-[36rem] overflow-hidden rounded-[2.5rem] sm:h-[calc(100svh-12rem)] sm:rounded-[5rem]">
         <Shot name="hero-fond" tone="dusk" class="absolute inset-0 -z-10" />
         <div class="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgb(20_20_19/.82)_0%,rgb(20_20_19/.35)_55%,transparent_100%)]"></div>
         {portrait && (
@@ -45,7 +45,7 @@ const boxes = [
               <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[600, 900, 1200, 1500]} sizes="38vw" class="absolute inset-x-0 top-0 z-10 h-[125%] w-full object-cover object-top brightness-[0.90]" loading="eager" fetchpriority="high" />
             </div>
             <div class="absolute bottom-0 right-0 z-10 h-[72%] w-[44%] overflow-hidden lg:hidden">
-              <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[400, 700, 900]} sizes="76vw" class="absolute inset-0 h-full w-full object-cover object-top brightness-[0.88]" loading="eager" />
+              <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[400, 700, 900]} sizes="44vw" class="absolute inset-0 h-full w-full object-cover object-top brightness-[0.88]" loading="eager" />
             </div>
           </>
         )}
