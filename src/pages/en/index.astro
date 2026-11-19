@@ -45,21 +45,23 @@ const boxes = [
               <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[600, 900, 1200, 1500]} sizes="38vw" class="absolute inset-x-0 top-0 z-10 h-[125%] w-full object-cover object-top brightness-[0.90]" loading="eager" fetchpriority="high" />
             </div>
             <div class="absolute bottom-0 right-0 z-10 h-[72%] w-[44%] overflow-hidden lg:hidden">
-              <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[400, 700, 900]} sizes="44vw" class="absolute inset-0 h-full w-full object-cover object-top brightness-[0.88]" loading="eager" />
+              <Image src={portrait} alt={`${p.firstName} ${p.lastName}`} widths={[400, 700, 900]} sizes="44vw" class="absolute inset-0 h-full w-full translate-y-[22%] object-cover object-top brightness-[0.88]" loading="eager" />
             </div>
           </>
         )}
 
         <div class="absolute inset-0 z-20 bg-[linear-gradient(90deg,rgb(20_20_19/.94)_0%,rgb(20_20_19/.82)_49%,rgb(20_20_19/.12)_100%)] lg:bg-none"></div>
-        <div class="absolute inset-y-0 left-0 z-30 flex w-[56%] flex-col justify-end px-4 pb-7 pt-24 sm:px-6 sm:pb-10 lg:inset-x-0 lg:bottom-0 lg:top-auto lg:w-auto lg:px-0 lg:pb-20 lg:pl-[5.5rem] lg:pr-[40%]">
+        <div class="absolute inset-x-0 bottom-0 z-30 flex w-full flex-col justify-end px-4 pb-7 pt-24 sm:px-6 sm:pb-10 lg:bottom-0 lg:top-auto lg:px-0 lg:pb-20 lg:pl-[5.5rem] lg:pr-[40%]">
           <p class="mb-2 text-[clamp(1rem,4.3vw,1.4rem)] font-medium tracking-[-0.04em] text-cream lg:mb-3 lg:text-[clamp(1.5rem,2.8vw,2.3rem)]" data-reveal>{p.firstName} {p.lastName}</p>
           <p class="kicker text-[0.62rem] leading-snug sm:text-[0.72rem] lg:text-[inherit]" data-reveal>{p.role} · {p.city}</p>
-          <h1 class="mt-4 max-w-[12ch] text-[clamp(2rem,7.3vw,2.55rem)] leading-[1.02] lg:mt-6 lg:max-w-[15ch] lg:text-[clamp(3rem,4.7vw,5rem)]" data-reveal>Understanding what <span class="underline decoration-ember decoration-[3px] underline-offset-[0.12em]">really</span> matters to people.</h1>
+          <h1 class="mt-4 max-w-none text-[clamp(2rem,7.3vw,2.55rem)] leading-[1.02] lg:mt-6 lg:max-w-[15ch] lg:text-[clamp(3rem,4.7vw,5rem)]" data-reveal>Understanding what <span class="underline decoration-ember decoration-[3px] underline-offset-[0.12em]">really</span> matters to people.</h1>
+          <div class="w-[56%] lg:w-auto">
           <p class="mt-4 max-w-full text-[0.9rem] leading-relaxed text-cream/85 lg:mt-6 lg:max-w-[36rem] lg:text-lg xl:text-xl" data-reveal>{site.pitch}</p>
           <div class="mt-5 flex flex-col items-start gap-2 lg:mt-10 lg:flex-row lg:flex-wrap lg:gap-3" data-reveal>
             <a href="#contact" class="pill-line !gap-2 !px-3.5 !py-2 !text-xs lg:!gap-3 lg:!px-7 lg:!py-3.5 lg:!text-[0.98rem]">Get in touch</a>
             <a href="/cv.pdf" target="_blank" rel="noopener" class="pill-solid !gap-2 !px-3.5 !py-2 !text-xs lg:!gap-3 lg:!px-7 lg:!py-3.5 lg:!text-[0.98rem]">My CV <span aria-hidden="true">↗</span></a>
             <a href={p.linkedin} target="_blank" rel="noopener noreferrer" class="pill-line !gap-2 !px-3.5 !py-2 !text-xs lg:!gap-3 lg:!px-7 lg:!py-3.5 lg:!text-[0.98rem]">LinkedIn <span aria-hidden="true">↗</span></a>
+          </div>
           </div>
         </div>
       </div>
