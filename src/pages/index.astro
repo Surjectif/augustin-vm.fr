@@ -69,7 +69,7 @@ const splitIntro = (text: string, index: number) => {
         <!-- Portrait : couche autonome, ancrée au bas/droite du cadre. -->
         {portrait && (
           <div class="pointer-events-none absolute bottom-0 right-[-14%] z-0 h-[84%] w-[112%] sm:right-[2%] sm:h-[86%] sm:w-[min(46vw,40rem)] lg:right-[3%] lg:h-[96%] lg:w-[min(40vw,44rem)]">
-            <div aria-hidden="true" class="absolute right-[-4%] top-[8%] z-0 aspect-square w-[min(86vw,30rem)] rounded-full border border-ember/65 sm:w-[min(44vw,36rem)] lg:w-[min(38vw,40rem,76svh)]"></div>
+            <div aria-hidden="true" class="absolute right-[-4%] top-[8%] z-0 aspect-square w-[min(86vw,30rem)] rounded-full border border-ember/65 sm:w-[min(44vw,36rem)] lg:left-1/2 lg:right-auto lg:top-1/2 lg:w-[min(38vw,40rem,76svh)] lg:-translate-x-1/2 lg:-translate-y-1/2"></div>
             <Image
               src={portrait}
               alt={`${p.firstName} ${p.lastName}`}
