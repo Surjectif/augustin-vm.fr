@@ -92,15 +92,15 @@ const splitIntro = (text: string, index: number) => {
 
         <!-- Identité desktop : toujours visible en haut à gauche. -->
         <div class="absolute left-10 top-8 z-40 hidden max-w-[40%] text-left lg:block lg:left-14 lg:top-10">
-          <p class="mb-2 text-[clamp(1.5rem,2.8vw,2.3rem)] font-medium tracking-[-0.04em] text-cream" data-reveal>{p.firstName} {p.lastName}</p>
+          <p class="mb-2 text-[clamp(1.35rem,2.3vw,2rem)] font-medium tracking-[-0.04em] text-cream" data-reveal>{p.firstName} {p.lastName}</p>
           <p class="kicker leading-snug" data-reveal>{p.role} · {p.city}</p>
         </div>
 
         <!-- Texte : ancré bas pour préserver un espace net sous l'identité. -->
         <div class="absolute inset-x-0 bottom-0 z-30 flex flex-col items-start px-4 pb-8 text-left sm:px-16 sm:pb-10 lg:pl-[5.5rem] lg:pr-[46%] lg:pb-12">
-          <h1 class="mt-0 w-full max-w-[19ch] text-[clamp(2rem,8vw,2.65rem)] leading-[1.1] sm:mt-6 sm:max-w-[17ch] sm:text-[clamp(2.9rem,6.4vw,6.2rem)] lg:max-w-[15ch] lg:text-[clamp(3rem,4.7vw,5rem)]" data-reveal>Comprendre ce qui compte <span class="underline decoration-ember decoration-[3px] underline-offset-[0.12em]">vraiment</span> pour les gens.</h1>
-          <p class="mt-5 w-full max-w-[34rem] text-sm leading-[1.75] text-cream/85 sm:mt-7 sm:text-lg sm:leading-[1.7] lg:text-xl" data-reveal>{site.pitch}</p>
-          <div class="mt-7 flex flex-wrap gap-3 sm:mt-8 sm:gap-3" data-reveal>
+          <h1 class="mt-0 w-full max-w-[19ch] text-[clamp(2rem,8vw,2.65rem)] leading-[1.1] sm:mt-6 sm:max-w-[17ch] sm:text-[clamp(2.9rem,6.4vw,6.2rem)] lg:max-w-[16ch] lg:text-[clamp(2.6rem,3.8vw,4.2rem)] lg:leading-[1.12]" data-reveal>Comprendre ce qui compte <span class="underline decoration-ember decoration-[3px] underline-offset-[0.12em]">vraiment</span> pour les gens.</h1>
+          <p class="mt-5 w-full max-w-[34rem] text-sm leading-[1.75] text-cream/85 sm:mt-7 sm:text-lg sm:leading-[1.7] lg:mt-5 lg:max-w-[30rem] lg:text-lg lg:leading-[1.65]" data-reveal>{site.pitch}</p>
+          <div class="mt-7 flex flex-wrap gap-3 sm:mt-8 sm:gap-3 lg:mt-6 lg:gap-2.5" data-reveal>
             <a href="#contact" class="pill-line">Me contacter</a>
             <a href="/cv.pdf" target="_blank" rel="noopener" class="pill-solid">Mon CV <span aria-hidden="true">↗</span></a>
             <a href={p.linkedin} target="_blank" rel="noopener noreferrer" class="pill-line">LinkedIn <span aria-hidden="true">↗</span></a>
