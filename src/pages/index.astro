@@ -92,7 +92,7 @@ const splitIntro = (text: string, index: number) => {
 
         <!-- Identité desktop : toujours visible en haut à gauche. -->
         <div class="absolute left-10 top-8 z-40 hidden max-w-[40%] text-left lg:block lg:left-14 lg:top-10">
-          <p class="mb-2 text-[clamp(1.35rem,2.3vw,2rem)] font-medium tracking-[-0.04em] text-cream" data-reveal>{p.firstName} {p.lastName}</p>
+          <p class="mb-2 text-[clamp(1.35rem,2.3vw,2rem)] font-medium tracking-[-0.04em] text-cream" data-reveal>{p.firstName} <span class="lg:uppercase">{p.lastName}</span></p>
           <p class="kicker leading-snug" data-reveal>{p.role} · {p.city}</p>
         </div>
 
