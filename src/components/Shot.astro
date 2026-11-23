@@ -10,12 +10,13 @@ interface Props {
   name?: string;
   tone?: 'moss' | 'ember' | 'stone' | 'dusk';
   label?: string;
+  institution?: 'AMF' | 'ARCOM';
   src?: ImageMetadata;
   alt?: string;
   class?: string;
   [attr: `data-${string}`]: string;
 }
-const { name, tone = 'stone', label, src: given, alt = '', class: cls = '', ...rest } = Astro.props;
+const { name, tone = 'stone', label, institution, src: given, alt = '', class: cls = '', ...rest } = Astro.props;
 const src = given ?? photo(name);
 ---
 
@@ -23,6 +24,8 @@ const src = given ?? photo(name);
   {src
     ? <Image src={src} alt={alt} class="absolute inset-0 h-full w-full object-cover" widths={[400, 800, 1200]} sizes="(min-width: 1024px) 50vw, 90vw" />
     : label && <span class="shot__label">{label}</span>}
+  {institution === 'AMF' && <div class="shot__logo shot__logo--amf" aria-label="AMF, Autorité des marchés financiers"><strong>AMF</strong><span>Autorité des marchés<br />financiers</span></div>}
+  {institution === 'ARCOM' && <div class="shot__logo shot__logo--arcom" aria-label="Arcom"><strong>arcom</strong></div>}
 </div>
 
 <style>
@@ -37,6 +40,11 @@ const src = given ?? photo(name);
   .shot--ember { background: radial-gradient(110% 90% at 70% 25%, #f0a06a 0%, #b8532a 40%, #2a1610 100%); }
   .shot--stone { background: radial-gradient(120% 100% at 40% 15%, #8d877d 0%, #4a4640 45%, #1a1917 100%); }
   .shot--dusk  { background: linear-gradient(170deg, #e7b98a 0%, #a76d5a 35%, #3b3350 70%, #16151d 100%); }
+  .shot__logo { position: absolute; z-index: 2; left: 50%; bottom: 9%; transform: translateX(-50%); display: flex; align-items: center; gap: .55rem; padding: .65rem .9rem; border-radius: .35rem; background: rgb(255 255 255 / .94); box-shadow: 0 4px 20px rgb(0 0 0 / .14); white-space: nowrap; }
+  .shot__logo--amf strong { color: #173b67; font-size: 1.65rem; line-height: 1; letter-spacing: -.09em; }
+  .shot__logo--amf span { color: #173b67; font-size: .48rem; line-height: 1.2; text-transform: uppercase; letter-spacing: .04em; }
+  .shot__logo--arcom strong { color: #171735; font-size: 1.55rem; line-height: 1; letter-spacing: -.07em; font-weight: 750; }
+  .shot__logo--arcom strong::first-letter { color: #e36f53; }
   .shot__label {
     position: absolute; left: 50%; bottom: 9%; transform: translateX(-50%);
     font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
