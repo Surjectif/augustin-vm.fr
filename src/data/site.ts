@@ -34,12 +34,12 @@ export const site = {
 
   // Les exemples de projets fictifs ont été retirés : ne publier que des cas réels autorisés.
 
-  // Axes de recherche présentés comme champs d’exploration, pas comme études de cas clients.
+  // Exemples de cas d'usage issus de missions réalisées.
   studyCarousel: [
-    { photo: 'deco-foret', tone: 'moss', category: 'Explorer', topic: 'Comprendre les usages et les besoins', method: 'Entretiens approfondis · observation · desk research', focus: 'Faire émerger les attentes, les contraintes et les logiques d’usage.' },
-    { photo: 'deco-champ', tone: 'stone', category: 'Évaluer', topic: 'Tester des concepts et des offres', method: 'Entretiens · focus groups', focus: 'Identifier les perceptions, les freins et les conditions d’adhésion.' },
-    { photo: 'deco-coucher', tone: 'dusk', category: 'Parcours', topic: 'Comprendre l’expérience client', method: 'Entretiens · analyse des parcours · observation', focus: 'Repérer les points de friction et les moments décisifs.' },
-    { photo: 'deco-sous-bois', tone: 'moss', category: 'Perceptions', topic: 'Analyser l’image et la communication', method: 'Entretiens · focus groups · communautés en ligne', focus: 'Comprendre les représentations et la réception des messages.' },
+    { photo: 'deco-foret', tone: 'moss', category: 'Finance · AMF', topic: 'Rendre la documentation financière compréhensible', method: '5 études · 170 épargnants · communauté en ligne', focus: 'Tester la lisibilité et la compréhension de documents sur les articles 8/9, les placements, les DIC, les produits structurés et les ELTIF.' },
+    { photo: 'deco-champ', tone: 'stone', category: 'Énergie · UX', topic: 'Évaluer un prototype d’application', method: '24 clients · prototype Figma', focus: 'Observer les parcours, l’ergonomie, la fluidité et la pertinence des fonctionnalités avant le lancement.' },
+    { photo: 'deco-coucher', tone: 'dusk', category: 'Services numériques · UX', topic: 'Améliorer des applications et des sites', method: '16 professionnels · 36 clients bancaires · 30 particuliers et CGP', focus: 'Comprendre les usages, identifier les points de friction et faire émerger des pistes d’amélioration.' },
+    { photo: 'deco-sous-bois', tone: 'moss', category: 'Tourisme · Médias · ARCOM', topic: 'Comprendre les usages des plateformes', method: '18 clients et prospects · 30 entretiens en face-à-face · 16 entretiens à domicile', focus: 'Explorer les pratiques sur les sites de voyage, les plateformes TV par Internet, la Smart TV et YouTube.' },
   ],
 
   // ── Parcours ───────────────────────────────────────────────────────────
@@ -54,16 +54,13 @@ export const site = {
     { photo: 'parcours-strasbourg', when: '2015–17', where: 'Université de Strasbourg', what: 'Sciences sociales, parcours renforcé', detail: 'Socio, éco, droit.' },
   ],
 
-  // ── Exemples d'études réalisées ────────────────────────────────────────
-  studies: [
-    { label: 'AMF', title: 'Documentation réglementaire', count: '170 épargnants · 5 études', text: 'Partenaire exclusif de l’AMF pour les tests de lisibilité et de compréhension, via une communauté en ligne reconduite sur cinq sujets : articles 8/9, SCPI, FCPI, crowdfunding immobilier, DIC, produits structurés et ELTIF.' },
-    { label: 'Énergie · UX', title: 'Prototype d’application', count: '24 clients', text: 'Test d’un prototype Figma : parcours, ergonomie, fluidité et fonctionnalités.' },
-    { label: 'Institution · UX', title: 'Application métier', count: '16 professionnels', text: 'Des techniciens aux chefs d’entreprise : usages, habitudes et axes d’amélioration.' },
-    { label: 'Tourisme · UX', title: 'Sites de voyage', count: '18 clients et prospects', text: 'Exploration des usages et des pratiques sur les sites de voyage.' },
-    { label: 'Banque · UX', title: 'Application bancaire', count: '36 clients insatisfaits', text: 'Évaluation de l’application et identification des axes d’amélioration, notamment par comparaison avec les applications concurrentes.' },
-    { label: 'Assurance · UX', title: 'Nouveau site', count: '30 particuliers et CGP', text: 'Clients et prospects : axes d’amélioration, image perçue et segmentation.' },
-    { label: 'Médias', title: 'Plateforme TV par Internet', count: '30 entretiens en face-à-face', text: 'Usages d’une plateforme de télévision par Internet et personnalisation de l’expérience.' },
-    { label: 'ARCOM', title: 'Smart TV et YouTube', count: '16 entretiens à domicile', text: 'Exploration des usages de la Smart TV et de YouTube sur téléviseur.' },
+  // ── Méthode : chaîne façon réseau d’opérateurs TouchDesigner ────────────
+  method: [
+    { op: 'brief1', label: 'Clarifier', text: 'Préciser les enjeux, formuler les questions et objectifs de recherche et poser les hypothèses à explorer.' },
+    { op: 'design1', label: 'Concevoir', text: 'Définir les publics, choisir les méthodes et construire un dispositif adapté à la problématique.' },
+    { op: 'field1', label: 'Enquêter', text: 'Conduire le terrain : entretiens, focus groups, observation ou communautés en ligne.' },
+    { op: 'analysis1', label: 'Analyser', text: 'Croiser les matériaux, confronter les points de vue et dégager les logiques qui structurent les comportements.' },
+    { op: 'out1', label: 'Recommander', text: 'Présenter les enseignements et formuler des recommandations opérationnelles.' },
   ],
 
   skillGroups: [
