@@ -55,14 +55,16 @@ export const site = {
   ],
 
   // ── Méthode : chaîne façon réseau d’opérateurs TouchDesigner ────────────
-  method: [
-    { op: 'brief1', label: 'Clarify', text: 'Clarify the issues, formulate research questions and objectives, and identify the hypotheses to explore.' },
-    { op: 'design1', label: 'Design', text: 'Select the audiences and methods, then build a research approach suited to the brief.' },
-    { op: 'field1', label: 'Investigate', text: 'Conduct fieldwork through interviews, focus groups, observation or online communities.' },
-    { op: 'analysis1', label: 'Analyse', text: 'Bring evidence together, compare perspectives and identify the dynamics shaping behaviour.' },
-    { op: 'out1', label: 'Recommend', text: 'Present the findings and formulate actionable recommendations.' },
+  studies: [
+    { label: 'AMF', title: 'Regulatory documentation', count: '170 investors · 5 studies', text: 'Readability and comprehension tests using an online community, repeated across five topics: SFDR Articles 8/9, investments, KIDs, structured products and ELTIFs.' },
+    { label: 'Energy · UX', title: 'App prototype', count: '24 customers', text: 'Figma prototype testing: user journeys, usability, fluidity and features.' },
+    { label: 'Professional body · UX', title: 'Business application', count: '16 professionals', text: 'From technicians to business owners: usage patterns, habits and areas for improvement.' },
+    { label: 'Travel · UX', title: 'Travel websites', count: '18 customers and prospects', text: 'Exploring how people use travel websites.' },
+    { label: 'Banking · UX', title: 'Banking app', count: '36 dissatisfied customers', text: 'App evaluation and improvement opportunities, including comparison with competing banking apps.' },
+    { label: 'Insurance · UX', title: 'New website', count: '30 individuals and financial advisers', text: 'Customers and prospects: improvement opportunities, perceived brand image and segmentation.' },
+    { label: 'Media', title: 'Internet TV platform', count: '30 face-to-face interviews', text: 'Use of an internet TV platform and experience personalisation.' },
+    { label: 'ARCOM', title: 'Smart TV and YouTube', count: '16 in-home interviews', text: 'Exploring Smart TV usage and YouTube viewing on television.' },
   ],
-
   skillGroups: [
     { title: 'Research methods', items: ['In-depth interviews', 'Focus groups', 'Ethnography', 'Online communities', 'User research (UX Research)', 'Desk research'] },
     { title: 'Analysis & interpretation', items: ['Thematic analysis', 'Data analysis', 'User journey & usage analysis', 'Qualitative / quantitative integration'] },
