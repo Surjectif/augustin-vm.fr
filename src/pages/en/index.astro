@@ -6,6 +6,7 @@ import Shot from '@/components/Shot.astro';
 import { Image } from 'astro:assets';
 import { site as site } from '@/data/site.en';
 import { photo } from '@/lib/photos';
+import logoAmf from '@/assets/photos/logo-amf.png.svg';
 
 const p = site.person;
 const portrait = photo('portrait-transparent-2');
@@ -146,8 +147,6 @@ const splitIntro = (text: string, index: number) => {
       </div>
 
       <div class="relative mt-16 h-[min(150vw,46rem)] sm:h-[min(56vw,46rem)]" data-carousel>
-        <Shot name="deco-foret" tone="moss" class="absolute -left-[12vw] top-[4%] hidden aspect-square w-[22vw] rounded-full sm:block" data-speed="0.12" />
-        <Shot name="deco-champ" tone="stone" class="absolute -right-[10vw] top-[38%] hidden aspect-square w-[18vw] rounded-full sm:block" data-speed="0.25" />
 
         <div class="wrap relative h-full">
           <div class="absolute right-4 top-0 z-20 flex gap-3 sm:right-10 lg:right-[6.5rem]">
@@ -159,7 +158,7 @@ const splitIntro = (text: string, index: number) => {
 
           <div class="absolute left-4 top-[6%] aspect-square w-[min(74vw,38rem)] sm:left-[6%] sm:top-0 sm:w-[min(44vw,38rem)]">
             {site.studyCarousel.map((s, i) => (
-              <Shot name={s.photo} tone={s.tone} alt={s.topic} logoSrc={i === 0 ? 'https://images.squarespace-cdn.com/content/v1/609d2b84da760965ec829adb/1765793140988-BGUICP0HJ4JSOXRNIRR4/Logo%2BAMF%2B-%2BGrand.png' : i === 3 ? 'https://img.generation-nt.com/arcom_04b0032001683438.jpg' : undefined} logoAlt={i === 0 ? 'Logo de l’Autorité des marchés financiers' : i === 3 ? 'Logo de l’Arcom' : undefined} externalSrc={i === 2 ? 'https://sourcefit.com/app/uploads/2025/10/upper-right-4-1-1024x683.jpg' : i === 3 ? 'https://res.cloudinary.com/myntagency-com/images/w_1880%2Ch_1253%2Cc_scale/f_auto%2Cq_auto%3Agood/v1755720763/couple-watching-tv_4021c0403/couple-watching-tv_4021c0403.jpg?_i=AA' : undefined} class={`slide-img absolute inset-0 rounded-full ${i === 0 ? 'is-active' : ''}`} />
+              <Shot name={s.photo} tone={s.tone} alt={s.topic} logoSrc={i === 0 ? logoAmf : i === 3 ? photo('logo-arcom.png')?.src : undefined} logoAlt={i === 0 ? 'Logo de l’Autorité des marchés financiers' : i === 3 ? 'Logo de l’Arcom' : undefined} class={`slide-img absolute inset-0 rounded-full ${i === 0 ? 'is-active' : ''}`} />
             ))}
           </div>
 
