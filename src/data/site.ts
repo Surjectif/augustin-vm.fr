@@ -56,7 +56,7 @@ export const site = {
 
   // ── Exemples d'études réalisées ────────────────────────────────────────
   studies: [
-    { label: 'AMF', title: 'Documentation réglementaire', count: '170 épargnants · 5 études', text: 'Tests de lisibilité et de compréhension menés via une communauté en ligne, reconduite sur cinq sujets : articles 8/9, placements, DIC, produits structurés et ELTIF.' },
+    { label: 'AMF', title: 'Documentation réglementaire', count: '170 épargnants · 5 études', text: 'Partenaire exclusif de l’AMF pour les tests de lisibilité et de compréhension, via une communauté en ligne reconduite sur cinq sujets : articles 8/9, SCPI, FCPI, crowdfunding immobilier, DIC, produits structurés et ELTIF.' },
     { label: 'Énergie · UX', title: 'Prototype d’application', count: '24 clients', text: 'Test d’un prototype Figma : parcours, ergonomie, fluidité et fonctionnalités.' },
     { label: 'Institution · UX', title: 'Application métier', count: '16 professionnels', text: 'Des techniciens aux chefs d’entreprise : usages, habitudes et axes d’amélioration.' },
     { label: 'Tourisme · UX', title: 'Sites de voyage', count: '18 clients et prospects', text: 'Exploration des usages et des pratiques sur les sites de voyage.' },
