@@ -56,7 +56,7 @@ export const site = {
 
   // ── Méthode : chaîne façon réseau d’opérateurs TouchDesigner ────────────
   studies: [
-    { label: 'AMF', title: 'Regulatory documentation', count: '170 investors · 5 studies', text: 'Readability and comprehension tests using an online community, repeated across five topics: SFDR Articles 8/9, investments, KIDs, structured products and ELTIFs.' },
+    { label: 'AMF', title: 'Regulatory documentation', count: '170 investors · 5 studies', text: 'Exclusive AMF partner for readability and comprehension testing, using an online community repeated across five topics: SFDR Articles 8/9, SCPI, FCPI, real-estate crowdfunding, KIDs, structured products and ELTIFs.' },
     { label: 'Energy · UX', title: 'App prototype', count: '24 customers', text: 'Figma prototype testing: user journeys, usability, fluidity and features.' },
     { label: 'Professional body · UX', title: 'Business application', count: '16 professionals', text: 'From technicians to business owners: usage patterns, habits and areas for improvement.' },
     { label: 'Travel · UX', title: 'Travel websites', count: '18 customers and prospects', text: 'Exploring how people use travel websites.' },
