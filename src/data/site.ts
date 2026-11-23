@@ -54,13 +54,16 @@ export const site = {
     { photo: 'parcours-strasbourg', when: '2015–17', where: 'Université de Strasbourg', what: 'Sciences sociales, parcours renforcé', detail: 'Socio, éco, droit.' },
   ],
 
-  // ── Méthode : chaîne façon réseau d’opérateurs TouchDesigner ────────────
-  method: [
-    { op: 'brief1', label: 'Clarifier', text: 'Préciser les enjeux, formuler les questions et objectifs de recherche et poser les hypothèses à explorer.' },
-    { op: 'design1', label: 'Concevoir', text: 'Définir les publics, choisir les méthodes et construire un dispositif adapté à la problématique.' },
-    { op: 'field1', label: 'Enquêter', text: 'Conduire le terrain : entretiens, focus groups, observation ou communautés en ligne.' },
-    { op: 'analysis1', label: 'Analyser', text: 'Croiser les matériaux, confronter les points de vue et dégager les logiques qui structurent les comportements.' },
-    { op: 'out1', label: 'Recommander', text: 'Présenter les enseignements et formuler des recommandations opérationnelles.' },
+  // ── Exemples d'études réalisées ────────────────────────────────────────
+  studies: [
+    { label: 'AMF', title: 'Documentation réglementaire', count: '170 épargnants · 5 études', text: 'Tests de lisibilité et de compréhension menés via une communauté en ligne, reconduite sur cinq sujets : articles 8/9, placements, DIC, produits structurés et ELTIF.' },
+    { label: 'Énergie · UX', title: 'Prototype d’application', count: '24 clients', text: 'Test d’un prototype Figma : parcours, ergonomie, fluidité et fonctionnalités.' },
+    { label: 'Institution · UX', title: 'Application métier', count: '16 professionnels', text: 'Des techniciens aux chefs d’entreprise : usages, habitudes et axes d’amélioration.' },
+    { label: 'Tourisme · UX', title: 'Sites de voyage', count: '18 clients et prospects', text: 'Exploration des usages et des pratiques sur les sites de voyage.' },
+    { label: 'Banque · UX', title: 'Application bancaire', count: '36 clients insatisfaits', text: 'Évaluation de l’application et identification des axes d’amélioration, notamment par comparaison avec les applications concurrentes.' },
+    { label: 'Assurance · UX', title: 'Nouveau site', count: '30 particuliers et CGP', text: 'Clients et prospects : axes d’amélioration, image perçue et segmentation.' },
+    { label: 'Médias', title: 'Plateforme TV par Internet', count: '30 entretiens en face-à-face', text: 'Usages d’une plateforme de télévision par Internet et personnalisation de l’expérience.' },
+    { label: 'ARCOM', title: 'Smart TV et YouTube', count: '16 entretiens à domicile', text: 'Exploration des usages de la Smart TV et de YouTube sur téléviseur.' },
   ],
 
   skillGroups: [
