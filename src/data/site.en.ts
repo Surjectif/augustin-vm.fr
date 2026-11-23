@@ -39,7 +39,7 @@ export const site = {
     { photo: 'etude-assurance', tone: 'moss', category: 'Finance · AMF', topic: 'Making financial documentation easier to understand', method: '5 studies · 170 investors · online community', focus: 'Testing the readability and comprehension of documents on SFDR Articles 8/9, investments, KIDs, structured products and ELTIFs.' },
     { photo: 'etude-energie', tone: 'stone', category: 'Energy · UX', topic: 'Evaluating an app prototype', method: '24 customers · Figma prototype', focus: 'Assessing user journeys, usability, fluidity and feature relevance ahead of launch.' },
     { photo: 'etude-consommation', tone: 'dusk', category: 'Digital services · UX', topic: 'Improving apps and websites', method: '16 professionals · 36 banking customers · 30 individuals and financial advisers', focus: 'Understanding usage, identifying friction points and developing areas for improvement.' },
-    { photo: 'deco-sous-bois', tone: 'moss', category: 'Travel · Media · ARCOM', topic: 'Understanding platform usage', method: '18 customers and prospects · 30 face-to-face interviews · 16 in-home interviews', focus: 'Exploring travel websites, internet TV platforms, Smart TV and YouTube usage.' },
+    { photo: 'etude-territoire', tone: 'moss', category: 'Travel · Media · ARCOM', topic: 'Understanding platform usage', method: '18 customers and prospects · 30 face-to-face interviews · 16 in-home interviews', focus: 'Exploring travel websites, internet TV platforms, Smart TV and YouTube usage.' },
   ],
 
   // ── Parcours ───────────────────────────────────────────────────────────
