@@ -10,7 +10,7 @@ interface Props {
   name?: string;
   tone?: 'moss' | 'ember' | 'stone' | 'dusk';
   label?: string;
-  logoSrc?: string;
+  logo?: ImageMetadata;
   logoAlt?: string;
   externalSrc?: string;
   src?: ImageMetadata;
@@ -18,7 +18,7 @@ interface Props {
   class?: string;
   [attr: `data-${string}`]: string;
 }
-const { name, tone = 'stone', label, logoSrc, logoAlt = '', externalSrc, src: given, alt = '', class: cls = '', ...rest } = Astro.props;
+const { name, tone = 'stone', label, logo, logoAlt = '', externalSrc, src: given, alt = '', class: cls = '', ...rest } = Astro.props;
 const src = given ?? photo(name);
 ---
 
@@ -28,7 +28,7 @@ const src = given ?? photo(name);
     : src
     ? <Image src={src} alt={alt} class="absolute inset-0 h-full w-full object-cover" widths={[400, 800, 1200]} sizes="(min-width: 1024px) 50vw, 90vw" />
     : label && <span class="shot__label">{label}</span>}
-  {logoSrc && <div class="shot__logo"><img src={logoSrc} alt={logoAlt} /></div>}
+  {logo && <div class="shot__logo"><Image src={logo} alt={logoAlt} class="max-h-[3.25rem] w-auto max-w-full object-contain" /></div>}
 </div>
 
 <style>
