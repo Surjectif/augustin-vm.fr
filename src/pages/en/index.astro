@@ -159,7 +159,7 @@ const splitIntro = (text: string, index: number) => {
 
           <div class="absolute left-4 top-[6%] aspect-square w-[min(74vw,38rem)] sm:left-[6%] sm:top-0 sm:w-[min(44vw,38rem)]">
             {site.studyCarousel.map((s, i) => (
-              <Shot name={s.photo} tone={s.tone} alt={s.topic} institution={i === 0 ? 'AMF' : i === 3 ? 'ARCOM' : undefined} class={`slide-img absolute inset-0 rounded-full ${i === 0 ? 'is-active' : ''}`} />
+              <Shot name={s.photo} tone={s.tone} alt={s.topic} logoSrc={i === 0 ? 'https://images.squarespace-cdn.com/content/v1/609d2b84da760965ec829adb/1765793140988-BGUICP0HJ4JSOXRNIRR4/Logo%2BAMF%2B-%2BGrand.png' : i === 3 ? 'https://img.generation-nt.com/arcom_04b0032001683438.jpg' : undefined} logoAlt={i === 0 ? 'Logo de l’Autorité des marchés financiers' : i === 3 ? 'Logo de l’Arcom' : undefined} externalSrc={i === 2 ? 'https://sourcefit.com/app/uploads/2025/10/upper-right-4-1-1024x683.jpg' : i === 3 ? 'https://res.cloudinary.com/myntagency-com/images/w_1880%2Ch_1253%2Cc_scale/f_auto%2Cq_auto%3Agood/v1755720763/couple-watching-tv_4021c0403/couple-watching-tv_4021c0403.jpg?_i=AA' : undefined} class={`slide-img absolute inset-0 rounded-full ${i === 0 ? 'is-active' : ''}`} />
             ))}
           </div>
 
