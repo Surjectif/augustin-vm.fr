@@ -142,7 +142,7 @@ const splitIntro = (text: string, index: number) => {
           <p class="kicker" data-reveal>Études</p>
           <h2 class="mt-6 text-[clamp(2.4rem,4.6vw,4.4rem)]" data-reveal>Comprendre les besoins au-delà des déclarations</h2>
         </div>
-        <p class="text-[1.2rem] text-soft lg:col-span-4 lg:col-start-9 lg:self-end" data-reveal>Voici quelques questions que les études qualitatives peuvent aider à explorer.</p>
+        <p class="text-[1.2rem] text-soft lg:col-span-4 lg:col-start-9 lg:self-end" data-reveal>Quelques exemples de missions réalisées et de problématiques explorées.</p>
       </div>
 
       <div class="relative mt-16 h-[min(150vw,46rem)] sm:h-[min(56vw,46rem)]" data-carousel>
@@ -186,20 +186,20 @@ const splitIntro = (text: string, index: number) => {
       </div>
     </section>
 
-    <!-- ═══ EXEMPLES D'ÉTUDES : cercles ═══════════════════════════════════ -->
+    <!-- ═══ MÉTHODE : cercles reliés ═════════════════════════════════════ -->
     <section id="methode" class="wrap scroll-mt-32 pb-28 sm:pb-36">
-      <p class="kicker" data-reveal>Quelques études</p>
-      <h2 class="mt-6 max-w-[18ch] text-[clamp(2.4rem,4.6vw,4.4rem)]" data-reveal>Des terrains variés, des usages à comprendre</h2>
+      <p class="kicker" data-reveal>Méthode</p>
+      <h2 class="mt-6 max-w-[18ch] text-[clamp(2.4rem,4.6vw,4.4rem)]" data-reveal>Du cahier des charges au partage des résultats</h2>
 
-      <ol class="mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-5 lg:gap-y-14">
-        {site.studies.map((study) => (
+      <ol class="relative mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
+        <span aria-hidden="true" class="absolute left-[10%] right-[10%] top-[5.5rem] hidden h-px bg-ember/70 lg:block"></span>
+        {site.method.map((m, i) => (
           <li class="group relative" data-reveal>
-            <div class="relative mx-auto grid aspect-square w-44 place-items-center rounded-full border border-cream/25 bg-night px-5 text-center transition-colors duration-300 group-hover:border-ember group-hover:bg-ember">
-              <span class="text-[1.35rem] font-medium tracking-[-0.035em] text-cream transition-colors group-hover:text-night">{study.label}</span>
+            <div class="relative mx-auto grid aspect-square w-44 place-items-center rounded-full border border-cream/25 bg-night transition-colors duration-300 group-hover:border-ember group-hover:bg-ember">
+              <span class="text-[3.2rem] font-medium tracking-[-0.04em] text-cream transition-colors group-hover:text-night">0{i + 1}</span>
             </div>
-            <h3 class="mt-7 text-center text-[1.35rem] leading-snug">{study.title}</h3>
-            <p class="mt-2 text-center text-sm font-medium text-ember">{study.count}</p>
-            <p class="mx-auto mt-3 max-w-[16rem] text-center text-[0.98rem] leading-relaxed text-soft">{study.text}</p>
+            <h3 class="mt-8 text-center text-[1.6rem]">{m.label}</h3>
+            <p class="mx-auto mt-3 max-w-[16rem] text-center text-[1.02rem] text-soft">{m.text}</p>
           </li>
         ))}
       </ol>
