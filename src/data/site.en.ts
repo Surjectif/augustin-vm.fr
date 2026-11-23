@@ -34,12 +34,12 @@ export const site = {
 
   // Les exemples de projets fictifs ont été retirés : ne publier que des cas réels autorisés.
 
-  // Research areas shown as areas of exploration, not as client case studies.
+  // Real-world use cases drawn from completed research projects.
   studyCarousel: [
-    { photo: 'deco-foret', tone: 'moss', category: 'Explore', topic: 'Understand users and their needs', method: 'In-depth interviews · observation · desk research', focus: 'Surface expectations, constraints and usage patterns.' },
-    { photo: 'deco-champ', tone: 'stone', category: 'Evaluate', topic: 'Test concepts and offers', method: 'Interviews · focus groups', focus: 'Identify perceptions, barriers and conditions for adoption.' },
-    { photo: 'deco-coucher', tone: 'dusk', category: 'Journeys', topic: 'Understand the customer experience', method: 'Interviews · journey analysis · observation', focus: 'Identify friction points and decisive moments.' },
-    { photo: 'deco-sous-bois', tone: 'moss', category: 'Perceptions', topic: 'Explore brand image and communication', method: 'Interviews · focus groups · online communities', focus: 'Understand perceptions and how messages are received.' },
+    { photo: 'deco-foret', tone: 'moss', category: 'Finance · AMF', topic: 'Making financial documentation easier to understand', method: '5 studies · 170 investors · online community', focus: 'Testing the readability and comprehension of documents on SFDR Articles 8/9, investments, KIDs, structured products and ELTIFs.' },
+    { photo: 'deco-champ', tone: 'stone', category: 'Energy · UX', topic: 'Evaluating an app prototype', method: '24 customers · Figma prototype', focus: 'Assessing user journeys, usability, fluidity and feature relevance ahead of launch.' },
+    { photo: 'deco-coucher', tone: 'dusk', category: 'Digital services · UX', topic: 'Improving apps and websites', method: '16 professionals · 36 banking customers · 30 individuals and financial advisers', focus: 'Understanding usage, identifying friction points and developing areas for improvement.' },
+    { photo: 'deco-sous-bois', tone: 'moss', category: 'Travel · Media · ARCOM', topic: 'Understanding platform usage', method: '18 customers and prospects · 30 face-to-face interviews · 16 in-home interviews', focus: 'Exploring travel websites, internet TV platforms, Smart TV and YouTube usage.' },
   ],
 
   // ── Parcours ───────────────────────────────────────────────────────────
@@ -54,16 +54,13 @@ export const site = {
     { photo: 'parcours-strasbourg', when: '2015–17', where: 'Université de Strasbourg', what: 'Social Sciences, advanced track', detail: 'Sociology, economics and law.' },
   ],
 
-  // ── Méthode : chaîne façon réseau d’opérateurs TouchDesigner ────────────
-  studies: [
-    { label: 'AMF', title: 'Regulatory documentation', count: '170 investors · 5 studies', text: 'Exclusive AMF partner for readability and comprehension testing, using an online community repeated across five topics: SFDR Articles 8/9, SCPI, FCPI, real-estate crowdfunding, KIDs, structured products and ELTIFs.' },
-    { label: 'Energy · UX', title: 'App prototype', count: '24 customers', text: 'Figma prototype testing: user journeys, usability, fluidity and features.' },
-    { label: 'Professional body · UX', title: 'Business application', count: '16 professionals', text: 'From technicians to business owners: usage patterns, habits and areas for improvement.' },
-    { label: 'Travel · UX', title: 'Travel websites', count: '18 customers and prospects', text: 'Exploring how people use travel websites.' },
-    { label: 'Banking · UX', title: 'Banking app', count: '36 dissatisfied customers', text: 'App evaluation and improvement opportunities, including comparison with competing banking apps.' },
-    { label: 'Insurance · UX', title: 'New website', count: '30 individuals and financial advisers', text: 'Customers and prospects: improvement opportunities, perceived brand image and segmentation.' },
-    { label: 'Media', title: 'Internet TV platform', count: '30 face-to-face interviews', text: 'Use of an internet TV platform and experience personalisation.' },
-    { label: 'ARCOM', title: 'Smart TV and YouTube', count: '16 in-home interviews', text: 'Exploring Smart TV usage and YouTube viewing on television.' },
+  // ── Method: research process ──────────────────────────────────────────
+  method: [
+    { op: 'brief1', label: 'Clarify', text: 'Clarify the issues, formulate research questions and objectives, and identify the hypotheses to explore.' },
+    { op: 'design1', label: 'Design', text: 'Select the audiences and methods, then build a research approach suited to the brief.' },
+    { op: 'field1', label: 'Investigate', text: 'Conduct fieldwork through interviews, focus groups, observation or online communities.' },
+    { op: 'analysis1', label: 'Analyse', text: 'Bring evidence together, compare perspectives and identify the dynamics shaping behaviour.' },
+    { op: 'out1', label: 'Recommend', text: 'Present the findings and formulate actionable recommendations.' },
   ],
   skillGroups: [
     { title: 'Research methods', items: ['In-depth interviews', 'Focus groups', 'Ethnography', 'Online communities', 'User research (UX Research)', 'Desk research'] },
