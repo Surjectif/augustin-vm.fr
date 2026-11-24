@@ -6,6 +6,7 @@ import Shot from '@/components/Shot.astro';
 import { Image } from 'astro:assets';
 import { site as site } from '@/data/site.en';
 import { photo } from '@/lib/photos';
+import { withBase } from '@/lib/url';
 import logoAmf from '@/assets/photos/logo-amf.png.svg';
 
 const p = site.person;
@@ -103,7 +104,7 @@ const splitIntro = (text: string, index: number) => {
           <p class="mt-5 w-full max-w-[34rem] text-sm leading-[1.75] text-cream/85 sm:mt-7 sm:text-lg sm:leading-[1.7] lg:mt-5 lg:max-w-[30rem] lg:text-lg lg:leading-[1.65]" data-reveal>{site.pitch}</p>
           <div class="mt-7 flex flex-wrap gap-3 sm:mt-8 sm:gap-3 lg:mt-6 lg:gap-2.5" data-reveal>
             <a href="#contact" class="pill-line">Get in touch</a>
-            <a href="/cv.pdf" target="_blank" rel="noopener" class="pill-solid">My CV <span aria-hidden="true">↗</span></a>
+            <a href={withBase("/cv.pdf")} target="_blank" rel="noopener" class="pill-solid">My CV <span aria-hidden="true">↗</span></a>
             <a href={p.linkedin} target="_blank" rel="noopener noreferrer" class="pill-line">LinkedIn <span aria-hidden="true">↗</span></a>
           </div>
         </div>
@@ -158,7 +159,7 @@ const splitIntro = (text: string, index: number) => {
 
           <div class="absolute left-4 top-[6%] aspect-square w-[min(74vw,38rem)] sm:left-[6%] sm:top-0 sm:w-[min(44vw,38rem)]">
             {site.studyCarousel.map((s, i) => (
-              <Shot name={s.photo} tone={s.tone} alt={s.topic} logo={i === 0 ? logoAmf : i === 3 ? photo('logo-arcom.png') : undefined} logoAlt={i === 0 ? 'Logo de l’Autorité des marchés financiers' : i === 3 ? 'Logo de l’Arcom' : undefined} class={`slide-img absolute inset-0 rounded-full ${i === 0 ? 'is-active' : ''}`} />
+              <Shot name={s.photo} tone={s.tone} alt={s.topic} logo={i === 0 ? logoAmf : i === 3 ? photo('logo-arcom.png') : undefined} logoAlt={i === 0 ? 'Logo de l’Autorité des marchés financiers' : i === 3 ? 'Logo de l’Arcom' : undefined} aria-hidden={i === 0 ? "false" : "true"} class={`slide-img absolute inset-0 rounded-full ${i === 0 ? 'is-active' : ''}`} />
             ))}
           </div>
 
@@ -352,7 +353,10 @@ const splitIntro = (text: string, index: number) => {
 
     const show = (index: number) => {
       active = (index + images.length) % images.length;
-      images.forEach((element, i) => element.classList.toggle('is-active', i === active));
+      images.forEach((element, i) => {
+        element.classList.toggle('is-active', i === active);
+        element.setAttribute('aria-hidden', String(i !== active));
+      });
       texts.forEach((element, i) => {
         element.classList.toggle('is-active', i === active);
         element.setAttribute('aria-hidden', String(i !== active));
