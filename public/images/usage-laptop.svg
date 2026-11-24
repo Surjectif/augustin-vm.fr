@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900">
+<defs>
+ <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#d9d5c9"/><stop offset="1" stop-color="#9da69c"/></linearGradient>
+ <linearGradient id="desk" x2="0" y2="1"><stop stop-color="#98795e"/><stop offset="1" stop-color="#604a3a"/></linearGradient>
+ <linearGradient id="screen" x2="1" y2="1"><stop stop-color="#435d65"/><stop offset="1" stop-color="#172d35"/></linearGradient>
+</defs>
+<rect width="900" height="900" fill="url(#bg)"/>
+<rect x="80" y="95" width="740" height="370" rx="12" fill="#f1eee5"/>
+<rect x="105" y="120" width="690" height="320" fill="#b8c6c1"/>
+<path d="M105 365 Q270 245 400 350 T795 300 V440 H105Z" fill="#82998e"/>
+<rect y="590" width="900" height="310" fill="url(#desk)"/>
+<rect x="270" y="315" width="410" height="285" rx="18" fill="#292d2e"/>
+<rect x="290" y="335" width="370" height="240" rx="8" fill="url(#screen)"/>
+<rect x="315" y="360" width="320" height="18" rx="9" fill="#e4d6bd" opacity=".65"/>
+<rect x="315" y="395" width="210" height="12" rx="6" fill="#9bb0aa" opacity=".65"/>
+<rect x="315" y="425" width="285" height="12" rx="6" fill="#9bb0aa" opacity=".45"/>
+<path d="M245 600 H695 L750 650 Q755 665 730 668 H205 Q180 665 190 650Z" fill="#c4c8c3"/>
+<path d="M0 900 V670 Q20 585 115 560 L260 540 Q350 550 395 650 L440 900Z" fill="#4b5a53"/>
+<ellipse cx="225" cy="505" rx="88" ry="108" fill="#c88f6c"/>
+<path d="M138 505 Q120 370 225 375 Q330 385 315 525 Q295 455 230 445 Q175 450 138 505Z" fill="#493b34"/>
+<path d="M145 615 Q215 575 305 610 Q385 645 430 900 H65Z" fill="#8b9b8e"/>
+<path d="M350 680 Q430 625 500 675 L575 760 L525 795 L440 735 L390 900 H300Z" fill="#c88f6c"/>
+<path d="M490 760 L585 690 Q605 680 620 700 Q632 720 610 738 L520 810Z" fill="#c88f6c"/>
+<rect x="680" y="510" width="90" height="80" rx="10" fill="#e6e0d4"/>
+<path d="M690 510 Q725 445 760 510" fill="none" stroke="#f4eee1" stroke-width="13"/>
+<rect x="0" y="0" width="900" height="900" fill="none" stroke="#fff" stroke-opacity=".12" stroke-width="18"/>
+</svg>
