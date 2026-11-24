@@ -158,7 +158,7 @@ const splitIntro = (text: string, index: number) => {
 
           <div class="absolute left-4 top-[6%] aspect-square w-[min(74vw,38rem)] sm:left-[6%] sm:top-0 sm:w-[min(44vw,38rem)]">
             {site.studyCarousel.map((s, i) => (
-              <Shot name={s.photo} tone={s.tone} alt={s.topic} logo={i === 0 ? logoAmf : i === 3 ? photo('logo-arcom.png') : undefined} logoAlt={i === 0 ? 'Logo de l’Autorité des marchés financiers' : i === 3 ? 'Logo de l’Arcom' : undefined} class={`slide-img absolute inset-0 rounded-full ${i === 0 ? 'is-active' : ''}`} />
+              <Shot name={s.photo} tone={s.tone} alt={s.topic} externalSrc={i === 2 ? '/images/usage-laptop.svg' : i === 3 ? '/images/usage-television.svg' : undefined} logo={i === 0 ? logoAmf : i === 3 ? photo('logo-arcom.png') : undefined} logoAlt={i === 0 ? 'Logo de l’Autorité des marchés financiers' : i === 3 ? 'Logo de l’Arcom' : undefined} class={`slide-img absolute inset-0 rounded-full ${i === 0 ? 'is-active' : ''}`} />
             ))}
           </div>
 
