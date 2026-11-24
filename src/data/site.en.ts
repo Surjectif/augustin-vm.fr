@@ -4,7 +4,7 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 export const site = {
-  url: import.meta.env.PUBLIC_SITE_URL || 'https://augustin-vinot-marull.fr',
+  url: import.meta.env.PUBLIC_SITE_URL || 'https://augustin-vm.fr',
 
   person: {
     firstName: 'Augustin',
