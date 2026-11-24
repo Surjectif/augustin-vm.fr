@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 // (.github/workflows/deploy.yml) à partir de la configuration Pages du dépôt :
 //   PUBLIC_SITE_URL  origine, ex. https://<compte>.github.io ou le domaine perso
 //   BASE_PATH        /<nom-du-depot> pour un site « projet », vide sinon
-const SITE = process.env.PUBLIC_SITE_URL || 'https://augustin-vinot-marull.fr';
+const SITE = process.env.PUBLIC_SITE_URL || 'https://augustin-vm.fr';
 const BASE = process.env.BASE_PATH || '/';
 // URL de l'accueil sans « / » final : doublon que le sitemap émet avec une base.
 const HOME_NO_SLASH = new URL(BASE.replace(/\/?$/, '/'), SITE).href.replace(/\/$/, '');
