@@ -38,7 +38,7 @@ export const site = {
   studyCarousel: [
     { photo: 'etude-assurance', tone: 'moss', category: 'Finance · AMF', topic: 'Rendre la documentation financière compréhensible', method: '5 études · 170 épargnants · communauté en ligne', focus: 'Tester la lisibilité et la compréhension de documents sur les articles 8/9, les placements, les DIC, les produits structurés et les ELTIF.' },
     { photo: 'voiture-electrique', tone: 'stone', category: 'Énergie · UX', topic: 'Évaluer un prototype d’application', method: '24 clients · prototype Figma', focus: 'Observer les parcours, l’ergonomie, la fluidité et la pertinence des fonctionnalités avant le lancement.' },
-    { photo: 'téléphone-portable', tone: 'dusk', category: 'Services numériques · UX', topic: 'Améliorer des applications et des sites', method: '16 professionnels · 36 clients bancaires · 30 particuliers et CGP', focus: 'Comprendre les usages, identifier les points de friction et faire émerger des pistes d’amélioration.' },
+    { photo: 'teléphone-portable', tone: 'dusk', category: 'Services numériques · UX', topic: 'Améliorer des applications et des sites', method: '16 professionnels · 36 clients bancaires · 30 particuliers et CGP', focus: 'Comprendre les usages, identifier les points de friction et faire émerger des pistes d’amélioration.' },
     { photo: 'télévision', tone: 'moss', category: 'Médias · ARCOM', topic: 'Comprendre les usages des plateformes', method: '18 clients et prospects · 30 entretiens en face-à-face · 16 entretiens à domicile', focus: 'Explorer les pratiques sur les sites de voyage, les plateformes TV par Internet, la Smart TV et YouTube.' },
   ],
 
