@@ -302,7 +302,7 @@ const splitIntro = (text: string, index: number) => {
                 </div>
                 <p class="kicker">{s.when} · {s.where}</p>
                 <h4 class="mt-4 text-[1.75rem]">{s.what}</h4>
-                {s.thesisTitle && <p class="mt-3 text-sm leading-relaxed text-paper">{s.thesisTitle}</p>}
+                {'thesisTitle' in s && s.thesisTitle && <p class="mt-3 text-sm leading-relaxed text-paper">{s.thesisTitle}</p>}
                 <p class="mt-3 text-soft">{s.detail}</p>
               </div>
             </li>
