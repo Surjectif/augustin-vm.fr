@@ -20,6 +20,9 @@ const socialImage = await getImage({ src: portrait, width: 1200, height: 630, fi
 // On garde le « / » final de l'accueil : c'est l'URL que sert GitHub Pages.
 const cleanPath = Astro.url.pathname.replace(/(index)?\.html$/, '') || '/';
 const canonical = new URL(cleanPath, site.url).href;
+const isEnglish = Astro.url.pathname.startsWith('/en');
+const frenchUrl = new URL(withBase('/'), site.url).href;
+const englishUrl = new URL(withBase('/en/'), site.url).href;
 
 const person = {
   '@context': 'https://schema.org',
@@ -28,6 +31,7 @@ const person = {
   givenName: p.firstName,
   jobTitle: p.role,
   url: new URL(withBase('/'), site.url).href,
+  sameAs: [p.linkedin],
   email: `mailto:${p.email}`,
   address: { '@type': 'PostalAddress', addressLocality: p.city, addressCountry: 'FR' },
   alumniOf: [
@@ -50,6 +54,9 @@ const person = {
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="fr" href={frenchUrl} />
+    <link rel="alternate" hreflang="en" href={englishUrl} />
+    <link rel="alternate" hreflang="x-default" href={frenchUrl} />
     {noindex
       ? <meta name="robots" content="noindex, follow" />
       : <meta name="robots" content="index, follow, max-image-preview:large" />}
@@ -73,7 +80,7 @@ const person = {
   <body>
     <CursorLayer />
     <a href="#contenu" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-cream focus:px-4 focus:py-2 focus:text-night">
-      Aller au contenu
+      {isEnglish ? "Skip to content" : "Aller au contenu"}
     </a>
     <div class="relative z-[2]"><slot /></div>
 
