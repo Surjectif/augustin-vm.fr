@@ -28,7 +28,7 @@ const src = given ?? photo(name);
     : src
     ? <Image src={src} alt={alt} class="absolute inset-0 h-full w-full object-cover" widths={[400, 800, 1200]} sizes="(min-width: 1024px) 50vw, 90vw" />
     : label && <span class="shot__label">{label}</span>}
-  {logo && <div class="shot__logo"><Image src={logo} alt={logoAlt} class="max-h-[3.25rem] w-auto max-w-full object-contain" /></div>}
+  {logo && <div class="shot__logo"><Image src={logo} alt={logoAlt} class="max-h-[4.875rem] w-auto max-w-full object-contain" /></div>}
 </div>
 
 <style>
@@ -43,8 +43,8 @@ const src = given ?? photo(name);
   .shot--ember { background: radial-gradient(110% 90% at 70% 25%, #f0a06a 0%, #b8532a 40%, #2a1610 100%); }
   .shot--stone { background: radial-gradient(120% 100% at 40% 15%, #8d877d 0%, #4a4640 45%, #1a1917 100%); }
   .shot--dusk  { background: linear-gradient(170deg, #e7b98a 0%, #a76d5a 35%, #3b3350 70%, #16151d 100%); }
-  .shot__logo { position: absolute; z-index: 2; left: 50%; bottom: 9%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; width: 68%; min-height: 18%; padding: .45rem .7rem; border-radius: .35rem; background: rgb(255 255 255 / .96); box-shadow: 0 4px 20px rgb(0 0 0 / .14); }
-  .shot__logo img { display: block; max-width: 100%; max-height: 3.25rem; width: auto; height: auto; object-fit: contain; }
+  .shot__logo { position: absolute; z-index: 2; left: 50%; bottom: 9%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; width: 78%; min-height: 22%; padding: .6rem .9rem; border-radius: .35rem; background: rgb(255 255 255 / .96); box-shadow: 0 4px 20px rgb(0 0 0 / .14); }
+  .shot__logo img { display: block; max-width: 100%; max-height: 4.875rem; width: auto; height: auto; object-fit: contain; }
   .shot__label {
     position: absolute; left: 50%; bottom: 9%; transform: translateX(-50%);
     font-size: .68rem; letter-spacing: .14em; text-transform: uppercase;
