@@ -1,6 +1,9 @@
 ---
-import { site } from '@/data/site';
-const p = site.person;
+import { site as frenchSite } from '@/data/site';
+import { site as englishSite } from '@/data/site.en';
+
+const isEnglish = Astro.url.pathname.startsWith('/en');
+const p = (isEnglish ? englishSite : frenchSite).person;
 ---
 
 <footer class="wrap flex flex-col gap-3 py-10 text-[0.95rem] text-mute sm:flex-row sm:items-center sm:justify-between">
