@@ -3,6 +3,7 @@ import '@/styles/global.css';
 import { getImage } from 'astro:assets';
 import portrait from '@/assets/photos/portrait.jpg';
 import { site } from '@/data/site';
+import { site as englishSite } from '@/data/site.en';
 import { withBase } from '@/lib/url';
 import CursorLayer from '@/components/CursorLayer.astro';
 
@@ -14,13 +15,14 @@ interface Props {
 }
 
 const { title, description, noindex = false, structuredData = false } = Astro.props;
-const p = site.person;
+const isEnglish = Astro.url.pathname.startsWith('/en');
+const contentSite = isEnglish ? englishSite : site;
+const p = contentSite.person;
 const socialImage = await getImage({ src: portrait, width: 1200, height: 630, fit: 'cover', format: 'jpeg' });
 
 // On garde le « / » final de l'accueil : c'est l'URL que sert GitHub Pages.
 const cleanPath = Astro.url.pathname.replace(/(index)?\.html$/, '') || '/';
 const canonical = new URL(cleanPath, site.url).href;
-const isEnglish = Astro.url.pathname.startsWith('/en');
 const frenchUrl = new URL(withBase('/'), site.url).href;
 const englishUrl = new URL(withBase('/en/'), site.url).href;
 
@@ -39,7 +41,7 @@ const person = {
     { '@type': 'CollegeOrUniversity', name: 'Technische Universität Berlin' },
     { '@type': 'CollegeOrUniversity', name: 'Université de Strasbourg' },
   ],
-  knowsAbout: site.skillGroups.flatMap((group) => group.items),
+  knowsAbout: contentSite.skillGroups.flatMap((group) => group.items),
   knowsLanguage: ['fr', 'de', 'en', 'da', 'pt-BR'],
 };
 ---
